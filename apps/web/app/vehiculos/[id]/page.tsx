@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { EventTimeline } from "@/components/vehicle/timeline";
 import { BadgePills } from "@/components/vehicle/badge-pills";
 import { QrShareCard } from "@/components/vehicle/qr-modal";
+import { EventManagementList } from "@/components/vehicle/event-management-list";
 
 function buildTrustScore(params: { events: number; flags: number; verified: number; badges: number }) {
   const eventsScore = Math.min(params.events * 8, 40);
@@ -24,6 +25,19 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
     where: { id },
     include: {
       badges: true,
+      ownerships: {
+        include: {
+          user: {
+            select: {
+              name: true,
+              email: true,
+              role: true,
+              dealerProfile: { select: { dealerName: true } }
+            }
+          }
+        },
+        orderBy: { startedAt: "desc" }
+      },
       events: {
         include: { attachments: true },
         orderBy: { occurredAt: "desc" }
@@ -44,6 +58,8 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
   );
 
   const verifiedCount = vehicle.events.filter((event) => event.verificationStatus === "VERIFIED").length;
+  const transfersCount = Math.max(vehicle.ownerships.length - 1, 0);
+  const canSeeOwnerIdentity = isOwner || session?.user?.role === "ADMIN";
   const trustScore = buildTrustScore({
     events: vehicle.events.length,
     flags: vehicle.flags.length,
@@ -91,6 +107,9 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
             <p className="text-2xl font-semibold">{vehicle.flags.length}</p>
           </div>
         </div>
+        <p className="mt-3 text-xs text-muted-foreground">
+          Transferencias registradas en la plataforma: {transfersCount}
+        </p>
 
         <div className="mt-4">
           <BadgePills badges={vehicle.badges} showLegend />
@@ -98,6 +117,38 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
       </Card>
 
       {isOwner ? <QrShareCard vehicleId={vehicle.id} /> : null}
+
+      <Card>
+        <h2 className="text-lg font-semibold">Historial de transferencias</h2>
+        <p className="mt-1 text-xs text-muted-foreground">
+          Esta sección muestra solo transferencias realizadas dentro de Kilómetro Claro.
+        </p>
+        <div className="mt-4 space-y-3">
+          {vehicle.ownerships.map((ownership, index) => {
+            const ownerRole = ownership.user.role === "DEALER" ? "Automotora" : "Particular";
+            const isCurrent = ownership.ownershipStatus === "CURRENT";
+            const ownerName = canSeeOwnerIdentity
+              ? ownership.user.dealerProfile?.dealerName || ownership.user.name || ownership.user.email || "Usuario registrado"
+              : `${ownerRole} registrado`;
+
+            return (
+              <div key={ownership.id} className="rounded-xl border bg-muted/40 p-3">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <p className="font-semibold">{ownerName}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {isCurrent ? "Titular actual" : `Titular anterior #${Math.max(vehicle.ownerships.length - index - 1, 1)}`}
+                  </p>
+                </div>
+                <p className="text-sm text-muted-foreground">{ownerRole}</p>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Desde {new Date(ownership.startedAt).toLocaleDateString("es-UY")}
+                  {ownership.endedAt ? ` hasta ${new Date(ownership.endedAt).toLocaleDateString("es-UY")}` : " hasta hoy"}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </Card>
 
       <Card>
         <div className="mb-4 flex items-center justify-between">
@@ -118,6 +169,27 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
           }))}
         />
       </Card>
+
+      {isOwner ? (
+        <Card>
+          <h2 className="text-lg font-semibold">Gestionar eventos</h2>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Podés borrar eventos cargados por error. Esta acción es permanente.
+          </p>
+          <div className="mt-4">
+            <EventManagementList
+              vehicleId={vehicle.id}
+              events={vehicle.events.map((event) => ({
+                id: event.id,
+                title: event.title,
+                type: event.type,
+                occurredAt: event.occurredAt.toISOString(),
+                sourceKind: event.sourceKind
+              }))}
+            />
+          </div>
+        </Card>
+      ) : null}
 
       <Card>
         <h3 className="font-semibold">Alcances y límites</h3>

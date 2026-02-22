@@ -40,6 +40,21 @@ export default async function PublicacionPage({ params }: { params: Promise<{ id
   });
 
   if (!vehicle) return notFound();
+  const ownershipHistory = await prisma.vehicleOwnership.findMany({
+    where: { vehicleId: id },
+    include: {
+      user: {
+        select: {
+          role: true,
+          name: true,
+          email: true,
+          dealerProfile: { select: { dealerName: true } }
+        }
+      }
+    },
+    orderBy: { startedAt: "desc" }
+  });
+
   const publicationImage = await vehicleImageUrl({
     make: vehicle.make,
     model: vehicle.model,
@@ -56,6 +71,7 @@ export default async function PublicacionPage({ params }: { params: Promise<{ id
       }
     : null;
   const links = contactLinks(ownerContact || {});
+  const transferCount = Math.max(ownershipHistory.length - 1, 0);
 
   return (
     <div className="space-y-5">
@@ -132,6 +148,33 @@ export default async function PublicacionPage({ params }: { params: Promise<{ id
           <p>Eventos registrados: {vehicle.events.length}</p>
           <p>Verificados: {vehicle.events.filter((e) => e.verificationStatus === "VERIFIED").length}</p>
           <p>Último evento: {vehicle.events[0] ? vehicle.events[0].title : "Sin eventos"}</p>
+          <p>Transferencias registradas en la web: {transferCount}</p>
+        </div>
+      </Card>
+
+      <Card>
+        <h2 className="text-xl font-bold text-white">Historial de titularidad en la plataforma</h2>
+        <p className="mt-1 text-xs text-slate-400">
+          Se muestran solo transferencias realizadas dentro de Kilómetro Claro.
+        </p>
+        <div className="mt-4 space-y-2 text-sm">
+          {ownershipHistory.map((ownership, index) => {
+            const isCurrent = ownership.ownershipStatus === "CURRENT";
+            const ownerType = ownership.user.role === "DEALER" ? "Automotora" : "Particular";
+            const label = isCurrent
+              ? ownerContact?.displayName || "Titular actual"
+              : `${ownerType} registrado${index > 0 ? ` #${ownershipHistory.length - index}` : ""}`;
+
+            return (
+              <div key={ownership.id} className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">
+                <p className="font-semibold text-white">{label}</p>
+                <p className="text-xs text-slate-400">
+                  Desde {new Date(ownership.startedAt).toLocaleDateString("es-UY")}
+                  {ownership.endedAt ? ` hasta ${new Date(ownership.endedAt).toLocaleDateString("es-UY")}` : " hasta hoy"}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </Card>
     </div>

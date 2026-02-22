@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 const slides = [
   {
@@ -18,7 +19,11 @@ const slides = [
   }
 ];
 
-export function HeroCarousel() {
+type HeroCarouselProps = {
+  className?: string;
+};
+
+export function HeroCarousel({ className }: HeroCarouselProps) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -29,7 +34,12 @@ export function HeroCarousel() {
   }, []);
 
   return (
-    <div className="relative overflow-hidden rounded-[2rem] border border-slate-700/80 shadow-[0_20px_60px_rgba(5,10,25,0.55)]">
+    <div
+      className={cn(
+        "relative h-full overflow-hidden rounded-[2rem] border border-slate-700/80 shadow-[0_20px_60px_rgba(5,10,25,0.55)]",
+        className
+      )}
+    >
       {slides.map((slide, i) => (
         <Image
           key={slide.src}
@@ -41,7 +51,7 @@ export function HeroCarousel() {
           priority={i === 0}
         />
       ))}
-      <div className="relative h-[460px]" />
+      <div className="relative h-full min-h-[340px] sm:min-h-[410px] lg:min-h-[460px]" />
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
         {slides.map((slide, i) => (
           <button

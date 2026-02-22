@@ -40,6 +40,11 @@ export const createShareLinkSchema = z.object({
   expiresAt: z.string().datetime({ offset: true }).optional()
 });
 
+export const transferVehicleSchema = z.object({
+  targetUserId: z.string().uuid()
+});
+
 export type CreateVehicleInput = z.infer<typeof createVehicleSchema>;
 export type CreateEventInput = z.infer<typeof createEventSchema>;
 export type CreateShareLinkInput = z.infer<typeof createShareLinkSchema>;
+export type TransferVehicleInput = z.infer<typeof transferVehicleSchema>;

@@ -21,7 +21,7 @@ export function BrandMark() {
       </span>
       <span>
         <span className="brand-title block text-[19px] md:text-[20px] font-black tracking-[-0.02em] text-slate-100 leading-none">
-          Kilómetro <span className="text-amber-300">Claro</span>
+          Kilómetro <span className="brand-claro text-amber-300">Claro</span>
         </span>
         <span className="brand-subtitle mt-0.5 block text-[12px] font-semibold uppercase tracking-[0.14em] text-cyan-200/80 leading-none">
           Historial Vehicular Inteligente

@@ -1,11 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
+import { FileText, Wrench } from "lucide-react";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BadgePills } from "@/components/vehicle/badge-pills";
+import { TransferVehicleAction } from "@/components/vehicle/transfer-vehicle-action";
+import { DeleteVehicleAction } from "@/components/vehicle/delete-vehicle-action";
 import { vehicleImageUrl } from "@/lib/vehicle-images";
 
 export default async function ParticularPage() {
@@ -114,13 +117,21 @@ export default async function ParticularPage() {
                 </>
               )}
             </div>
-            <div className="mt-4 flex gap-2">
-              <Button asChild size="sm">
-                <Link href={`/vehiculos/${vehicle.id}`}>Ver historial</Link>
+            <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+              <Button asChild size="sm" className="w-full">
+                <Link href={`/vehiculos/${vehicle.id}`}>
+                  <FileText className="mr-1.5 h-4 w-4" />
+                  Historial
+                </Link>
               </Button>
-              <Button asChild size="sm" variant="outline">
-                <Link href={`/vehiculos/${vehicle.id}/eventos/nuevo`}>Agregar evento</Link>
+              <Button asChild size="sm" variant="outline" className="w-full">
+                <Link href={`/vehiculos/${vehicle.id}/eventos/nuevo`}>
+                  <Wrench className="mr-1.5 h-4 w-4" />
+                  Evento
+                </Link>
               </Button>
+              <TransferVehicleAction className="w-full" vehicleId={vehicle.id} vehicleLabel={`${vehicle.make} ${vehicle.model}`} />
+              <DeleteVehicleAction className="w-full" vehicleId={vehicle.id} vehicleLabel={`${vehicle.make} ${vehicle.model}`} />
             </div>
           </Card>
         ))}
