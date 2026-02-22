@@ -21,6 +21,8 @@ import { HeroCarousel } from "@/components/marketing/hero-carousel";
 import { prisma } from "@/lib/prisma";
 import { vehicleImageUrl } from "@/lib/vehicle-images";
 
+export const dynamic = "force-dynamic";
+
 const pilares = [
   {
     icon: CarFront,
