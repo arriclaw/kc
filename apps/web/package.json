@@ -44,7 +44,7 @@
     "react-hook-form": "^7.53.2",
     "tailwind-merge": "^2.5.5",
     "zod": "^3.24.1",
-    "nodemailer": "^6.9.16"
+    "nodemailer": "^7.0.7"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.1",
