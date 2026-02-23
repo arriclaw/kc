@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   Activity,
-  AlertTriangle,
   ArrowRight,
   BadgeCheck,
   Building2,
@@ -99,11 +98,11 @@ export default async function LandingPage() {
 
   return (
     <div className="space-y-8 pb-10">
-      <section className="home-surface relative overflow-hidden rounded-[2.5rem] border border-slate-700/70 p-5 sm:p-8">
+      <section className="home-surface relative overflow-hidden rounded-[2.5rem] border border-slate-700/70 p-5 sm:p-7">
         <div className="pointer-events-none absolute -left-20 top-2 h-72 w-72 rounded-full bg-cyan-400/18 blur-3xl" />
         <div className="pointer-events-none absolute -right-24 top-0 h-80 w-80 rounded-full bg-indigo-500/24 blur-3xl" />
 
-        <div className="relative grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-stretch">
+        <div className="relative grid gap-7 lg:grid-cols-[1fr_1fr] lg:items-stretch">
           <div className="space-y-5">
             <span className="glass-chip inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em]">
               <Sparkles className="h-3.5 w-3.5" />
@@ -120,30 +119,30 @@ export default async function LandingPage() {
               Un registro verificable de servicios, transferencias e incidentes, con evidencia cuando importa.
             </p>
 
-            <ul className="grid max-w-2xl gap-1.5 text-sm text-slate-200 sm:grid-cols-2">
+            <ul className="grid max-w-2xl gap-x-5 gap-y-2 text-sm text-slate-200 sm:grid-cols-2">
               {heroScanBullets.map((bullet) => (
-                <li key={bullet} className="inline-flex items-center gap-2">
-                  <CircleCheck className="h-4 w-4 text-cyan-200" />
+                <li key={bullet} className="inline-flex items-center gap-2 leading-none">
+                  <CircleCheck className="h-4 w-4 shrink-0 text-cyan-200" />
                   {bullet}
                 </li>
               ))}
             </ul>
 
-            <div className="flex flex-wrap items-center gap-3">
-              <Button asChild size="lg">
-                <Link href="/vehiculos" className="inline-flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2.5">
+              <Button asChild size="lg" className="h-11 min-w-[214px] rounded-xl px-6">
+                <Link href="/vehiculos" className="inline-flex items-center gap-2 font-semibold">
                   Buscar un vehículo
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="sm" variant="outline">
-                <Link href="/acceso" className="inline-flex items-center gap-2">
+              <Button asChild size="sm" variant="outline" className="h-10 rounded-xl px-4">
+                <Link href="/acceso" className="inline-flex items-center gap-2 font-medium">
                   Soy particular
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="sm" variant="outline">
-                <Link href="/acceso" className="inline-flex items-center gap-2">
+              <Button asChild size="sm" variant="outline" className="h-10 rounded-xl px-4">
+                <Link href="/acceso" className="inline-flex items-center gap-2 font-medium">
                   Soy automotora
                   <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -154,39 +153,23 @@ export default async function LandingPage() {
               Registro verificable • Eventos con evidencia • Historial compartible
             </p>
 
+            <p className="text-xs text-slate-400">
+              No reemplaza una inspección mecánica presencial. Sí te ayuda a separar data real de humo.
+            </p>
+
             <div className="lg:hidden">
               <HeroProofCard />
             </div>
           </div>
 
-          <div className="relative flex h-full flex-col">
-            <div className="glass-panel absolute -left-2 top-4 z-20 rounded-2xl px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-cyan-100 sm:-left-4 sm:top-8">
+          <div className="relative flex h-full flex-col gap-3">
+            <div className="glass-chip inline-flex w-fit items-center rounded-full border border-cyan-300/35 bg-cyan-300/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-cyan-100">
               Registro inmutable verificable
             </div>
             <HeroCarousel className="flex-1" />
-            <div className="absolute bottom-5 left-4 z-20 hidden w-[min(92%,22rem)] lg:block">
+            <div className="pointer-events-none absolute inset-x-0 bottom-4 z-10 hidden justify-start px-4 lg:flex">
               <HeroProofCard />
             </div>
-            <div className="warning-card absolute -bottom-5 right-3 z-20 hidden max-w-[18rem] rounded-2xl border p-4 text-sm shadow-[0_14px_34px_rgba(251,191,36,0.18)] backdrop-blur-xl lg:block">
-              <p className="warning-title inline-flex items-center gap-2 font-extrabold uppercase tracking-[0.14em]">
-                <AlertTriangle className="h-4 w-4" />
-                Ojo importante
-              </p>
-              <p className="warning-body mt-1.5 max-w-[16rem] leading-snug">
-                No reemplaza una inspección mecánica presencial. Sí te ayuda a separar data real de humo.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="lg:hidden">
-          <div className="warning-card mt-3 max-w-[18rem] rounded-2xl border p-4 text-sm shadow-[0_14px_34px_rgba(251,191,36,0.18)] backdrop-blur-xl">
-            <p className="warning-title inline-flex items-center gap-2 font-extrabold uppercase tracking-[0.14em]">
-              <AlertTriangle className="h-4 w-4" />
-              Ojo importante
-            </p>
-            <p className="warning-body mt-1.5 max-w-[16rem] leading-snug">
-              No reemplaza una inspección mecánica presencial. Sí te ayuda a separar data real de humo.
-            </p>
           </div>
         </div>
       </section>
