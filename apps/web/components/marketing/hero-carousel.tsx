@@ -51,20 +51,9 @@ export function HeroCarousel({ className }: HeroCarouselProps) {
           priority={i === 0}
         />
       ))}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/20 to-slate-950/5" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-slate-950/28 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-bl from-slate-950/38 via-slate-950/22 to-slate-950/8" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/62 via-slate-950/24 to-transparent" />
       <div className="relative h-full min-h-[340px] sm:min-h-[410px] lg:min-h-[460px]" />
-      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
-        {slides.map((slide, i) => (
-          <button
-            key={slide.src}
-            type="button"
-            onClick={() => setIndex(i)}
-            className={`h-1.5 w-7 rounded-full ${i === index ? "bg-cyan-200" : "bg-white/35"}`}
-            aria-label={`Ir a imagen ${i + 1}`}
-          />
-        ))}
-      </div>
     </div>
   );
 }

@@ -151,10 +151,6 @@ export default async function LandingPage() {
               </div>
             </div>
 
-            <div className="inline-flex w-fit items-center rounded-full border border-cyan-300/25 bg-cyan-300/8 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-cyan-100">
-              Registro inmutable verificable
-            </div>
-
             <p className="text-xs font-semibold tracking-[0.06em] text-slate-300 sm:text-sm">
               Registro verificable • Eventos con evidencia • Historial compartible
             </p>
