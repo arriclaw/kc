@@ -4,13 +4,15 @@ const productLinks = [
   { href: "/acceso", label: "Particular" },
   { href: "/acceso", label: "Automotora" },
   { href: "/vehiculos", label: "Galería" },
-  { href: "/acceso", label: "Panel privado" }
+  { href: "/acceso", label: "Panel privado" },
+  { href: "/contacto", label: "Contacto" }
 ];
 
 const trustLinks = [
   { href: "/acceso", label: "Acceso" },
   { href: "/registro", label: "Crear cuenta" },
-  { href: "/", label: "Alcances y límites" }
+  { href: "/", label: "Alcances y límites" },
+  { href: "/contacto", label: "Hablar con el equipo" }
 ];
 
 export function SiteFooter() {

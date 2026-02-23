@@ -44,7 +44,23 @@ export const transferVehicleSchema = z.object({
   targetUserId: z.string().uuid()
 });
 
+export const contactMessageSchema = z.object({
+  name: z.string().trim().min(2).max(80),
+  email: z.string().trim().email().max(190),
+  phone: z
+    .string()
+    .trim()
+    .min(8)
+    .max(24)
+    .regex(/^[0-9+\s()-]+$/)
+    .optional(),
+  requesterType: z.enum(["PARTICULAR", "AUTOMOTORA", "COMPRADOR", "OTRO"]).default("OTRO"),
+  subject: z.string().trim().min(4).max(120),
+  message: z.string().trim().min(15).max(3000)
+});
+
 export type CreateVehicleInput = z.infer<typeof createVehicleSchema>;
 export type CreateEventInput = z.infer<typeof createEventSchema>;
 export type CreateShareLinkInput = z.infer<typeof createShareLinkSchema>;
 export type TransferVehicleInput = z.infer<typeof transferVehicleSchema>;
+export type ContactMessageInput = z.infer<typeof contactMessageSchema>;

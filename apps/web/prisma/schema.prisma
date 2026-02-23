@@ -57,6 +57,19 @@ enum BadgeType {
   LOW_RISK
 }
 
+enum ContactRequesterType {
+  PARTICULAR
+  AUTOMOTORA
+  COMPRADOR
+  OTRO
+}
+
+enum ContactMessageStatus {
+  NEW
+  REVIEWED
+  CLOSED
+}
+
 model User {
   id            String             @id @default(uuid())
   email         String             @unique
@@ -247,4 +260,20 @@ model VerificationToken {
   expires    DateTime
 
   @@id([identifier, token])
+}
+
+model ContactMessage {
+  id            String               @id @default(uuid())
+  name          String
+  email         String
+  phone         String?
+  requesterType ContactRequesterType @default(OTRO)
+  subject       String
+  message       String
+  status        ContactMessageStatus @default(NEW)
+  createdAt     DateTime             @default(now())
+  reviewedAt    DateTime?
+
+  @@index([status, createdAt])
+  @@index([email])
 }

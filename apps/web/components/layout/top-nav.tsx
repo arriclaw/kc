@@ -10,25 +10,31 @@ export function TopNav() {
   const role = session?.user?.role;
   const isLoggedIn = status === "authenticated" && Boolean(session?.user?.id);
 
-  let items: Item[] = [{ href: "/vehiculos", label: "Galería" }];
+  let items: Item[] = [
+    { href: "/vehiculos", label: "Galería" },
+    { href: "/contacto", label: "Contacto" }
+  ];
 
   if (isLoggedIn) {
     if (role === "DEALER") {
       items = [
         { href: "/dealer", label: "Mi garage" },
-        { href: "/vehiculos", label: "Galería" }
+        { href: "/vehiculos", label: "Galería" },
+        { href: "/contacto", label: "Contacto" }
       ];
     } else if (role === "ADMIN") {
       items = [
         { href: "/mi-garage", label: "Mi garage" },
         { href: "/dealer", label: "Automotora" },
         { href: "/admin", label: "Admin" },
-        { href: "/vehiculos", label: "Galería" }
+        { href: "/vehiculos", label: "Galería" },
+        { href: "/contacto", label: "Contacto" }
       ];
     } else {
       items = [
         { href: "/mi-garage", label: "Mi garage" },
-        { href: "/vehiculos", label: "Galería" }
+        { href: "/vehiculos", label: "Galería" },
+        { href: "/contacto", label: "Contacto" }
       ];
     }
   }
