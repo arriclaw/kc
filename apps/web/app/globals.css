@@ -123,6 +123,75 @@ h4 {
   backdrop-filter: blur(8px);
 }
 
+.proof-card {
+  border: 1px solid rgba(148, 163, 184, 0.52);
+  background: linear-gradient(145deg, rgba(2, 6, 23, 0.92), rgba(15, 23, 42, 0.9));
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.44);
+}
+
+.proof-card-title {
+  color: rgb(241, 245, 249);
+}
+
+.proof-event-row {
+  border: 1px solid rgba(71, 85, 105, 0.82);
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.84));
+}
+
+.proof-event-title {
+  color: rgb(248, 250, 252);
+}
+
+.proof-event-meta {
+  color: rgb(203, 213, 225);
+}
+
+.proof-status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  padding: 0.25rem 0.625rem;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.proof-status-chip--verified {
+  border-color: rgba(52, 211, 153, 0.55);
+  background: rgba(6, 78, 59, 0.6);
+  color: rgb(209, 250, 229);
+}
+
+.proof-status-chip--registered {
+  border-color: rgba(148, 163, 184, 0.6);
+  background: rgba(30, 41, 59, 0.72);
+  color: rgb(241, 245, 249);
+}
+
+.proof-status-chip--declared {
+  border-color: rgba(251, 191, 36, 0.58);
+  background: rgba(120, 53, 15, 0.52);
+  color: rgb(254, 243, 199);
+}
+
+.proof-summary-chip {
+  border: 1px solid rgba(148, 163, 184, 0.45);
+}
+
+.proof-summary-chip--positive {
+  border-color: rgba(52, 211, 153, 0.4);
+  background: rgba(6, 78, 59, 0.35);
+  color: rgb(209, 250, 229);
+}
+
+.proof-summary-chip--info {
+  border-color: rgba(34, 211, 238, 0.42);
+  background: rgba(8, 47, 73, 0.34);
+  color: rgb(207, 250, 254);
+}
+
 html.light .top-nav-shell {
   border-color: rgba(148, 163, 184, 0.32);
   background: linear-gradient(120deg, rgba(255, 255, 255, 0.9), rgba(240, 247, 255, 0.9));
@@ -281,6 +350,41 @@ html.light .home-mini-chip span {
 html.light .home-feature-hero {
   background: linear-gradient(145deg, rgba(248, 251, 255, 0.98), rgba(240, 246, 255, 0.98));
   border-top: 1px solid rgba(148, 163, 184, 0.26);
+}
+
+html.light .proof-card {
+  border-color: rgba(148, 163, 184, 0.42);
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.92));
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.34);
+}
+
+html.light .proof-card-title {
+  color: rgb(241, 245, 249);
+}
+
+html.light .proof-event-row {
+  border-color: rgba(100, 116, 139, 0.64);
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.88));
+}
+
+html.light .proof-event-title {
+  color: rgb(248, 250, 252);
+}
+
+html.light .proof-event-meta {
+  color: rgb(203, 213, 225);
+}
+
+html.light .proof-summary-chip--positive {
+  border-color: rgba(16, 185, 129, 0.52);
+  background: rgba(4, 120, 87, 0.28);
+  color: rgb(209, 250, 229);
+}
+
+html.light .proof-summary-chip--info {
+  border-color: rgba(56, 189, 248, 0.55);
+  background: rgba(3, 105, 161, 0.26);
+  color: rgb(207, 250, 254);
 }
 
 html.light button,
