@@ -62,7 +62,7 @@ export function HeroProofCard({ className }: { className?: string }) {
         className
       )}
     >
-      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-cyan-200/85">Ejemplo de historial verificable</p>
+      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-cyan-200/85">Historial verificable</p>
 
       <ol className="mt-2.5 space-y-1.5">
         {proofEvents.map((event) => (
