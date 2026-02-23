@@ -8,16 +8,14 @@ import {
   Building2,
   CarFront,
   CircleCheck,
-  Handshake,
   SearchCheck,
-  ShieldCheck,
   Star,
-  Sparkles,
-  UsersRound
+  Sparkles
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { HeroCarousel } from "@/components/marketing/hero-carousel";
+import { HeroProofCard } from "@/components/marketing/hero-proof-card";
 import { prisma } from "@/lib/prisma";
 import { vehicleImageUrl } from "@/lib/vehicle-images";
 
@@ -53,22 +51,11 @@ const pilares = [
   }
 ];
 
-const trustPoints = [
-  {
-    icon: ShieldCheck,
-    titulo: "Registro inmutable",
-    texto: "Cada evento queda firmado y verificable."
-  },
-  {
-    icon: Handshake,
-    titulo: "Transferencia real",
-    texto: "Cambio de titularidad entre usuarios registrados."
-  },
-  {
-    icon: UsersRound,
-    titulo: "Contacto directo",
-    texto: "WhatsApp, llamada o mail en cada publicación."
-  }
+const heroScanBullets = [
+  "Eventos con evidencia",
+  "Transferencias registradas",
+  "Menos riesgo al comprar",
+  "Más valor al vender"
 ];
 
 export default async function LandingPage() {
@@ -130,22 +117,32 @@ export default async function LandingPage() {
             </h1>
 
             <p className="max-w-2xl text-base font-medium leading-relaxed text-slate-200 sm:text-lg">
-              La plataforma donde cada auto vale más porque su historia está clara: sin humo, con evidencia y con
-              confianza para vender o comprar mejor.
-            </p>
-            <p className="max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
-              Cada evento queda registrado como corresponde: service, reparación, cambio de piezas, mejora, inspección
-              o incidente. Todo con fecha, contexto y respaldo verificable.
+              Un registro verificable de servicios, transferencias e incidentes, con evidencia cuando importa.
             </p>
 
-            <div className="flex flex-wrap gap-3">
+            <ul className="grid max-w-2xl gap-1.5 text-sm text-slate-200 sm:grid-cols-2">
+              {heroScanBullets.map((bullet) => (
+                <li key={bullet} className="inline-flex items-center gap-2">
+                  <CircleCheck className="h-4 w-4 text-cyan-200" />
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex flex-wrap items-center gap-3">
               <Button asChild size="lg">
+                <Link href="/vehiculos" className="inline-flex items-center gap-2">
+                  Buscar un vehículo
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild size="sm" variant="outline">
                 <Link href="/acceso" className="inline-flex items-center gap-2">
                   Soy particular
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
+              <Button asChild size="sm" variant="outline">
                 <Link href="/acceso" className="inline-flex items-center gap-2">
                   Soy automotora
                   <ArrowRight className="h-4 w-4" />
@@ -153,19 +150,12 @@ export default async function LandingPage() {
               </Button>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-3">
-              {trustPoints.map((point) => (
-                <div
-                  key={point.titulo}
-                  className="home-trust-card rounded-2xl border border-slate-700/70 bg-slate-900/35 p-3.5 backdrop-blur"
-                >
-                  <div className="home-trust-icon inline-flex h-9 w-9 items-center justify-center rounded-xl border border-cyan-300/35 bg-cyan-300/10 text-cyan-100">
-                    <point.icon className="h-4.5 w-4.5" />
-                  </div>
-                  <p className="mt-2.5 text-[1.1rem] font-black leading-tight text-slate-100 sm:text-[1.25rem]">{point.titulo}</p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-slate-300">{point.texto}</p>
-                </div>
-              ))}
+            <p className="text-xs font-semibold tracking-[0.06em] text-slate-300 sm:text-sm">
+              Registro verificable • Eventos con evidencia • Historial compartible
+            </p>
+
+            <div className="lg:hidden">
+              <HeroProofCard />
             </div>
           </div>
 
@@ -174,6 +164,9 @@ export default async function LandingPage() {
               Registro inmutable verificable
             </div>
             <HeroCarousel className="flex-1" />
+            <div className="absolute bottom-5 left-4 z-20 hidden w-[min(92%,22rem)] lg:block">
+              <HeroProofCard />
+            </div>
             <div className="warning-card absolute -bottom-5 right-3 z-20 hidden max-w-[18rem] rounded-2xl border p-4 text-sm shadow-[0_14px_34px_rgba(251,191,36,0.18)] backdrop-blur-xl lg:block">
               <p className="warning-title inline-flex items-center gap-2 font-extrabold uppercase tracking-[0.14em]">
                 <AlertTriangle className="h-4 w-4" />
