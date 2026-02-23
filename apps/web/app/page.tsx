@@ -102,7 +102,7 @@ export default async function LandingPage() {
         <div className="pointer-events-none absolute -left-20 top-2 h-72 w-72 rounded-full bg-cyan-400/18 blur-3xl" />
         <div className="pointer-events-none absolute -right-24 top-0 h-80 w-80 rounded-full bg-indigo-500/24 blur-3xl" />
 
-        <div className="relative grid gap-7 lg:grid-cols-[1fr_1fr] lg:items-stretch">
+        <div className="relative grid gap-6 lg:grid-cols-[1fr_1fr] lg:items-stretch">
           <div className="space-y-5">
             <span className="glass-chip inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em]">
               <Sparkles className="h-3.5 w-3.5" />
@@ -128,25 +128,31 @@ export default async function LandingPage() {
               ))}
             </ul>
 
-            <div className="flex flex-wrap items-center gap-2.5">
+            <div className="flex flex-col items-start gap-2.5">
               <Button asChild size="lg" className="h-11 min-w-[214px] rounded-xl px-6">
                 <Link href="/vehiculos" className="inline-flex items-center gap-2 font-semibold">
                   Buscar un vehículo
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="sm" variant="outline" className="h-10 rounded-xl px-4">
-                <Link href="/acceso" className="inline-flex items-center gap-2 font-medium">
-                  Soy particular
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </Button>
-              <Button asChild size="sm" variant="outline" className="h-10 rounded-xl px-4">
-                <Link href="/acceso" className="inline-flex items-center gap-2 font-medium">
-                  Soy automotora
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </Button>
+              <div className="flex items-center gap-2.5">
+                <Button asChild size="sm" variant="outline" className="h-10 rounded-xl px-4">
+                  <Link href="/acceso" className="inline-flex items-center gap-2 font-medium">
+                    Soy particular
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button asChild size="sm" variant="outline" className="h-10 rounded-xl px-4">
+                  <Link href="/acceso" className="inline-flex items-center gap-2 font-medium">
+                    Soy automotora
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            <div className="inline-flex w-fit items-center rounded-full border border-cyan-300/25 bg-cyan-300/8 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-cyan-100">
+              Registro inmutable verificable
             </div>
 
             <p className="text-xs font-semibold tracking-[0.06em] text-slate-300 sm:text-sm">
@@ -158,14 +164,11 @@ export default async function LandingPage() {
             </p>
 
             <div className="lg:hidden">
-              <HeroProofCard />
+              <HeroProofCard className="max-w-none" />
             </div>
           </div>
 
-          <div className="relative flex h-full flex-col gap-3">
-            <div className="glass-chip inline-flex w-fit items-center rounded-full border border-cyan-300/35 bg-cyan-300/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-cyan-100">
-              Registro inmutable verificable
-            </div>
+          <div className="relative flex h-full flex-col">
             <HeroCarousel className="flex-1" />
             <div className="pointer-events-none absolute inset-x-0 bottom-4 z-10 hidden justify-start px-4 lg:flex">
               <HeroProofCard />

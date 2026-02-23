@@ -51,6 +51,8 @@ export function HeroCarousel({ className }: HeroCarouselProps) {
           priority={i === 0}
         />
       ))}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/20 to-slate-950/5" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-slate-950/28 via-transparent to-transparent" />
       <div className="relative h-full min-h-[340px] sm:min-h-[410px] lg:min-h-[460px]" />
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
         {slides.map((slide, i) => (
