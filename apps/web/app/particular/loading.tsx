@@ -10,6 +10,17 @@ export default function Loading() {
       </section>
 
       <Skeleton className="h-44 w-full rounded-[2rem]" />
+      <section className="glass-panel rounded-3xl p-6">
+        <Skeleton className="h-7 w-56" />
+        <Skeleton className="mt-2 h-5 w-full max-w-2xl" />
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          <Skeleton className="h-10 w-full" />
+          <Skeleton className="h-10 w-full" />
+          <Skeleton className="h-10 w-full" />
+          <Skeleton className="h-10 w-full" />
+          <Skeleton className="h-10 w-full" />
+        </div>
+      </section>
 
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {Array.from({ length: 3 }).map((_, i) => (

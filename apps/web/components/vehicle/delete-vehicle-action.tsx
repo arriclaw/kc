@@ -51,7 +51,11 @@ export function DeleteVehicleAction({ vehicleId, vehicleLabel, className }: Prop
         <Trash2 className="mr-1.5 h-4 w-4" />
         {loading ? "Borrando..." : "Borrar vehículo"}
       </Button>
-      {error ? <p className="text-xs text-red-300">{error}</p> : null}
+      {error ? (
+        <p role="alert" aria-live="assertive" className="text-xs text-red-300">
+          {error}
+        </p>
+      ) : null}
     </div>
   );
 }

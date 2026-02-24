@@ -160,7 +160,7 @@ export function TransferVehicleAction({ vehicleId, vehicleLabel, className }: Pr
           </div>
 
           {status ? (
-            <p className="inline-flex items-center text-xs text-cyan-100">
+            <p role="status" aria-live="polite" className="inline-flex items-center text-xs text-cyan-100">
               <CheckCircle2 className="mr-1 h-3.5 w-3.5" />
               {status}
             </p>

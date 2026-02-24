@@ -194,7 +194,11 @@ export function AddEventForm({ vehicleId }: { vehicleId: string }) {
         </div>
       ) : null}
 
-      {error ? <p className="text-sm text-rose-300">{error}</p> : null}
+      {error ? (
+        <p role="alert" aria-live="assertive" className="rounded-xl border border-rose-300/35 bg-rose-300/10 px-3 py-2 text-sm text-rose-100">
+          {error}
+        </p>
+      ) : null}
 
       <div className="flex flex-wrap gap-3">
         {step > 0 ? (

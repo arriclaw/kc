@@ -95,9 +95,23 @@ export function GarageAddVehicleInline({
       </div>
 
       {status ? (
-        <p className="rounded-xl border border-cyan-300/35 bg-cyan-300/10 px-3 py-2 text-sm text-cyan-100">{status}</p>
+        <p
+          role="status"
+          aria-live="polite"
+          className="rounded-xl border border-cyan-300/35 bg-cyan-300/10 px-3 py-2 text-sm text-cyan-100"
+        >
+          {status}
+        </p>
       ) : null}
-      {error ? <p className="rounded-xl border border-rose-300/35 bg-rose-300/10 px-3 py-2 text-sm text-rose-100">{error}</p> : null}
+      {error ? (
+        <p
+          role="alert"
+          aria-live="assertive"
+          className="rounded-xl border border-rose-300/35 bg-rose-300/10 px-3 py-2 text-sm text-rose-100"
+        >
+          {error}
+        </p>
+      ) : null}
     </div>
   );
 }
