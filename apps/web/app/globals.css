@@ -124,18 +124,20 @@ h4 {
 }
 
 .proof-card {
-  border: 1px solid rgba(148, 163, 184, 0.52);
-  background: linear-gradient(145deg, rgba(2, 6, 23, 0.92), rgba(15, 23, 42, 0.9));
-  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.44);
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  background: linear-gradient(145deg, rgba(2, 6, 23, 0.95), rgba(15, 23, 42, 0.93));
+  backdrop-filter: blur(10px);
+  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.5);
 }
 
 .proof-card-title {
-  color: rgb(241, 245, 249);
+  color: rgb(226, 232, 240);
+  text-shadow: 0 1px 2px rgba(2, 6, 23, 0.3);
 }
 
 .proof-event-row {
-  border: 1px solid rgba(71, 85, 105, 0.82);
-  background: linear-gradient(145deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.84));
+  border: 1px solid rgba(100, 116, 139, 0.5);
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.88));
 }
 
 .proof-event-title {
@@ -159,15 +161,15 @@ h4 {
 }
 
 .proof-status-chip--verified {
-  border-color: rgba(52, 211, 153, 0.55);
-  background: rgba(6, 78, 59, 0.6);
-  color: rgb(209, 250, 229);
+  border-color: rgba(52, 211, 153, 0.52);
+  background: rgba(6, 78, 59, 0.55);
+  color: rgb(209, 250, 229) !important;
 }
 
 .proof-status-chip--registered {
   border-color: rgba(148, 163, 184, 0.6);
   background: rgba(30, 41, 59, 0.72);
-  color: rgb(241, 245, 249);
+  color: rgb(241, 245, 249) !important;
 }
 
 .proof-status-chip--declared {
@@ -178,6 +180,9 @@ h4 {
 
 .proof-summary-chip {
   border: 1px solid rgba(148, 163, 184, 0.45);
+  background: rgba(15, 23, 42, 0.52);
+  color: rgb(226, 232, 240);
+  backdrop-filter: blur(2px);
 }
 
 .proof-summary-chip--positive {
@@ -190,6 +195,12 @@ h4 {
   border-color: rgba(34, 211, 238, 0.42);
   background: rgba(8, 47, 73, 0.34);
   color: rgb(207, 250, 254);
+}
+
+.proof-anchor-overlay {
+  height: 65%;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: linear-gradient(135deg, rgba(2, 6, 23, 0.84), rgba(2, 6, 23, 0.34), rgba(2, 6, 23, 0.08));
 }
 
 html.light .top-nav-shell {
@@ -353,38 +364,56 @@ html.light .home-feature-hero {
 }
 
 html.light .proof-card {
-  border-color: rgba(148, 163, 184, 0.42);
-  background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.92));
-  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.34);
+  border-color: rgba(148, 163, 184, 0.38);
+  background: linear-gradient(145deg, rgba(248, 251, 255, 0.96), rgba(238, 245, 255, 0.95));
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.2);
 }
 
 html.light .proof-card-title {
-  color: rgb(241, 245, 249);
+  color: rgb(12, 74, 110);
+  text-shadow: none;
 }
 
 html.light .proof-event-row {
-  border-color: rgba(100, 116, 139, 0.64);
-  background: linear-gradient(145deg, rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.88));
+  border-color: rgba(148, 163, 184, 0.5);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(241, 245, 249, 0.95));
 }
 
 html.light .proof-event-title {
-  color: rgb(248, 250, 252);
+  color: rgb(15, 23, 42);
 }
 
 html.light .proof-event-meta {
-  color: rgb(203, 213, 225);
+  color: rgb(71, 85, 105);
+}
+
+html.light .proof-status-chip--verified {
+  border-color: rgba(16, 185, 129, 0.5);
+  background: rgba(209, 250, 229, 0.9);
+  color: rgb(6, 95, 70) !important;
+}
+
+html.light .proof-status-chip--registered {
+  border-color: rgba(148, 163, 184, 0.52);
+  background: rgba(241, 245, 249, 0.95);
+  color: rgb(30, 41, 59) !important;
 }
 
 html.light .proof-summary-chip--positive {
-  border-color: rgba(16, 185, 129, 0.52);
-  background: rgba(4, 120, 87, 0.28);
-  color: rgb(209, 250, 229);
+  border-color: rgba(16, 185, 129, 0.5);
+  background: rgba(209, 250, 229, 0.82);
+  color: rgb(6, 95, 70);
 }
 
 html.light .proof-summary-chip--info {
-  border-color: rgba(56, 189, 248, 0.55);
-  background: rgba(3, 105, 161, 0.26);
-  color: rgb(207, 250, 254);
+  border-color: rgba(14, 165, 233, 0.5);
+  background: rgba(224, 242, 254, 0.84);
+  color: rgb(12, 74, 110);
+}
+
+html.light .proof-anchor-overlay {
+  border-color: rgba(148, 163, 184, 0.28);
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.26), rgba(15, 23, 42, 0.12), rgba(15, 23, 42, 0.04));
 }
 
 html.light button,

@@ -51,7 +51,7 @@ export function HeroProofCard({ className }: { className?: string }) {
   return (
     <aside
       className={cn(
-        "proof-card w-full max-w-[20.5rem] rounded-2xl p-3.5",
+        "proof-card w-full max-w-[21.5rem] rounded-2xl p-3.5",
         className
       )}
     >
