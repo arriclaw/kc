@@ -4,29 +4,30 @@ const productLinks = [
   { href: "/acceso", label: "Particular" },
   { href: "/acceso", label: "Automotora" },
   { href: "/vehiculos", label: "Galería" },
-  { href: "/acceso", label: "Panel privado" },
-  { href: "/contacto", label: "Contacto" }
+  { href: "/mi-garage", label: "Mi Garage" }
 ];
 
 const trustLinks = [
-  { href: "/acceso", label: "Acceso" },
   { href: "/registro", label: "Crear cuenta" },
-  { href: "/", label: "Alcances y límites" },
-  { href: "/contacto", label: "Hablar con el equipo" }
+  { href: "/login", label: "Ingresar" },
+  { href: "/contacto", label: "Contacto" },
+  { href: "/", label: "Alcances y límites" }
 ];
 
 export function SiteFooter() {
   return (
-    <footer className="mt-16 px-4 pb-8">
-      <div className="mx-auto w-full max-w-6xl rounded-[2rem] border border-slate-700/70 bg-slate-900/45 p-6 backdrop-blur-xl">
-        <div className="grid gap-8 md:grid-cols-[1.2fr_0.9fr_0.9fr]">
+    <footer className="mt-14 px-4 pb-8">
+      <div className="mx-auto w-full max-w-7xl overflow-hidden rounded-[2.2rem] border border-slate-700/70 bg-[linear-gradient(130deg,rgba(8,18,42,0.9),rgba(10,22,48,0.82),rgba(8,14,34,0.94))]">
+        <div className="grid gap-8 px-6 py-8 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
           <div>
-            <p className="text-2xl font-black text-white">Kilómetro Claro</p>
-            <p className="mt-2 max-w-sm text-sm leading-relaxed text-slate-300">
-              Historial vehicular inteligente para construir confianza comercial y bajar incertidumbre.
+            <p className="text-3xl font-black text-white">
+              Kilómetro <span className="brand-claro text-amber-300">Claro</span>
             </p>
-            <div className="mt-4 inline-flex rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs font-semibold tracking-[0.08em] text-cyan-100">
-              Registro verificable • Datos accionables
+            <p className="mt-3 max-w-md text-sm leading-relaxed text-slate-300">
+              Plataforma de historial vehicular verificable para operar con menos humo y más contexto accionable.
+            </p>
+            <div className="mt-5 inline-flex rounded-full border border-cyan-300/35 bg-cyan-300/12 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-cyan-100">
+              Registro verificable • Evidencia cuando importa • Historial compartible
             </div>
           </div>
 
@@ -52,7 +53,8 @@ export function SiteFooter() {
             </div>
           </div>
         </div>
-        <div className="mt-6 border-t border-slate-700/60 pt-4 text-xs text-slate-500">
+
+        <div className="border-t border-slate-700/70 bg-slate-950/35 px-6 py-4 text-xs text-slate-400">
           © {new Date().getFullYear()} Kilómetro Claro · Uruguay · Transparencia usable
         </div>
       </div>
