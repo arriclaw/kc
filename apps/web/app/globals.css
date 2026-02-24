@@ -197,11 +197,6 @@ h4 {
   color: rgb(207, 250, 254);
 }
 
-.proof-anchor-overlay {
-  height: 65%;
-  border: 1px solid rgba(148, 163, 184, 0.28);
-  background: linear-gradient(135deg, rgba(2, 6, 23, 0.84), rgba(2, 6, 23, 0.34), rgba(2, 6, 23, 0.08));
-}
 
 html.light .top-nav-shell {
   border-color: rgba(148, 163, 184, 0.32);
@@ -409,11 +404,6 @@ html.light .proof-summary-chip--info {
   border-color: rgba(14, 165, 233, 0.5);
   background: rgba(224, 242, 254, 0.84);
   color: rgb(12, 74, 110);
-}
-
-html.light .proof-anchor-overlay {
-  border-color: rgba(148, 163, 184, 0.28);
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.26), rgba(15, 23, 42, 0.12), rgba(15, 23, 42, 0.04));
 }
 
 html.light button,

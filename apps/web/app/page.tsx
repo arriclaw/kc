@@ -166,7 +166,6 @@ export default async function LandingPage() {
 
           <div className="relative flex h-full flex-col">
             <HeroCarousel className="flex-1" />
-            <div className="proof-anchor-overlay pointer-events-none absolute bottom-4 left-4 right-4 z-[5] hidden rounded-2xl lg:block" />
             <div className="pointer-events-none absolute inset-x-0 bottom-4 z-10 hidden justify-start px-4 lg:flex">
               <HeroProofCard />
             </div>
