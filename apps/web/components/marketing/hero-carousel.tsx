@@ -36,7 +36,7 @@ export function HeroCarousel({ className }: HeroCarouselProps) {
   return (
     <div
       className={cn(
-        "relative h-full overflow-hidden rounded-[2rem] border border-slate-700/80 shadow-[0_20px_60px_rgba(5,10,25,0.55)]",
+        "relative h-full overflow-hidden rounded-[2rem] border border-slate-700/80 shadow-[0_20px_50px_rgba(5,10,25,0.5)]",
         className
       )}
     >
@@ -51,9 +51,9 @@ export function HeroCarousel({ className }: HeroCarouselProps) {
           priority={i === 0}
         />
       ))}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-bl from-slate-950/38 via-slate-950/22 to-slate-950/8" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/62 via-slate-950/24 to-transparent" />
-      <div className="relative h-full min-h-[340px] sm:min-h-[410px] lg:min-h-[460px]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-l from-slate-950/65 via-slate-950/42 to-slate-950/18" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/55 via-slate-950/18 to-slate-950/8" />
+      <div className="relative h-full min-h-[360px] sm:min-h-[430px] lg:min-h-[500px]" />
     </div>
   );
 }

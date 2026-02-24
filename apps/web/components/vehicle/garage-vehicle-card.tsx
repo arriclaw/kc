@@ -43,24 +43,24 @@ export function GarageVehicleCard({
   noEventsCopy
 }: GarageVehicleCardProps) {
   return (
-    <Card className="glass-panel rounded-3xl p-5">
-      <div className="relative mb-4 h-44 w-full overflow-hidden rounded-2xl border border-slate-700/70">
+    <Card className="garage-card rounded-3xl p-5">
+      <div className="relative mb-4 h-48 w-full overflow-hidden rounded-2xl border border-slate-700/70">
         <Image src={imageUrl} alt={`${make} ${model}`} fill className="object-cover" unoptimized />
       </div>
 
-      <h2 className="text-xl font-semibold">
+      <h2 className="text-[1.9rem] font-black leading-tight">
         {make} {model}
       </h2>
-      <p className="text-sm text-slate-300">
+      <p className="text-sm font-medium text-slate-300">
         {year} · {plate || "Sin matrícula"}
       </p>
 
       <div className="mt-3 grid grid-cols-2 gap-2 text-sm">
-        <div className="rounded-xl border border-slate-700 bg-slate-900/40 p-2">
+        <div className="rounded-xl border border-slate-700 bg-slate-900/40 p-2.5">
           <p className="text-xs text-slate-400">Entradas</p>
           <p className="font-semibold text-white">{eventsCount}</p>
         </div>
-        <div className="rounded-xl border border-slate-700 bg-slate-900/40 p-2">
+        <div className="rounded-xl border border-slate-700 bg-slate-900/40 p-2.5">
           <p className="text-xs text-slate-400">Verificados</p>
           <p className="font-semibold text-white">{verifiedCount}</p>
         </div>
@@ -70,7 +70,7 @@ export function GarageVehicleCard({
         <BadgePills badges={badges} />
       </div>
 
-      <div className="mt-3 rounded-xl border border-slate-700 bg-slate-900/40 p-3 text-sm">
+      <div className="mt-3 rounded-xl border border-slate-700 bg-slate-900/40 p-3 text-sm leading-relaxed">
         {lastEventTitle ? (
           <>
             <p className="font-medium">Último registro: {lastEventTitle}</p>
@@ -84,7 +84,7 @@ export function GarageVehicleCard({
         )}
       </div>
 
-      <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+      <div className="mt-4 grid grid-cols-2 gap-2">
         <Button asChild size="sm" className="w-full">
           <Link href={`/vehiculos/${id}`}>
             <FileText className="mr-1.5 h-4 w-4" />
@@ -97,6 +97,8 @@ export function GarageVehicleCard({
             Evento
           </Link>
         </Button>
+      </div>
+      <div className="mt-2 grid grid-cols-2 gap-2">
         <TransferVehicleAction className="w-full" vehicleId={id} vehicleLabel={`${make} ${model}`} />
         <DeleteVehicleAction className="w-full" vehicleId={id} vehicleLabel={`${make} ${model}`} />
       </div>

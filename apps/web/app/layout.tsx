@@ -25,7 +25,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <AuthProvider>
           <QueryProvider>
             <header className="sticky top-0 z-40 px-3 py-3 md:px-6">
-              <div className="top-nav-shell mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-600/60 bg-slate-900/55 px-4 py-3 shadow-[0_10px_40px_rgba(2,6,23,0.55)] backdrop-blur-2xl">
+              <div className="top-nav-shell mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-600/60 bg-slate-900/55 px-4 py-3 shadow-[0_10px_34px_rgba(2,6,23,0.48)] backdrop-blur-2xl">
                 <BrandMark />
                 <TopNav />
                 <HeaderActions />

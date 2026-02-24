@@ -20,10 +20,10 @@ export function HeaderActions() {
     return (
       <div className="flex items-center gap-2">
         <ThemeToggle />
-        <Button asChild size="sm" variant="outline">
+        <Button asChild size="sm" variant="outline" className="hidden sm:inline-flex">
           <Link href="/login">Ingresar</Link>
         </Button>
-        <Button asChild size="sm">
+        <Button asChild size="sm" className="h-10 px-4">
           <Link href="/registro">Crear cuenta</Link>
         </Button>
       </div>
@@ -41,7 +41,7 @@ export function HeaderActions() {
   return (
     <div className="flex items-center gap-2">
       <ThemeToggle />
-      <div className="user-meta hidden min-h-[42px] max-w-[240px] rounded-xl px-3 py-1 md:flex md:flex-col md:justify-center">
+      <div className="user-meta hidden min-h-[44px] max-w-[260px] rounded-xl px-3 py-1 md:flex md:flex-col md:justify-center">
         <p className="inline-flex items-center gap-1.5 truncate text-sm font-black leading-[1.1]">
           {session?.user?.name || "Usuario"}
           <BadgeCheck className="user-meta-check h-3.5 w-3.5" />

@@ -69,10 +69,10 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
 
   return (
     <div className="space-y-4">
-      <Card>
+      <Card className="surface-card">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-semibold">
+            <h1 className="text-3xl font-black leading-tight">
               {vehicle.make} {vehicle.model} ({vehicle.year})
             </h1>
             <p className="text-sm text-muted-foreground">Matrícula: {vehicle.plate || "Sin dato"}</p>
@@ -90,19 +90,19 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
         </div>
 
         <div className="mt-4 grid gap-3 sm:grid-cols-4">
-          <div className="rounded-xl border bg-muted/50 p-3">
+          <div className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">
             <p className="text-xs text-muted-foreground">Índice de confianza (orientativo)</p>
             <p className="text-2xl font-semibold">{trustScore}</p>
           </div>
-          <div className="rounded-xl border bg-muted/50 p-3">
+          <div className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">
             <p className="text-xs text-muted-foreground">Eventos</p>
             <p className="text-2xl font-semibold">{vehicle.events.length}</p>
           </div>
-          <div className="rounded-xl border bg-muted/50 p-3">
+          <div className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">
             <p className="text-xs text-muted-foreground">Verificados</p>
             <p className="text-2xl font-semibold">{verifiedCount}</p>
           </div>
-          <div className="rounded-xl border bg-muted/50 p-3">
+          <div className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">
             <p className="text-xs text-muted-foreground">Flags abiertos</p>
             <p className="text-2xl font-semibold">{vehicle.flags.length}</p>
           </div>
@@ -118,7 +118,7 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
 
       {isOwner ? <QrShareCard vehicleId={vehicle.id} /> : null}
 
-      <Card>
+      <Card className="surface-card">
         <h2 className="text-lg font-semibold">Historial de transferencias</h2>
         <p className="mt-1 text-xs text-muted-foreground">
           Esta sección muestra solo transferencias realizadas dentro de Kilómetro Claro.
@@ -132,7 +132,7 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
               : `${ownerRole} registrado`;
 
             return (
-              <div key={ownership.id} className="rounded-xl border bg-muted/40 p-3">
+              <div key={ownership.id} className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <p className="font-semibold">{ownerName}</p>
                   <p className="text-xs text-muted-foreground">
@@ -150,7 +150,7 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
         </div>
       </Card>
 
-      <Card>
+      <Card className="surface-card">
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-lg font-semibold">Timeline de historial</h2>
           <p className="text-xs text-muted-foreground">Mostrar siempre origen + verificación para cada evento</p>
@@ -171,7 +171,7 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
       </Card>
 
       {isOwner ? (
-        <Card>
+        <Card className="surface-card">
           <h2 className="text-lg font-semibold">Gestionar eventos</h2>
           <p className="mt-1 text-xs text-muted-foreground">
             Podés borrar eventos cargados por error. Esta acción es permanente.
@@ -191,7 +191,7 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
         </Card>
       ) : null}
 
-      <Card>
+      <Card className="surface-card">
         <h3 className="font-semibold">Alcances y límites</h3>
         <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
           <li>Esto no reemplaza inspección mecánica.</li>

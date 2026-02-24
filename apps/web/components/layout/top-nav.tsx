@@ -40,12 +40,12 @@ export function TopNav() {
   }
 
   return (
-    <nav className="flex flex-1 flex-wrap items-center justify-center gap-3">
+    <nav className="flex flex-1 flex-wrap items-center justify-center gap-2">
       {items.map((item) => (
         <Link
           key={`${item.href}-${item.label}`}
           href={item.href}
-          className="top-nav-link rounded-full border border-transparent px-3.5 py-2 text-[13px] font-semibold uppercase tracking-[0.08em] text-slate-100 transition hover:border-cyan-300/40 hover:bg-slate-800/70"
+          className="top-nav-link rounded-full border border-transparent px-4 py-2 text-[13px] font-bold uppercase tracking-[0.11em] text-slate-100 transition hover:border-cyan-300/40 hover:bg-slate-800/70"
         >
           {item.label}
         </Link>
