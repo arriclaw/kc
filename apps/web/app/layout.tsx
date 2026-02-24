@@ -24,14 +24,18 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <BackgroundOrbs />
         <AuthProvider>
           <QueryProvider>
-            <header className="sticky top-0 z-40 px-3 py-3 md:px-6">
-              <div className="top-nav-shell mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-600/60 bg-slate-900/55 px-4 py-3 shadow-[0_10px_34px_rgba(2,6,23,0.48)] backdrop-blur-2xl">
-                <BrandMark />
-                <TopNav />
-                <HeaderActions />
+            <header className="sticky top-0 z-40 px-3 pt-3 md:px-6 md:pt-4">
+              <div className="mx-auto w-full max-w-6xl space-y-2">
+                <div className="top-nav-shell flex items-center justify-between rounded-2xl border border-slate-600/60 px-4 py-3 backdrop-blur-2xl">
+                  <BrandMark />
+                  <HeaderActions />
+                </div>
+                <div className="top-nav-shell rounded-2xl border border-slate-600/60 px-3 py-2.5 backdrop-blur-2xl">
+                  <TopNav />
+                </div>
               </div>
             </header>
-            <main className="mx-auto w-full max-w-6xl px-4 py-6">{children}</main>
+            <main className="mx-auto w-full max-w-6xl px-4 py-5 md:py-6">{children}</main>
             <SiteFooter />
           </QueryProvider>
         </AuthProvider>
