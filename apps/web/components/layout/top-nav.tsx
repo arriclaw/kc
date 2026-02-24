@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 
 type Item = { href: string; label: string };
 
-export function TopNav() {
+export function TopNav({ vertical = false }: { vertical?: boolean }) {
   const { data: session, status } = useSession();
   const pathname = usePathname();
   const role = session?.user?.role;
@@ -42,12 +42,20 @@ export function TopNav() {
   }
 
   return (
-    <nav className="col-span-2 flex flex-wrap items-center justify-center gap-1.5 lg:col-span-1 lg:justify-center">
+    <nav
+      className={
+        vertical
+          ? "flex flex-col items-stretch gap-1.5"
+          : "col-span-2 flex flex-wrap items-center justify-center gap-1.5 lg:col-span-1 lg:justify-center"
+      }
+    >
       {items.map((item) => (
         <Link
           key={`${item.href}-${item.label}`}
           href={item.href}
-          className={`top-nav-link rounded-full border px-3.5 py-2 text-[12px] font-semibold tracking-[0.08em] transition sm:text-[13px] ${
+          className={`top-nav-link border px-3.5 py-2 text-[12px] font-semibold tracking-[0.08em] transition sm:text-[13px] ${
+            vertical ? "rounded-xl text-left" : "rounded-full"
+          } ${
             pathname === item.href
               ? "border-cyan-300/45 bg-cyan-300/15 text-cyan-100"
               : "border-transparent text-slate-100 hover:border-cyan-300/35 hover:bg-slate-800/60"

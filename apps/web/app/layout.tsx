@@ -24,25 +24,39 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <BackgroundOrbs />
         <AuthProvider>
           <QueryProvider>
-            <header className="sticky top-0 z-40 px-3 pt-3 md:px-6 md:pt-4">
-              <div className="mx-auto w-full max-w-7xl">
-                <div className="top-nav-shell relative flex flex-wrap items-center justify-between gap-3 rounded-[1.4rem] border border-slate-600/60 px-4 py-3 backdrop-blur-2xl">
-                  <div className="absolute inset-0 rounded-[1.4rem] bg-[radial-gradient(circle_at_15%_20%,rgba(34,211,238,0.16),transparent_35%),radial-gradient(circle_at_88%_78%,rgba(99,102,241,0.14),transparent_40%)]" />
-                  <div className="relative z-10">
+            <div className="mx-auto grid min-h-screen w-full max-w-[1600px] grid-cols-1 gap-0 px-3 pb-8 pt-3 md:px-5 lg:grid-cols-[280px_1fr] lg:gap-5 lg:px-6 lg:pt-5">
+              <aside className="hidden lg:block">
+                <div className="sticky top-5 overflow-hidden rounded-[1.6rem] border border-slate-700/70 bg-[linear-gradient(140deg,rgba(7,16,39,0.9),rgba(9,20,46,0.82),rgba(8,14,32,0.94))] p-4">
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_14%,rgba(34,211,238,0.18),transparent_36%),radial-gradient(circle_at_88%_80%,rgba(99,102,241,0.14),transparent_38%)]" />
+                  <div className="relative">
                     <BrandMark />
                   </div>
-                  <div className="relative z-10 order-3 w-full lg:order-2 lg:w-auto lg:flex-1">
-                    <TopNav />
+                  <div className="relative mt-4 border-t border-slate-700/70 pt-4">
+                    <TopNav vertical />
                   </div>
-                  <div className="relative z-10 order-2 lg:order-3">
+                  <div className="relative mt-4 border-t border-slate-700/70 pt-4">
                     <HeaderActions />
                   </div>
                 </div>
-                <div className="mt-2 h-px bg-gradient-to-r from-transparent via-cyan-300/35 to-transparent" />
+              </aside>
+
+              <div className="min-w-0">
+                <header className="mb-4 lg:hidden">
+                  <div className="overflow-hidden rounded-[1.35rem] border border-slate-700/70 bg-[linear-gradient(130deg,rgba(8,18,42,0.9),rgba(10,22,46,0.82),rgba(8,14,32,0.94))] p-3">
+                    <div className="flex items-center justify-between gap-3">
+                      <BrandMark />
+                      <HeaderActions />
+                    </div>
+                    <div className="mt-3 border-t border-slate-700/70 pt-3">
+                      <TopNav />
+                    </div>
+                  </div>
+                </header>
+
+                <main className="space-y-6">{children}</main>
+                <SiteFooter />
               </div>
-            </header>
-            <main className="mx-auto w-full max-w-7xl px-4 py-5 md:py-6">{children}</main>
-            <SiteFooter />
+            </div>
           </QueryProvider>
         </AuthProvider>
       </body>
