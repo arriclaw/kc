@@ -3,6 +3,7 @@
 import { PlusCircle } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -28,6 +29,7 @@ export function GarageAddVehicleInline({
   onCreated,
   buttonLabel = "Agregar vehículo"
 }: GarageAddVehicleInlineProps) {
+  const router = useRouter();
   const [plate, setPlate] = useState("");
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
@@ -75,6 +77,7 @@ export function GarageAddVehicleInline({
           ? "Vehículo registrado. Detectamos matrícula repetida: validá marca/modelo para evitar confusión."
           : "Vehículo agregado a Mi Garage."
       );
+      router.refresh();
       await onCreated?.();
     } finally {
       setSubmitting(false);
