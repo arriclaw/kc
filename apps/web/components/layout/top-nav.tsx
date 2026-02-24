@@ -42,12 +42,12 @@ export function TopNav() {
   }
 
   return (
-    <nav className="flex flex-1 flex-wrap items-center justify-center gap-2">
+    <nav className="col-span-2 flex flex-wrap items-center justify-center gap-1.5 lg:col-span-1 lg:justify-center">
       {items.map((item) => (
         <Link
           key={`${item.href}-${item.label}`}
           href={item.href}
-          className={`top-nav-link rounded-full border px-4 py-2 text-[13px] font-semibold tracking-[0.02em] transition ${
+          className={`top-nav-link rounded-full border px-3.5 py-2 text-[12px] font-semibold tracking-[0.08em] transition sm:text-[13px] ${
             pathname === item.href
               ? "border-cyan-300/45 bg-cyan-300/15 text-cyan-100"
               : "border-transparent text-slate-100 hover:border-cyan-300/35 hover:bg-slate-800/60"
