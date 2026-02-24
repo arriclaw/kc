@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { GarageVehicleCard } from "@/components/vehicle/garage-vehicle-card";
+import { GarageAddVehicleInline } from "@/components/vehicle/garage-add-vehicle-inline";
 import { vehicleImageUrl } from "@/lib/vehicle-images";
 
 export default async function ParticularPage() {
@@ -78,8 +79,8 @@ export default async function ParticularPage() {
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
           {canAddVehicle ? (
-            <Button asChild>
-              <Link href="/vehiculos/nuevo">Registrar vehículo</Link>
+            <Button onClick={() => document.getElementById("owner-add-vehicle")?.scrollIntoView({ behavior: "smooth", block: "start" })}>
+              Registrar vehículo
             </Button>
           ) : (
             <Button disabled>Límite de plan gratuito alcanzado</Button>
@@ -93,17 +94,22 @@ export default async function ParticularPage() {
         </p>
       </Card>
 
+      {canAddVehicle ? (
+        <Card id="owner-add-vehicle" className="glass-panel space-y-4 rounded-3xl p-6">
+          <h2 className="text-xl font-semibold">Agregar tu vehículo</h2>
+          <p className="text-sm text-slate-300">
+            Lo cargás una vez y después registrás todos los eventos desde la card del auto.
+          </p>
+          <GarageAddVehicleInline endpoint="/api/vehicles" />
+        </Card>
+      ) : null}
+
       {vehiclesWithImage.length === 0 ? (
         <Card className="glass-panel rounded-3xl p-6">
           <h2 className="text-xl font-semibold">Todavía no tenés vehículos cargados</h2>
           <p className="mt-2 max-w-xl text-sm text-slate-300">
             Registrá tu auto para empezar a construir un historial verificable con evidencia de service y reparaciones.
           </p>
-          <div className="mt-4">
-            <Button asChild>
-              <Link href="/vehiculos/nuevo">Registrar primer vehículo</Link>
-            </Button>
-          </div>
         </Card>
       ) : null}
 

@@ -67,7 +67,8 @@ export function AddEventForm({ vehicleId }: { vehicleId: string }) {
     });
 
     if (!response.ok) {
-      setError("No se pudo crear el evento. Verificá datos y reintentá.");
+      const payload = (await response.json().catch(() => ({}))) as { error?: string };
+      setError(payload.error || "No se pudo crear el evento. Verificá datos y reintentá.");
       return;
     }
 

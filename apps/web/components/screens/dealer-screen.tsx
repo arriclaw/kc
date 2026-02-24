@@ -4,9 +4,9 @@ import Link from "next/link";
 import { CarFront, CircleCheckBig, ShieldCheck } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { GarageVehicleCard } from "@/components/vehicle/garage-vehicle-card";
+import { GarageAddVehicleInline } from "@/components/vehicle/garage-add-vehicle-inline";
 
 type DealerVehicle = {
   id: string;
@@ -22,13 +22,7 @@ type DealerVehicle = {
 };
 
 export default function DealerPage() {
-  const [status, setStatus] = useState<string | null>(null);
   const [vehicles, setVehicles] = useState<DealerVehicle[]>([]);
-
-  const [plate, setPlate] = useState("");
-  const [make, setMake] = useState("");
-  const [model, setModel] = useState("");
-  const [year, setYear] = useState(String(new Date().getFullYear()));
 
   async function loadVehicles() {
     const response = await fetch("/api/dealer/vehicles");
@@ -47,32 +41,6 @@ export default function DealerPage() {
     const coverage = entries === 0 ? 0 : Math.round((verified / entries) * 100);
     return { entries, coverage };
   }, [vehicles]);
-
-  async function createVehicle() {
-    const response = await fetch("/api/dealer/vehicles", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        plate,
-        make,
-        model,
-        year: Number(year),
-        country: "UY"
-      })
-    });
-
-    if (!response.ok) {
-      setStatus("No se pudo crear el vehículo.");
-      return;
-    }
-
-    setStatus("Vehículo agregado a Mi Garage.");
-    setPlate("");
-    setMake("");
-    setModel("");
-    setYear(String(new Date().getFullYear()));
-    await loadVehicles();
-  }
 
   return (
     <div className="space-y-6">
@@ -122,13 +90,7 @@ export default function DealerPage() {
         <p className="text-sm text-slate-300">
           Dalo de alta una sola vez y luego gestioná historial, eventos y transferencia desde la card de ese auto.
         </p>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-          <Input value={plate} onChange={(e) => setPlate(e.target.value)} placeholder="Matrícula" />
-          <Input value={make} onChange={(e) => setMake(e.target.value)} placeholder="Marca" />
-          <Input value={model} onChange={(e) => setModel(e.target.value)} placeholder="Modelo" />
-          <Input value={year} onChange={(e) => setYear(e.target.value)} type="number" placeholder="Año" />
-          <Button onClick={createVehicle}>Agregar vehículo</Button>
-        </div>
+        <GarageAddVehicleInline endpoint="/api/dealer/vehicles" onCreated={loadVehicles} />
       </Card>
 
       {vehicles.length === 0 ? (
@@ -163,8 +125,6 @@ export default function DealerPage() {
           />
         ))}
       </section>
-
-      {status ? <p className="rounded-xl border border-cyan-300/35 bg-cyan-300/10 px-3 py-2 text-sm text-cyan-100">{status}</p> : null}
     </div>
   );
 }
