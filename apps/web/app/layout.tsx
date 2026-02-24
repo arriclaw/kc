@@ -24,39 +24,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <BackgroundOrbs />
         <AuthProvider>
           <QueryProvider>
-            <div className="mx-auto grid min-h-screen w-full max-w-[1600px] grid-cols-1 gap-0 px-3 pb-8 pt-3 md:px-5 lg:grid-cols-[280px_1fr] lg:gap-5 lg:px-6 lg:pt-5">
-              <aside className="hidden lg:block">
-                <div className="sticky top-5 overflow-hidden rounded-[1.6rem] border border-slate-700/70 bg-[linear-gradient(140deg,rgba(7,16,39,0.9),rgba(9,20,46,0.82),rgba(8,14,32,0.94))] p-4">
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_14%,rgba(34,211,238,0.18),transparent_36%),radial-gradient(circle_at_88%_80%,rgba(99,102,241,0.14),transparent_38%)]" />
-                  <div className="relative">
-                    <BrandMark />
-                  </div>
-                  <div className="relative mt-4 border-t border-slate-700/70 pt-4">
-                    <TopNav vertical />
-                  </div>
-                  <div className="relative mt-4 border-t border-slate-700/70 pt-4">
-                    <HeaderActions />
-                  </div>
-                </div>
-              </aside>
-
-              <div className="min-w-0">
-                <header className="mb-4 lg:hidden">
-                  <div className="overflow-hidden rounded-[1.35rem] border border-slate-700/70 bg-[linear-gradient(130deg,rgba(8,18,42,0.9),rgba(10,22,46,0.82),rgba(8,14,32,0.94))] p-3">
-                    <div className="flex items-center justify-between gap-3">
-                      <BrandMark />
-                      <HeaderActions />
-                    </div>
-                    <div className="mt-3 border-t border-slate-700/70 pt-3">
-                      <TopNav />
-                    </div>
-                  </div>
-                </header>
-
-                <main className="space-y-6">{children}</main>
-                <SiteFooter />
+            <header className="sticky top-0 z-40 px-3 py-3 md:px-6">
+              <div className="top-nav-shell mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-600/60 bg-slate-900/55 px-4 py-3 shadow-[0_10px_34px_rgba(2,6,23,0.48)] backdrop-blur-2xl">
+                <BrandMark />
+                <TopNav />
+                <HeaderActions />
               </div>
-            </div>
+            </header>
+            <main className="mx-auto w-full max-w-6xl px-4 py-6">{children}</main>
+            <SiteFooter />
           </QueryProvider>
         </AuthProvider>
       </body>
