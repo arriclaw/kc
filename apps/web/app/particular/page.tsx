@@ -79,8 +79,10 @@ export default async function ParticularPage() {
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
           {canAddVehicle ? (
-            <Button onClick={() => document.getElementById("owner-add-vehicle")?.scrollIntoView({ behavior: "smooth", block: "start" })}>
+            <Button asChild>
+              <Link href="/particular#owner-add-vehicle">
               Registrar vehículo
+              </Link>
             </Button>
           ) : (
             <Button disabled>Límite de plan gratuito alcanzado</Button>
