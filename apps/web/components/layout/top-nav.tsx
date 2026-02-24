@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
 
 type Item = { href: string; label: string };
 
 export function TopNav() {
   const { data: session, status } = useSession();
+  const pathname = usePathname();
   const role = session?.user?.role;
   const isLoggedIn = status === "authenticated" && Boolean(session?.user?.id);
 
@@ -45,7 +47,11 @@ export function TopNav() {
         <Link
           key={`${item.href}-${item.label}`}
           href={item.href}
-          className="top-nav-link rounded-full border border-transparent px-4 py-2 text-[13px] font-bold uppercase tracking-[0.11em] text-slate-100 transition hover:border-cyan-300/40 hover:bg-slate-800/70"
+          className={`top-nav-link rounded-full border px-4 py-2 text-[13px] font-semibold tracking-[0.02em] transition ${
+            pathname === item.href
+              ? "border-cyan-300/45 bg-cyan-300/15 text-cyan-100"
+              : "border-transparent text-slate-100 hover:border-cyan-300/35 hover:bg-slate-800/60"
+          }`}
         >
           {item.label}
         </Link>
