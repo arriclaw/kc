@@ -34,7 +34,6 @@ export function ProblemSection() {
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
       <div className="max-w-3xl space-y-3">
-        <p className="kc-overline">Problema</p>
         <h2 className="text-3xl font-black leading-tight md:text-5xl">Comprar usado es comprar incertidumbre</h2>
         <p className="text-base text-slate-300 md:text-lg">
           Hoy dependés de relatos sueltos. Cuando faltan hechos, pagás el riesgo vos.

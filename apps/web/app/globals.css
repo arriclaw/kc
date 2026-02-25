@@ -30,26 +30,26 @@
 html.light {
   --bg: 210 40% 97%;
   --surface: 0 0% 100%;
-  --surface-soft: 210 33% 96%;
-  --border: 214 26% 82%;
+  --surface-soft: 210 33% 95%;
+  --border: 214 26% 78%;
   --text: 222 47% 13%;
-  --muted: 215 18% 40%;
+  --muted: 215 20% 33%;
   --primary: 156 72% 36%;
   --primary-foreground: 210 40% 98%;
-  --accent: 199 89% 42%;
+  --accent: 199 89% 36%;
   --ring: 156 72% 36%;
 
   --app-bg:
-    radial-gradient(circle at 10% -10%, rgba(16, 185, 129, 0.12), transparent 36%),
-    radial-gradient(circle at 90% -18%, rgba(56, 189, 248, 0.14), transparent 34%),
-    linear-gradient(180deg, #f6f9fe 0%, #edf3fb 100%);
+    radial-gradient(circle at 10% -10%, rgba(16, 185, 129, 0.1), transparent 36%),
+    radial-gradient(circle at 90% -18%, rgba(56, 189, 248, 0.12), transparent 34%),
+    linear-gradient(180deg, #f7fafe 0%, #eef4fb 100%);
 
-  --panel-bg: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(248, 251, 255, 0.96));
-  --panel-border: rgba(148, 163, 184, 0.34);
-  --panel-shadow: 0 14px 30px rgba(148, 163, 184, 0.2);
+  --panel-bg: linear-gradient(145deg, rgba(255, 255, 255, 0.99), rgba(246, 250, 255, 0.98));
+  --panel-border: rgba(148, 163, 184, 0.5);
+  --panel-shadow: 0 20px 34px rgba(100, 116, 139, 0.14);
 
-  --chip-bg: rgba(248, 250, 252, 0.96);
-  --chip-border: rgba(148, 163, 184, 0.58);
+  --chip-bg: rgba(248, 250, 252, 0.99);
+  --chip-border: rgba(148, 163, 184, 0.64);
 }
 
 * {
@@ -155,36 +155,37 @@ html.light .kc-toggle--active {
   align-items: center;
   gap: 0.35rem;
   border-radius: 999px;
-  border: 1px solid rgba(100, 116, 139, 0.62);
-  background: rgba(15, 23, 42, 0.7);
-  color: rgba(226, 232, 240, 0.96);
-  padding: 0.24rem 0.62rem;
+  border: 1px solid rgba(100, 116, 139, 0.72);
+  background: linear-gradient(120deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+  color: rgb(241, 245, 249);
+  padding: 0.35rem 0.74rem;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.01em;
 }
 
 .kc-status-chip--ok {
-  border-color: rgba(16, 185, 129, 0.56);
-  background: rgba(6, 78, 59, 0.54);
-  color: rgb(220, 252, 231);
+  border-color: rgba(16, 185, 129, 0.62);
+  background: linear-gradient(120deg, rgba(5, 150, 105, 0.85), rgba(4, 120, 87, 0.88));
+  color: rgb(236, 253, 245);
 }
 
 .kc-status-chip--warn {
-  border-color: rgba(251, 191, 36, 0.6);
-  background: rgba(120, 53, 15, 0.42);
+  border-color: rgba(251, 191, 36, 0.7);
+  background: linear-gradient(120deg, rgba(180, 83, 9, 0.85), rgba(120, 53, 15, 0.86));
   color: rgb(254, 243, 199);
 }
 
 html.light .kc-status-chip {
-  background: rgba(248, 250, 252, 0.96);
-  color: rgb(30, 41, 59);
-  border-color: rgba(148, 163, 184, 0.55);
+  background: linear-gradient(120deg, rgba(241, 245, 249, 0.98), rgba(248, 250, 252, 0.99));
+  color: rgb(15, 23, 42);
+  border-color: rgba(148, 163, 184, 0.72);
 }
 
 html.light .kc-status-chip--ok {
-  background: rgba(209, 250, 229, 0.9);
-  color: rgb(6, 95, 70);
-  border-color: rgba(16, 185, 129, 0.44);
+  background: linear-gradient(120deg, rgba(16, 185, 129, 0.92), rgba(5, 150, 105, 0.9));
+  color: white;
+  border-color: rgba(16, 185, 129, 0.72);
 }
 
 html.light .kc-status-chip--warn {
@@ -200,9 +201,21 @@ html.light .kc-status-chip--warn {
   padding: 0.58rem 0.7rem;
 }
 
+.kc-metric-card {
+  border-radius: 0.9rem;
+  border: 1px solid rgba(100, 116, 139, 0.58);
+  background: rgba(15, 23, 42, 0.72);
+  padding: 0.72rem 0.78rem;
+}
+
+html.light .kc-metric-card {
+  border-color: rgba(148, 163, 184, 0.62);
+  background: rgba(248, 250, 252, 0.99);
+}
+
 html.light .kc-mini-metric {
-  border-color: rgba(148, 163, 184, 0.5);
-  background: rgba(248, 250, 252, 0.96);
+  border-color: rgba(148, 163, 184, 0.58);
+  background: rgba(249, 251, 255, 0.98);
 }
 
 .kc-filter-chip {
@@ -234,8 +247,8 @@ html.light .kc-filter-chip--active {
 }
 
 html.light .kc-counter-card {
-  border-color: rgba(148, 163, 184, 0.5);
-  background: rgba(248, 250, 252, 0.96);
+  border-color: rgba(148, 163, 184, 0.58);
+  background: rgba(249, 251, 255, 0.98);
 }
 
 .top-nav-shell {
@@ -377,7 +390,7 @@ html.light .text-slate-100 {
 html.light .text-slate-200,
 html.light .text-slate-300,
 html.light .text-slate-400 {
-  color: rgb(71, 85, 105) !important;
+  color: rgb(30, 41, 59) !important;
 }
 
 html.light .bg-slate-900\/55,
@@ -386,7 +399,7 @@ html.light .bg-slate-900\/40,
 html.light .bg-slate-900\/35,
 html.light .bg-slate-950\/80,
 html.light .bg-slate-950\/70 {
-  background: rgba(248, 250, 252, 0.92) !important;
+  background: rgba(248, 251, 255, 0.96) !important;
 }
 
 html.light .border-slate-700\/70,
@@ -394,7 +407,7 @@ html.light .border-slate-700\/80,
 html.light .border-slate-600\/70,
 html.light .border-slate-600\/60,
 html.light .border-slate-800 {
-  border-color: rgba(148, 163, 184, 0.4) !important;
+  border-color: rgba(148, 163, 184, 0.5) !important;
 }
 
 html.light .bg-gradient-to-r.from-cyan-300\/80.to-indigo-300\/80 {

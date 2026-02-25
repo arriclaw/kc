@@ -1,8 +1,8 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { BadgeCheck, ChevronDown, CircleDashed, FileCheck2, ShieldAlert, ShieldCheck } from "lucide-react";
-import { useMemo, useState } from "react";
+import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
+import { AlertTriangle, BadgeCheck, ChevronDown, CircleDashed, FileCheck2, ShieldCheck, TrendingUp } from "lucide-react";
+import { useMemo, useRef, useState } from "react";
 import { sectionReveal, sectionRevealReduced, staggerContainer, staggerContainerReduced, staggerItem, staggerItemReduced } from "@/lib/motion";
 import { demoRecords } from "@/lib/mock-data";
 
@@ -16,6 +16,8 @@ function statusLabel(verified: boolean, evidence: boolean) {
 export function ExampleSection() {
   const reduceMotion = useReducedMotion();
   const record = demoRecords[0];
+  const metricsRef = useRef<HTMLDivElement | null>(null);
+  const metricsInView = useInView(metricsRef, { once: true, amount: 0.4 });
 
   const [openEventId, setOpenEventId] = useState(record.events[0]?.id ?? "");
 
@@ -45,7 +47,6 @@ export function ExampleSection() {
       className="kc-panel scroll-mt-28 rounded-[1.75rem] p-6 md:p-8"
     >
       <div className="space-y-3">
-        <p className="kc-overline">Ejemplo real</p>
         <h2 className="text-3xl font-black leading-tight md:text-5xl">Un historial que podés auditar en segundos</h2>
       </div>
 
@@ -115,24 +116,65 @@ export function ExampleSection() {
           <h3 className="mt-2 text-2xl font-black text-white">{activeEvent?.title}</h3>
           <p className="text-sm text-slate-300">{activeEvent?.source} • {activeEvent?.date}</p>
 
-          <div className="mt-4 space-y-2">
-            <div className="kc-mini-metric">
-              <p className="text-xs text-slate-400">Transparencia</p>
-              <p className="text-lg font-bold text-emerald-300">{transparency}</p>
+          <div ref={metricsRef} className="mt-4 space-y-2.5">
+            <div className="kc-metric-card">
+              <div className="flex items-center justify-between">
+                <p className="inline-flex items-center gap-1.5 text-sm text-slate-300">
+                  <TrendingUp className="h-4 w-4 text-emerald-300" />
+                  Transparencia
+                </p>
+                <p className="text-xl font-black text-emerald-300">{transparency}</p>
+              </div>
+              <div className="mt-2 h-2 rounded-full bg-slate-800/90">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: metricsInView ? `${trustScore}%` : 0 }}
+                  transition={{ duration: reduceMotion ? 0.12 : 0.7, ease: "easeOut" }}
+                  className="h-2 rounded-full bg-gradient-to-r from-emerald-400 to-emerald-500"
+                />
+              </div>
             </div>
-            <div className="kc-mini-metric">
-              <p className="text-xs text-slate-400">Riesgo</p>
-              <p className="text-lg font-bold text-cyan-300">{risk}</p>
+
+            <div className="kc-metric-card">
+              <div className="flex items-center justify-between">
+                <p className="inline-flex items-center gap-1.5 text-sm text-slate-300">
+                  <AlertTriangle className="h-4 w-4 text-rose-300" />
+                  Riesgo
+                </p>
+                <p className={`text-xl font-black ${risk === "Bajo" ? "text-emerald-300" : "text-rose-300"}`}>{risk}</p>
+              </div>
+              <div className="mt-2 h-2 rounded-full bg-slate-800/90">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: metricsInView ? `${Math.max(8, 100 - trustScore)}%` : 0 }}
+                  transition={{ duration: reduceMotion ? 0.12 : 0.7, ease: "easeOut" }}
+                  className="h-2 rounded-full bg-gradient-to-r from-rose-400 to-amber-300"
+                />
+              </div>
             </div>
-            <div className="kc-mini-metric">
-              <p className="text-xs text-slate-400">Confianza</p>
-              <p className="text-lg font-bold text-white">{trustScore}%</p>
+
+            <div className="kc-metric-card">
+              <div className="flex items-center justify-between">
+                <p className="inline-flex items-center gap-1.5 text-sm text-slate-300">
+                  <ShieldCheck className="h-4 w-4 text-cyan-300" />
+                  Confianza
+                </p>
+                <p className="text-2xl font-black text-cyan-300">{trustScore}%</p>
+              </div>
+              <div className="mt-2 h-2 rounded-full bg-slate-800/90">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: metricsInView ? `${trustScore}%` : 0 }}
+                  transition={{ duration: reduceMotion ? 0.12 : 0.7, ease: "easeOut" }}
+                  className="h-2 rounded-full bg-gradient-to-r from-cyan-400 to-sky-400"
+                />
+              </div>
             </div>
           </div>
 
           <div className="mt-4 rounded-xl border border-slate-700/70 bg-slate-950/60 p-3 text-sm text-slate-300">
             <div className="flex items-center gap-2 text-slate-200">
-              {trustScore >= 80 ? <ShieldCheck className="h-4 w-4 text-emerald-300" /> : <ShieldAlert className="h-4 w-4 text-amber-300" />}
+              <ShieldCheck className="h-4 w-4 text-emerald-300" />
               Señal principal
             </div>
             <p className="mt-2">

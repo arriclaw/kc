@@ -35,7 +35,8 @@ export function HeaderActions() {
   function handleSignOut() {
     const confirmed = window.confirm("¿Querés cerrar sesión ahora?");
     if (!confirmed) return;
-    void signOut({ callbackUrl: "/" });
+    const callbackUrl = `${window.location.origin}/`;
+    void signOut({ callbackUrl });
   }
 
   return (

@@ -8,6 +8,7 @@ import { EventTimeline } from "@/components/vehicle/timeline";
 import { BadgePills } from "@/components/vehicle/badge-pills";
 import { QrShareCard } from "@/components/vehicle/qr-modal";
 import { EventManagementList } from "@/components/vehicle/event-management-list";
+import { demoRecords, featuredVehiclesMock } from "@/lib/mock-data";
 
 function buildTrustScore(params: { events: number; flags: number; verified: number; badges: number }) {
   const eventsScore = Math.min(params.events * 8, 40);
@@ -49,7 +50,67 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
     }
   });
 
-  if (!vehicle) return notFound();
+  if (!vehicle) {
+    const mockVehicle = featuredVehiclesMock.find((item) => item.id === id);
+    const mockRecord = demoRecords.find((record) => record.plate === mockVehicle?.plate) ?? demoRecords[0];
+
+    if (!mockVehicle) return notFound();
+
+    return (
+      <div className="space-y-4">
+        <Card className="surface-card">
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <h1 className="text-3xl font-black leading-tight">
+                {mockVehicle.make} {mockVehicle.model} ({mockVehicle.year})
+              </h1>
+              <p className="text-sm text-muted-foreground">Matrícula: {mockVehicle.plate}</p>
+            </div>
+            <Button asChild variant="outline">
+              <Link href="/vehiculos">Volver a galería</Link>
+            </Button>
+          </div>
+
+          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            <div className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">
+              <p className="text-xs text-muted-foreground">Entradas</p>
+              <p className="text-2xl font-semibold">{mockVehicle.entries}</p>
+            </div>
+            <div className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">
+              <p className="text-xs text-muted-foreground">Verificación</p>
+              <p className="text-2xl font-semibold">{mockVehicle.verified ? "Alta" : "Media"}</p>
+            </div>
+            <div className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">
+              <p className="text-xs text-muted-foreground">Contacto</p>
+              <p className="text-2xl font-semibold">{mockVehicle.hasContact ? "Disponible" : "Sin contacto"}</p>
+            </div>
+          </div>
+        </Card>
+
+        <Card className="surface-card">
+          <h2 className="text-lg font-semibold">Timeline de historial (demo)</h2>
+          <p className="mt-1 text-xs text-muted-foreground">Ejemplo realista para visualizar el formato de lectura.</p>
+          <EventTimeline
+            events={mockRecord.events.map((event) => ({
+              id: event.id,
+              type: "OTHER",
+              occurredAt: new Date(
+                Number(event.date.split("/")[1]),
+                Math.max(0, Number(event.date.split("/")[0]) - 1),
+                1
+              ).toISOString(),
+              title: event.title,
+              description: event.details,
+              odometerKm: null,
+              sourceKind: event.verified ? "THIRD_PARTY" : "SELF_DECLARED",
+              verificationStatus: event.verified ? "VERIFIED" : "UNVERIFIED",
+              needsClarification: !event.verified
+            }))}
+          />
+        </Card>
+      </div>
+    );
+  }
   const isOwner = Boolean(
     session?.user?.id &&
       (await prisma.vehicleOwnership.findFirst({

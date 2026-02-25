@@ -34,7 +34,6 @@ export function HowItWorksSection() {
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
       <div className="space-y-3">
-        <p className="kc-overline">Cómo funciona</p>
         <h2 className="text-3xl font-black leading-tight md:text-5xl">Del dato inicial al historial que sí sirve</h2>
       </div>
 
@@ -49,7 +48,7 @@ export function HowItWorksSection() {
           <motion.li
             key={step.title}
             variants={reduceMotion ? staggerItemReduced : staggerItem}
-            className="rounded-2xl border border-slate-700/70 bg-slate-900/45 p-4"
+            className="flex min-h-[248px] flex-col rounded-2xl border border-slate-700/70 bg-slate-900/45 p-4"
           >
             <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
               <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-slate-600 text-slate-200">{index + 1}</span>

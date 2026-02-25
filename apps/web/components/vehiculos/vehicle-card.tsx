@@ -52,7 +52,7 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
         </div>
 
         <Button asChild className="w-full">
-          <Link href="/vehiculos">Ver publicación</Link>
+          <Link href={`/vehiculos/${vehicle.id}`}>Ver publicación</Link>
         </Button>
       </div>
     </motion.article>

@@ -1,14 +1,12 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, BadgeCheck, CheckCircle2, Search, ShieldCheck } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { buttonLift, buttonLiftReduced, staggerContainer, staggerContainerReduced, staggerItem, staggerItemReduced } from "@/lib/motion";
-import { demoRecords } from "@/lib/mock-data";
 
 const heroBullets = [
   "Eventos con evidencia",
@@ -17,9 +15,23 @@ const heroBullets = [
   "Más valor al vender"
 ];
 
+const heroSlides = [
+  {
+    src: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1400&q=80",
+    alt: "Auto rojo en entorno urbano"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1400&q=80",
+    alt: "SUV blanco en ruta"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1400&q=80",
+    alt: "Hatchback de gama media"
+  }
+];
+
 export function HeroSection() {
-  const [audience, setAudience] = useState<"particular" | "automotora">("particular");
-  const [query, setQuery] = useState("");
+  const [slideIndex, setSlideIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const reduceMotion = useReducedMotion();
 
@@ -31,19 +43,13 @@ export function HeroSection() {
   const yA = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [-10, 12]);
   const yB = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [8, -10]);
 
-  const activeRecord = useMemo(() => {
-    const normalized = query.trim().toLowerCase();
-    if (!normalized) return demoRecords[0];
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1) % heroSlides.length);
+    }, 3800);
 
-    return (
-      demoRecords.find(
-        (record) =>
-          record.plate.toLowerCase().includes(normalized) ||
-          record.vin.toLowerCase().includes(normalized) ||
-          record.model.toLowerCase().includes(normalized)
-      ) || demoRecords[0]
-    );
-  }, [query]);
+    return () => clearInterval(interval);
+  }, []);
 
   function scrollToExample() {
     document.getElementById("ejemplo")?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
@@ -101,58 +107,38 @@ export function HeroSection() {
               </motion.div>
             </div>
 
-            <div className="flex flex-wrap gap-2" role="tablist" aria-label="Tipo de perfil">
-              <button
-                type="button"
-                role="tab"
-                aria-selected={audience === "particular"}
-                aria-pressed={audience === "particular"}
-                onClick={() => setAudience("particular")}
-                className={`kc-toggle ${audience === "particular" ? "kc-toggle--active" : ""}`}
-              >
-                Particular
-              </button>
-              <button
-                type="button"
-                role="tab"
-                aria-selected={audience === "automotora"}
-                aria-pressed={audience === "automotora"}
-                onClick={() => setAudience("automotora")}
-                className={`kc-toggle ${audience === "automotora" ? "kc-toggle--active" : ""}`}
-              >
-                Automotora
-              </button>
+            <div className="flex flex-wrap gap-2">
+              <Button asChild variant="outline" className="rounded-full px-5">
+                <Link href="/particular">Soy particular</Link>
+              </Button>
+              <Button asChild variant="outline" className="rounded-full px-5">
+                <Link href="/dealer">Soy automotora</Link>
+              </Button>
             </div>
           </div>
-
-          <div className="space-y-2 rounded-2xl border border-slate-700/70 bg-slate-900/35 p-4">
-            <label htmlFor="demo-search" className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-300">
-              Demo interactiva
-            </label>
-            <div className="relative">
-              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-              <Input
-                id="demo-search"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Ingresá matrícula o VIN"
-                className="h-11 pl-10"
-              />
-            </div>
-            <p className="text-xs text-slate-400">Registro verificable • Eventos con evidencia • Historial compartible</p>
-          </div>
+          <p className="text-sm text-slate-400">Registro verificable • Eventos con evidencia • Historial compartible</p>
         </div>
 
         <div className="relative min-h-[520px] overflow-hidden rounded-[1.75rem] border border-slate-700/65">
-          <motion.div style={{ y: yA }} className="absolute inset-0">
-            <Image
-              src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1400&q=80"
-              alt="Auto en entorno urbano"
-              fill
-              priority
-              className="object-cover"
-            />
-          </motion.div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={heroSlides[slideIndex]?.src}
+              style={{ y: yA }}
+              className="absolute inset-0"
+              initial={{ opacity: 0.22 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0.22 }}
+              transition={{ duration: reduceMotion ? 0.16 : 0.58, ease: "easeInOut" }}
+            >
+              <Image
+                src={heroSlides[slideIndex]!.src}
+                alt={heroSlides[slideIndex]!.alt}
+                fill
+                priority
+                className="object-cover"
+              />
+            </motion.div>
+          </AnimatePresence>
           <motion.div style={{ y: yB }} className="absolute inset-0 bg-gradient-to-t from-slate-950/84 via-slate-900/42 to-slate-900/25" />
 
           <motion.div
@@ -162,18 +148,22 @@ export function HeroSection() {
             className="absolute inset-x-4 bottom-4 rounded-2xl border border-slate-600/65 bg-slate-950/88 p-4 shadow-[0_14px_40px_rgba(2,6,23,0.45)] backdrop-blur-md"
           >
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-300">Historial claro</p>
-            <p className="mt-1 text-lg font-bold text-white">{activeRecord.model}</p>
-            <p className="text-sm text-slate-300">{activeRecord.plate}</p>
+            <p className="mt-1 text-lg font-bold text-white">Renault Megane 2014</p>
+            <p className="text-sm text-slate-300">SBT2885</p>
 
             <div className="mt-3 space-y-2">
-              {activeRecord.events.slice(0, 4).map((event) => (
-                <div key={event.id} className="flex items-center justify-between rounded-xl border border-slate-700/70 bg-slate-900/70 px-3 py-2">
+              {[
+                { title: "Service oficial", date: "12/2024", ok: true, evidence: true },
+                { title: "ITV / Inspección", date: "08/2024", ok: true, evidence: true },
+                { title: "Transferencia", date: "03/2024", ok: true, evidence: false }
+              ].map((event) => (
+                <div key={event.title} className="flex items-center justify-between rounded-xl border border-slate-700/70 bg-slate-900/70 px-3 py-2">
                   <div>
                     <p className="text-sm font-semibold text-slate-100">{event.title}</p>
                     <p className="text-xs text-slate-400">{event.date}</p>
                   </div>
                   <div className="flex gap-1.5">
-                    {event.verified ? <span className="kc-status-chip kc-status-chip--ok">Verificado</span> : null}
+                    {event.ok ? <span className="kc-status-chip kc-status-chip--ok">Verificado</span> : null}
                     {event.evidence ? <span className="kc-status-chip">Con evidencia</span> : null}
                   </div>
                 </div>
@@ -183,15 +173,15 @@ export function HeroSection() {
             <div className="mt-3 grid grid-cols-3 gap-2">
               <div className="kc-mini-metric">
                 <p className="text-[11px] text-slate-400">Transparencia</p>
-                <p className="text-sm font-semibold text-emerald-300">{activeRecord.transparency}</p>
+                <p className="text-sm font-semibold text-emerald-300">Alta</p>
               </div>
               <div className="kc-mini-metric">
                 <p className="text-[11px] text-slate-400">Riesgo</p>
-                <p className="text-sm font-semibold text-cyan-300">{activeRecord.risk}</p>
+                <p className="text-sm font-semibold text-cyan-300">Bajo</p>
               </div>
               <div className="kc-mini-metric">
                 <p className="text-[11px] text-slate-400">Confianza</p>
-                <p className="text-sm font-semibold text-white">{activeRecord.confidence}%</p>
+                <p className="text-sm font-semibold text-white">92%</p>
               </div>
             </div>
           </motion.div>

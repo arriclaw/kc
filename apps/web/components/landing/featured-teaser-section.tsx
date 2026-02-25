@@ -21,7 +21,6 @@ export function FeaturedTeaserSection() {
     >
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="kc-overline">Destacados</p>
           <h2 className="text-3xl font-black leading-tight md:text-5xl">Unidades con historial activo</h2>
         </div>
         <Button asChild variant="outline">
@@ -34,7 +33,7 @@ export function FeaturedTeaserSection() {
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
         variants={reduceMotion ? staggerContainerReduced : staggerContainer}
-        className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-3"
+        className="mt-6 grid items-stretch gap-3 md:grid-cols-2 xl:grid-cols-3"
       >
         {featuredVehiclesMock.slice(0, 6).map((vehicle) => (
           <motion.div key={vehicle.id} variants={reduceMotion ? staggerItemReduced : staggerItem}>
@@ -43,13 +42,13 @@ export function FeaturedTeaserSection() {
               whileHover="hover"
               animate="rest"
               variants={reduceMotion ? cardLiftReduced : cardLift}
-              className="overflow-hidden rounded-2xl border border-slate-700/75 bg-slate-900/45"
+              className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-700/75 bg-slate-900/45"
             >
               <div className="relative h-44">
                 <Image src={vehicle.imageUrl} alt={`${vehicle.make} ${vehicle.model}`} fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 to-transparent" />
               </div>
-              <div className="space-y-3 p-4">
+              <div className="flex flex-1 flex-col space-y-3 p-4">
                 <div>
                   <p className="text-xs uppercase tracking-[0.12em] text-slate-400">{vehicle.plate}</p>
                   <h3 className="text-2xl font-black text-white">
@@ -77,8 +76,8 @@ export function FeaturedTeaserSection() {
                   </span>
                 </div>
 
-                <Button asChild className="w-full">
-                  <Link href="/vehiculos">Ver publicación</Link>
+                <Button asChild className="mt-auto w-full">
+                  <Link href={`/vehiculos/${vehicle.id}`}>Ver publicación</Link>
                 </Button>
               </div>
             </motion.article>
