@@ -1,14 +1,15 @@
 const imageCache = new Map<string, string>();
 
 const fallbackByModel: Record<string, string> = {
-  "toyota::corolla": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Toyota_Corolla_Hybrid_%28E210%29_IMG_4337.jpg",
-  "volkswagen::gol": "https://upload.wikimedia.org/wikipedia/commons/1/17/VW_Gol_1.6_2019_%28cropped%29.jpg",
-  "chevrolet::onix": "https://upload.wikimedia.org/wikipedia/commons/8/80/Chevrolet_Onix_LT_2020.jpg",
-  "nissan::sentra": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Nissan_Sentra_SR_2020.jpg",
-  "renault::megane": "https://upload.wikimedia.org/wikipedia/commons/8/88/Renault_Megane_IV_IMG_2894.jpg",
-  "peugeot::2008": "https://upload.wikimedia.org/wikipedia/commons/f/f5/2020_Peugeot_2008_Allure_PureTech_1.2_Front.jpg",
-  "hyundai::hb20": "https://upload.wikimedia.org/wikipedia/commons/9/93/Hyundai_HB20_2022.jpg",
-  "kia::rio": "https://upload.wikimedia.org/wikipedia/commons/4/44/Kia_Rio_%28YB%29_front_20171117.jpg"
+  "toyota::corolla": "https://source.unsplash.com/1600x900/?toyota,corolla,car",
+  "volkswagen::gol": "https://source.unsplash.com/1600x900/?volkswagen,hatchback,car",
+  "chevrolet::onix": "https://source.unsplash.com/1600x900/?chevrolet,compact,car",
+  "nissan::sentra": "https://source.unsplash.com/1600x900/?nissan,sedan,car",
+  "renault::megane": "https://source.unsplash.com/1600x900/?renault,megane,car",
+  "peugeot::2008": "https://source.unsplash.com/1600x900/?peugeot,suv,car",
+  "hyundai::hb20": "https://source.unsplash.com/1600x900/?hyundai,hatchback,car",
+  "kia::rio": "https://source.unsplash.com/1600x900/?kia,rio,car",
+  "ford::focus": "https://source.unsplash.com/1600x900/?ford,focus,car"
 };
 
 const unsplashFallbackByMake: Record<string, string> = {

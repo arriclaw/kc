@@ -164,7 +164,7 @@ export const featuredVehiclesMock: FeaturedVehicle[] = [
     model: "Megane",
     year: 2014,
     plate: "SBT2885",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/8/88/Renault_Megane_IV_IMG_2894.jpg",
+    imageUrl: "https://source.unsplash.com/1600x900/?renault,megane,car",
     verified: true,
     hasContact: true,
     entries: 7
@@ -175,7 +175,7 @@ export const featuredVehiclesMock: FeaturedVehicle[] = [
     model: "Gol",
     year: 2015,
     plate: "SCD5678",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/17/VW_Gol_1.6_2019_%28cropped%29.jpg",
+    imageUrl: "https://source.unsplash.com/1600x900/?volkswagen,hatchback,car",
     verified: false,
     hasContact: true,
     entries: 4
@@ -186,7 +186,7 @@ export const featuredVehiclesMock: FeaturedVehicle[] = [
     model: "Corolla",
     year: 2018,
     plate: "SAB1234",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Toyota_Corolla_Hybrid_%28E210%29_IMG_4337.jpg",
+    imageUrl: "https://source.unsplash.com/1600x900/?toyota,corolla,car",
     verified: true,
     hasContact: false,
     entries: 8
@@ -197,7 +197,7 @@ export const featuredVehiclesMock: FeaturedVehicle[] = [
     model: "Sentra",
     year: 2019,
     plate: "SFX9081",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Nissan_Sentra_SR_2020.jpg",
+    imageUrl: "https://source.unsplash.com/1600x900/?nissan,sedan,car",
     verified: true,
     hasContact: true,
     entries: 6
@@ -208,7 +208,7 @@ export const featuredVehiclesMock: FeaturedVehicle[] = [
     model: "Onix",
     year: 2020,
     plate: "SBY4012",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/8/80/Chevrolet_Onix_LT_2020.jpg",
+    imageUrl: "https://source.unsplash.com/1600x900/?chevrolet,compact,car",
     verified: false,
     hasContact: false,
     entries: 3
@@ -219,7 +219,7 @@ export const featuredVehiclesMock: FeaturedVehicle[] = [
     model: "2008",
     year: 2021,
     plate: "SJM1120",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/f/f5/2020_Peugeot_2008_Allure_PureTech_1.2_Front.jpg",
+    imageUrl: "https://source.unsplash.com/1600x900/?peugeot,suv,car",
     verified: true,
     hasContact: true,
     entries: 5
