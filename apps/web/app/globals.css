@@ -123,6 +123,16 @@ select {
   background: rgba(15, 23, 42, 0.92);
 }
 
+.kc-problem-icon {
+  border-color: rgba(251, 191, 36, 0.52);
+  background: rgba(251, 191, 36, 0.16);
+  color: rgb(252, 211, 77);
+}
+
+.kc-problem-alert {
+  color: rgb(252, 211, 77);
+}
+
 .kc-chip {
   border: 1px solid rgba(56, 189, 248, 0.42);
   background: linear-gradient(115deg, rgba(56, 189, 248, 0.14), rgba(16, 185, 129, 0.14));
@@ -275,6 +285,16 @@ html.light .kc-hero-proof-row {
   background: rgba(248, 250, 252, 0.98);
 }
 
+html.light .kc-problem-icon {
+  border-color: rgba(217, 119, 6, 0.5);
+  background: rgba(245, 158, 11, 0.22);
+  color: rgb(146, 64, 14);
+}
+
+html.light .kc-problem-alert {
+  color: rgb(180, 83, 9);
+}
+
 html.light .text-emerald-300,
 html.light .text-emerald-400 {
   color: rgb(5, 150, 105) !important;
@@ -290,6 +310,12 @@ html.light .text-rose-300,
 html.light .text-rose-400,
 html.light .text-rose-500 {
   color: rgb(225, 29, 72) !important;
+}
+
+html.light .text-amber-300,
+html.light .text-amber-400,
+html.light .text-amber-500 {
+  color: rgb(180, 83, 9) !important;
 }
 
 .kc-filter-chip {

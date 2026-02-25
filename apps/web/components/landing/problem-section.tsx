@@ -53,7 +53,7 @@ export function ProblemSection() {
             variants={reduceMotion ? staggerItemReduced : staggerItem}
             className="rounded-2xl border border-slate-700/70 bg-slate-900/40 p-4"
           >
-            <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-amber-400/40 bg-amber-400/10 text-amber-300">
+            <div className="kc-problem-icon inline-flex h-10 w-10 items-center justify-center rounded-xl border">
               <point.icon className="h-4 w-4" />
             </div>
             <h3 className="mt-3 text-xl font-bold text-white">{point.title}</h3>
@@ -63,7 +63,7 @@ export function ProblemSection() {
       </motion.div>
 
       <div className="mt-5 inline-flex items-center gap-2 rounded-xl border border-slate-700/70 bg-slate-900/35 px-3 py-2 text-sm text-slate-300">
-        <AlertTriangle className="h-4 w-4 text-amber-300" />
+        <AlertTriangle className="kc-problem-alert h-4 w-4" />
         La incertidumbre no se corrige con relato: se reduce con evidencia.
       </div>
     </motion.section>

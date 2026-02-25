@@ -164,7 +164,7 @@ export const featuredVehiclesMock: FeaturedVehicle[] = [
     model: "Megane",
     year: 2014,
     plate: "SBT2885",
-    imageUrl: "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/8/88/Renault_Megane_IV_IMG_2894.jpg",
     verified: true,
     hasContact: true,
     entries: 7
@@ -175,7 +175,7 @@ export const featuredVehiclesMock: FeaturedVehicle[] = [
     model: "Gol",
     year: 2015,
     plate: "SCD5678",
-    imageUrl: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/17/VW_Gol_1.6_2019_%28cropped%29.jpg",
     verified: false,
     hasContact: true,
     entries: 4
@@ -186,7 +186,7 @@ export const featuredVehiclesMock: FeaturedVehicle[] = [
     model: "Corolla",
     year: 2018,
     plate: "SAB1234",
-    imageUrl: "https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Toyota_Corolla_Hybrid_%28E210%29_IMG_4337.jpg",
     verified: true,
     hasContact: false,
     entries: 8
@@ -197,7 +197,7 @@ export const featuredVehiclesMock: FeaturedVehicle[] = [
     model: "Sentra",
     year: 2019,
     plate: "SFX9081",
-    imageUrl: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Nissan_Sentra_SR_2020.jpg",
     verified: true,
     hasContact: true,
     entries: 6
@@ -208,7 +208,7 @@ export const featuredVehiclesMock: FeaturedVehicle[] = [
     model: "Onix",
     year: 2020,
     plate: "SBY4012",
-    imageUrl: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/8/80/Chevrolet_Onix_LT_2020.jpg",
     verified: false,
     hasContact: false,
     entries: 3
@@ -219,7 +219,7 @@ export const featuredVehiclesMock: FeaturedVehicle[] = [
     model: "2008",
     year: 2021,
     plate: "SJM1120",
-    imageUrl: "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/f/f5/2020_Peugeot_2008_Allure_PureTech_1.2_Front.jpg",
     verified: true,
     hasContact: true,
     entries: 5

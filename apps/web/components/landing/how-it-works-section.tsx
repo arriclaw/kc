@@ -7,7 +7,7 @@ import { sectionReveal, sectionRevealReduced, staggerContainer, staggerContainer
 const steps = [
   {
     icon: SearchCheck,
-    title: "Ingresás matrícula o VIN",
+    title: "Ingresás la matrícula",
     body: "Entrás rápido al vehículo y su contexto real."
   },
   {

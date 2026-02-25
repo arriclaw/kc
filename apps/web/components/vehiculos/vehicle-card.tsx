@@ -78,13 +78,13 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
               <Button asChild size="sm" variant="outline" className="h-9 px-0 text-xs">
                 <a href={links.whatsappHref} target="_blank" rel="noreferrer">
                   <MessageCircle className="mr-1.5 h-3.5 w-3.5" />
-                  Wpp
+                  WhatsApp
                 </a>
               </Button>
             ) : (
               <Button size="sm" variant="outline" className="h-9 px-0 text-xs" disabled>
                 <MessageCircle className="mr-1.5 h-3.5 w-3.5" />
-                Wpp
+                WhatsApp
               </Button>
             )}
             {links.phoneHref ? (
