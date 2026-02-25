@@ -19,8 +19,8 @@ export function FeaturedTeaserSection() {
       variants={reduceMotion ? sectionRevealReduced : sectionReveal}
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div className="max-w-4xl">
           <h2 className="text-3xl font-black leading-tight md:text-5xl">Unidades con señal comercial activa</h2>
         </div>
         <Button asChild variant="outline">
@@ -33,7 +33,7 @@ export function FeaturedTeaserSection() {
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
         variants={reduceMotion ? staggerContainerReduced : staggerContainer}
-        className="mt-6 grid items-stretch gap-3 md:grid-cols-2 xl:grid-cols-3"
+        className="mt-6 grid items-stretch gap-4 md:grid-cols-2 xl:grid-cols-3"
       >
         {featuredVehiclesMock.slice(0, 6).map((vehicle) => (
           <motion.div key={vehicle.id} variants={reduceMotion ? staggerItemReduced : staggerItem}>

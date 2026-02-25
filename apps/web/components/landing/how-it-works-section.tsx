@@ -33,7 +33,7 @@ export function HowItWorksSection() {
       variants={reduceMotion ? sectionRevealReduced : sectionReveal}
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
-      <div className="space-y-3">
+      <div className="max-w-4xl space-y-3">
         <h2 className="text-3xl font-black leading-tight md:text-5xl">Del dato inicial a una decisión con fundamento</h2>
       </div>
 
@@ -42,7 +42,7 @@ export function HowItWorksSection() {
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
         variants={reduceMotion ? staggerContainerReduced : staggerContainer}
-        className="mt-6 grid gap-3 md:grid-cols-3"
+        className="mt-6 grid gap-4 md:grid-cols-3"
       >
         {steps.map((step, index) => (
           <motion.li

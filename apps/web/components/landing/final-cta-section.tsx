@@ -20,7 +20,7 @@ export function FinalCtaSection() {
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="text-3xl font-black leading-tight md:text-5xl">Comprá con claridad. Vendé con ventaja.</h2>
         <p className="mt-3 text-base text-slate-300 md:text-lg">
-          Con evidencia consistente, baja el riesgo para una parte y sube el valor para la otra.
+          Con trazabilidad consistente, baja el riesgo de compra y sube la confianza comercial al vender.
         </p>
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">

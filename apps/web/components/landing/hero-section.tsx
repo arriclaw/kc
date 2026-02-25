@@ -71,7 +71,7 @@ export function HeroSection() {
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-slate-300 md:text-xl">
-            Comprá con menos riesgo y vendé con más valor: cada service, transferencia o incidente queda respaldado con evidencia verificable.
+            Comprá con menos riesgo y vendé con más valor: services, transferencias e incidentes quedan trazados con respaldo verificable.
           </p>
 
           <motion.ul
@@ -116,7 +116,7 @@ export function HeroSection() {
               </Button>
             </div>
           </div>
-          <p className="text-sm text-slate-400">Registro verificable • Eventos con evidencia • Respaldo compartible</p>
+          <p className="text-sm text-slate-400">Registro verificable • Evidencia real • Respaldo compartible</p>
           <p className="text-sm text-slate-500">
             No reemplaza una inspección mecánica presencial. Sí ordena la información y baja la incertidumbre.
           </p>

@@ -33,10 +33,10 @@ export function SolutionSection() {
       variants={reduceMotion ? sectionRevealReduced : sectionReveal}
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
-      <div className="space-y-3">
+      <div className="max-w-4xl space-y-3">
         <h2 className="text-3xl font-black leading-tight md:text-5xl">Un sistema de evidencia verificable para decidir y cerrar mejor</h2>
         <p className="max-w-3xl text-base text-slate-300 md:text-lg">
-          Kilómetro Claro transforma datos sueltos en señales confiables: claridad para comprar y ventaja comercial para vender.
+          Kilómetro Claro convierte datos sueltos en señales confiables: más claridad para comprar y mejor posición comercial para vender.
         </p>
       </div>
 
@@ -45,7 +45,7 @@ export function SolutionSection() {
         whileInView="show"
         viewport={{ once: true, amount: 0.25 }}
         variants={reduceMotion ? staggerContainerReduced : staggerContainer}
-        className="mt-6 grid gap-3 md:grid-cols-3"
+        className="mt-6 grid gap-4 md:grid-cols-3"
       >
         {cards.map((card) => (
           <motion.article

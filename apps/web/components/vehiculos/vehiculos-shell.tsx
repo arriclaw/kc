@@ -45,7 +45,7 @@ export function VehiculosShell() {
   }, [filter, query]);
 
   return (
-    <div className="space-y-4 pb-8 md:space-y-6">
+    <div className="space-y-5 pb-10 md:space-y-7">
       <motion.div
         initial="hidden"
         whileInView="show"
@@ -60,14 +60,14 @@ export function VehiculosShell() {
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
         variants={reduceMotion ? sectionRevealReduced : sectionReveal}
-        className="kc-panel rounded-[1.5rem] p-4 md:p-6"
+        className="kc-panel rounded-[1.5rem] p-5 md:p-7"
       >
         <div className="flex flex-wrap items-center justify-between gap-3">
           <FilterChips value={filter} onChange={setFilter} />
           <p className="text-sm text-slate-400">{loading ? "Cargando publicaciones..." : `${filtered.length} resultados`}</p>
         </div>
 
-        <div className="mt-4">
+        <div className="mt-5">
           {loading ? (
             <VehicleGridSkeleton />
           ) : filtered.length === 0 ? (
@@ -80,7 +80,7 @@ export function VehiculosShell() {
               initial="hidden"
               animate="show"
               variants={reduceMotion ? staggerContainerReduced : staggerContainer}
-              className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3"
+              className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3"
             >
               {filtered.map((vehicle) => (
                 <motion.div key={vehicle.id} variants={reduceMotion ? staggerItemReduced : staggerItem}>

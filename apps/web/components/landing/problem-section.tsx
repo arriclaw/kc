@@ -33,10 +33,10 @@ export function ProblemSection() {
       variants={reduceMotion ? sectionRevealReduced : sectionReveal}
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
-      <div className="max-w-3xl space-y-3">
+      <div className="max-w-4xl space-y-3">
         <h2 className="text-3xl font-black leading-tight md:text-5xl">Sin evidencia, todos negocian a ciegas</h2>
         <p className="text-base text-slate-300 md:text-lg">
-          Sin datos verificables, quien compra asume riesgo y quien vende pierde palanca comercial.
+          Sin trazabilidad verificable, quien compra asume riesgo y quien vende pierde fuerza para sostener valor.
         </p>
       </div>
 
@@ -45,7 +45,7 @@ export function ProblemSection() {
         whileInView="show"
         viewport={{ once: true, amount: 0.25 }}
         variants={reduceMotion ? staggerContainerReduced : staggerContainer}
-        className="mt-6 grid gap-3 md:grid-cols-3"
+        className="mt-6 grid gap-4 md:grid-cols-3"
       >
         {points.map((point) => (
           <motion.article

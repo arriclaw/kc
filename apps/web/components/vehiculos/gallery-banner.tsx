@@ -14,7 +14,7 @@ export function GalleryBanner({ query, onQueryChange }: GalleryBannerProps) {
       <p className="kc-overline">Galería</p>
       <h1 className="mt-2 text-4xl font-black leading-tight md:text-6xl">Unidades con evidencia verificable</h1>
       <p className="mt-3 max-w-3xl text-base text-slate-300 md:text-lg">
-        Explorá publicaciones con señales reales para comprar con claridad o vender con mejor confianza comercial.
+        Explorá vehículos con señal real para decidir con claridad al comprar o sostener mejor valor al vender.
       </p>
 
       <div className="relative mt-5 max-w-xl">

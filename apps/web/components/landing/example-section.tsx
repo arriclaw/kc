@@ -46,11 +46,11 @@ export function ExampleSection() {
       variants={reduceMotion ? sectionRevealReduced : sectionReveal}
       className="kc-panel scroll-mt-28 rounded-[1.75rem] p-6 md:p-8"
     >
-      <div className="space-y-3">
+      <div className="max-w-4xl space-y-3">
         <h2 className="text-3xl font-black leading-tight md:text-5xl">Consistencia que se puede comprobar</h2>
       </div>
 
-      <div className="mt-6 grid gap-4 lg:grid-cols-[1.12fr_0.88fr]">
+      <div className="mt-6 grid gap-5 xl:grid-cols-[1.12fr_0.88fr]">
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -179,8 +179,8 @@ export function ExampleSection() {
             </div>
             <p className="mt-2">
               {trustScore >= 80
-                ? "Consistencia verificable en eventos críticos: reduce dudas y mejora el cierre."
-                : "Hay señales parciales: conviene validar más antes de decidir precio o cierre."}
+                ? "Consistencia verificable en eventos críticos: baja dudas y acelera el cierre."
+                : "Hay señales parciales: conviene validar más antes de cerrar precio u operación."}
             </p>
           </div>
 
