@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { BadgeCheck, Phone } from "lucide-react";
+import { BadgeCheck, CircleDashed, Phone, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -21,7 +21,7 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
       whileHover="hover"
       animate="rest"
       {...(reduceMotion ? { variants: cardLiftReduced } : { variants: cardLift })}
-      className="overflow-hidden rounded-2xl border border-slate-700/70 bg-slate-900/45"
+      className="kc-theme-card overflow-hidden rounded-2xl border"
     >
       <div className="relative h-48">
         <Image src={vehicle.imageUrl} alt={`${vehicle.make} ${vehicle.model}`} fill className="object-cover" />
@@ -36,19 +36,18 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
         </div>
 
         <div className="flex flex-wrap gap-2">
-          {vehicle.verified ? (
-            <span className="kc-status-chip kc-status-chip--ok">
-              <BadgeCheck className="h-3.5 w-3.5" />
-              Verificado
-            </span>
-          ) : null}
-          {vehicle.hasContact ? (
-            <span className="kc-status-chip">
-              <Phone className="h-3.5 w-3.5" />
-              Contacto
-            </span>
-          ) : null}
-          <span className="kc-status-chip">{vehicle.entries} entradas</span>
+          <span className={`kc-status-chip ${vehicle.verified ? "kc-status-chip--ok" : "kc-status-chip--warn"}`}>
+            {vehicle.verified ? <BadgeCheck className="h-3.5 w-3.5" /> : <CircleDashed className="h-3.5 w-3.5" />}
+            {vehicle.verified ? "Verificado" : "Sin verificar"}
+          </span>
+          <span className={`kc-status-chip ${vehicle.hasContact ? "" : "kc-status-chip--warn"}`}>
+            <Phone className="h-3.5 w-3.5" />
+            {vehicle.hasContact ? "Contacto" : "Sin contacto"}
+          </span>
+          <span className="kc-status-chip">
+            <ShieldCheck className="h-3.5 w-3.5" />
+            {vehicle.entries} entradas
+          </span>
         </div>
 
         <Button asChild className="w-full">

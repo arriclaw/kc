@@ -64,7 +64,7 @@ export function ExampleSection() {
               <motion.article
                 key={event.id}
                 variants={reduceMotion ? staggerItemReduced : staggerItem}
-                className="overflow-hidden rounded-2xl border border-slate-700/75 bg-slate-900/45"
+                className="kc-theme-card overflow-hidden rounded-2xl border"
               >
                 <button
                   type="button"
@@ -94,23 +94,23 @@ export function ExampleSection() {
                       transition={{ duration: reduceMotion ? 0.16 : 0.28, ease: "easeOut" }}
                       className="px-4 pb-4"
                     >
-                      <div className="rounded-xl border border-slate-700/70 bg-slate-950/60 p-3 text-sm text-slate-300">
-                        {event.details}
-                      </div>
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
-              </motion.article>
-            );
-          })}
-        </motion.div>
+                    <div className="kc-theme-subcard rounded-xl border p-3 text-sm text-slate-300">
+                      {event.details}
+                    </div>
+                  </motion.div>
+                ) : null}
+              </AnimatePresence>
+            </motion.article>
+          );
+        })}
+      </motion.div>
 
         <motion.aside
           initial={{ opacity: 0, x: reduceMotion ? 0 : 16 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: reduceMotion ? 0.2 : 0.42, ease: [0.22, 1, 0.36, 1] }}
-          className="rounded-2xl border border-slate-700/75 bg-slate-900/50 p-5"
+          className="kc-theme-card rounded-2xl border p-5"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">Lectura comercial</p>
           <h3 className="mt-2 text-2xl font-black text-white">{activeEvent?.title}</h3>
@@ -120,7 +120,7 @@ export function ExampleSection() {
             <div className="kc-metric-card">
               <div className="flex items-center justify-between">
                 <p className="inline-flex items-center gap-1.5 text-sm text-slate-300">
-                  <TrendingUp className="h-4 w-4 text-emerald-300" />
+                  <TrendingUp className="h-4 w-4 text-emerald-500" />
                   Transparencia
                 </p>
                 <p className="text-xl font-black text-emerald-300">{transparency}</p>
@@ -138,7 +138,7 @@ export function ExampleSection() {
             <div className="kc-metric-card">
               <div className="flex items-center justify-between">
                 <p className="inline-flex items-center gap-1.5 text-sm text-slate-300">
-                  <AlertTriangle className="h-4 w-4 text-rose-300" />
+                  <AlertTriangle className="h-4 w-4 text-rose-500" />
                   Riesgo
                 </p>
                 <p className={`text-xl font-black ${risk === "Bajo" ? "text-emerald-300" : "text-rose-300"}`}>{risk}</p>
@@ -156,7 +156,7 @@ export function ExampleSection() {
             <div className="kc-metric-card">
               <div className="flex items-center justify-between">
                 <p className="inline-flex items-center gap-1.5 text-sm text-slate-300">
-                  <ShieldCheck className="h-4 w-4 text-cyan-300" />
+                  <ShieldCheck className="h-4 w-4 text-cyan-500" />
                   Confianza
                 </p>
                 <p className="text-2xl font-black text-cyan-300">{trustScore}%</p>
@@ -172,9 +172,9 @@ export function ExampleSection() {
             </div>
           </div>
 
-          <div className="mt-4 rounded-xl border border-slate-700/70 bg-slate-950/60 p-3 text-sm text-slate-300">
+          <div className="kc-theme-subcard mt-4 rounded-xl border p-3 text-sm text-slate-300">
             <div className="flex items-center gap-2 text-slate-200">
-              <ShieldCheck className="h-4 w-4 text-emerald-300" />
+              <ShieldCheck className="h-4 w-4 text-emerald-500" />
               Señal comercial
             </div>
             <p className="mt-2">

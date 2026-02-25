@@ -47,10 +47,10 @@ export function ForWhoSection() {
           <motion.article
             key={card.id}
             variants={reduceMotion ? staggerItemReduced : staggerItem}
-            className="rounded-2xl border border-slate-700/75 bg-slate-900/45 p-4"
+            className="kc-theme-card rounded-2xl border p-4"
           >
             <div className="flex items-center gap-3">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-600/80 bg-slate-900/60 text-slate-100">
+              <span className="kc-icon-strong inline-flex h-10 w-10 items-center justify-center rounded-xl border">
                 <card.icon className="h-4 w-4" />
               </span>
               <div>
@@ -59,10 +59,10 @@ export function ForWhoSection() {
               </div>
             </div>
 
-            <div className="mt-4 space-y-2 rounded-xl border border-slate-700/70 bg-slate-950/65 p-3">
+            <div className="kc-theme-subcard mt-4 space-y-2 rounded-xl border p-3">
               {card.points.map((point) => (
                 <p key={point} className="inline-flex items-center gap-2 text-sm text-slate-200">
-                  <CircleCheck className="h-4 w-4 text-emerald-300" />
+                  <CircleCheck className="h-4 w-4 text-emerald-500" />
                   {point}
                 </p>
               ))}

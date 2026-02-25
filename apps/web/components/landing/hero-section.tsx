@@ -83,7 +83,7 @@ export function HeroSection() {
           >
             {heroBullets.map((bullet) => (
               <motion.li key={bullet} variants={reduceMotion ? staggerItemReduced : staggerItem} className="inline-flex items-center gap-2.5">
-                <CheckCircle2 className="h-4 w-4 text-emerald-300" />
+                <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                 <span>{bullet}</span>
               </motion.li>
             ))}
@@ -148,7 +148,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: reduceMotion ? 0 : 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: reduceMotion ? 0.2 : 0.48, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-x-4 bottom-4 rounded-2xl border border-slate-600/65 bg-slate-950/88 p-4 shadow-[0_14px_40px_rgba(2,6,23,0.45)] backdrop-blur-md"
+            className="kc-hero-proof absolute inset-x-4 bottom-4 rounded-2xl border p-4"
           >
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-300">Señal verificable</p>
             <p className="mt-1 text-lg font-bold text-white">Renault Megane 2014</p>
@@ -160,7 +160,7 @@ export function HeroSection() {
                 { title: "ITV / Inspección", date: "08/2024", ok: true, evidence: true },
                 { title: "Transferencia", date: "03/2024", ok: false, evidence: false }
               ].map((event) => (
-                <div key={event.title} className="flex items-center justify-between rounded-xl border border-slate-700/70 bg-slate-900/70 px-3 py-2">
+                <div key={event.title} className="kc-hero-proof-row flex items-center justify-between rounded-xl border px-3 py-2">
                   <div>
                     <p className="text-sm font-semibold text-slate-100">{event.title}</p>
                     <p className="text-xs text-slate-400">{event.date}</p>
