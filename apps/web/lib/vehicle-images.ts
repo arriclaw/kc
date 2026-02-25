@@ -1,28 +1,32 @@
 const imageCache = new Map<string, string>();
 
-const fallbackByModel: Record<string, string> = {
-  "toyota::corolla": "/images/vehicles/toyota-corolla.jpg",
-  "volkswagen::gol": "/images/vehicles/volkswagen-gol.jpg",
-  "chevrolet::onix": "/images/vehicles/chevrolet-onix.jpg",
-  "nissan::sentra": "/images/vehicles/nissan-sentra.jpg",
-  "renault::megane": "/images/vehicles/renault-megane.jpg",
-  "peugeot::2008": "/images/vehicles/peugeot-2008.jpg",
-  "ford::focus": "/images/vehicles/ford-focus.jpg"
-};
-
-const unsplashFallbackByMake: Record<string, string> = {
-  toyota: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=1600&q=80",
-  volkswagen: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1600&q=80",
-  chevrolet: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1600&q=80",
-  ford: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1600&q=80",
-  nissan: "https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=1600&q=80",
-  renault: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1600&q=80",
-  peugeot: "https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1600&q=80",
-  hyundai: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=1600&q=80",
-  kia: "https://images.unsplash.com/photo-1581540222194-0def2dda95b8?auto=format&fit=crop&w=1600&q=80"
-};
-
 const genericFallback = "/images/vehicles/generic-car.jpg";
+
+type VehicleImageRule = {
+  make: string;
+  modelTokens: string[];
+  image: string;
+};
+
+const vehicleImageRules: VehicleImageRule[] = [
+  { make: "toyota", modelTokens: ["corolla"], image: "/images/vehicles/toyota-corolla.jpg" },
+  { make: "volkswagen", modelTokens: ["gol"], image: "/images/vehicles/volkswagen-gol.jpg" },
+  { make: "chevrolet", modelTokens: ["onix"], image: "/images/vehicles/chevrolet-onix.jpg" },
+  { make: "nissan", modelTokens: ["sentra"], image: "/images/vehicles/nissan-sentra.jpg" },
+  { make: "renault", modelTokens: ["megane", "mégane"], image: "/images/vehicles/renault-megane.jpg" },
+  { make: "peugeot", modelTokens: ["2008"], image: "/images/vehicles/peugeot-2008.jpg" },
+  { make: "ford", modelTokens: ["focus"], image: "/images/vehicles/ford-focus.jpg" }
+];
+
+const fallbackByMake: Record<string, string> = {
+  toyota: "/images/vehicles/toyota-corolla.jpg",
+  volkswagen: "/images/vehicles/volkswagen-gol.jpg",
+  chevrolet: "/images/vehicles/chevrolet-onix.jpg",
+  nissan: "/images/vehicles/nissan-sentra.jpg",
+  renault: "/images/vehicles/renault-megane.jpg",
+  peugeot: "/images/vehicles/peugeot-2008.jpg",
+  ford: "/images/vehicles/ford-focus.jpg"
+};
 
 function normalize(value: string) {
   return value
@@ -30,64 +34,30 @@ function normalize(value: string) {
     .toLowerCase()
     .normalize("NFD")
     .replace(/\p{Diacritic}/gu, "")
+    .replace(/[^a-z0-9\s-]/g, " ")
     .replace(/\s+/g, " ");
 }
 
-async function wikipediaThumb(title: string): Promise<string | null> {
-  const endpoint = new URL("https://en.wikipedia.org/w/api.php");
-  endpoint.searchParams.set("action", "query");
-  endpoint.searchParams.set("format", "json");
-  endpoint.searchParams.set("prop", "pageimages");
-  endpoint.searchParams.set("piprop", "thumbnail");
-  endpoint.searchParams.set("pithumbsize", "1400");
-  endpoint.searchParams.set("redirects", "1");
-  endpoint.searchParams.set("titles", title);
+function resolveDeterministicImage(makeInput: string, modelInput: string) {
+  const make = normalize(makeInput);
+  const model = normalize(modelInput);
 
-  const response = await fetch(endpoint.toString(), { next: { revalidate: 86400 } });
-  if (!response.ok) return null;
+  const byModelRule = vehicleImageRules.find((rule) => {
+    if (rule.make !== make) return false;
+    return rule.modelTokens.some((token) => model.includes(normalize(token)));
+  });
 
-  const data = (await response.json()) as {
-    query?: { pages?: Record<string, { thumbnail?: { source?: string } }> };
-  };
+  if (byModelRule) return byModelRule.image;
 
-  const pages = data.query?.pages;
-  if (!pages) return null;
-
-  for (const page of Object.values(pages)) {
-    const source = page.thumbnail?.source;
-    if (source && source.startsWith("https://upload.wikimedia.org/")) return source;
-  }
-  return null;
+  return fallbackByMake[make] || genericFallback;
 }
 
 export async function vehicleImageUrl(params: { make: string; model: string; year?: number | null }) {
-  const make = normalize(params.make);
-  const model = normalize(params.model);
-  const cacheKey = `${make}::${model}`;
+  const cacheKey = `${normalize(params.make)}::${normalize(params.model)}`;
   const cached = imageCache.get(cacheKey);
   if (cached) return cached;
 
-  const modelFallback = fallbackByModel[cacheKey];
-  if (modelFallback) {
-    imageCache.set(cacheKey, modelFallback);
-    return modelFallback;
-  }
-
-  const candidates = [`${params.make} ${params.model} car`, `${params.make} ${params.model}`, params.make];
-
-  for (const candidate of candidates) {
-    try {
-      const thumb = await wikipediaThumb(candidate);
-      if (thumb) {
-        imageCache.set(cacheKey, thumb);
-        return thumb;
-      }
-    } catch {
-      // Ignore remote failures and continue with deterministic fallback.
-    }
-  }
-
-  const fallback = unsplashFallbackByMake[make] || genericFallback;
-  imageCache.set(cacheKey, fallback);
-  return fallback;
+  const resolved = resolveDeterministicImage(params.make, params.model);
+  imageCache.set(cacheKey, resolved);
+  return resolved;
 }
