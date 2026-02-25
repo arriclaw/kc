@@ -33,9 +33,9 @@ export function SolutionSection() {
       variants={reduceMotion ? sectionRevealReduced : sectionReveal}
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
-      <div className="max-w-4xl space-y-3">
-        <h2 className="text-3xl font-black leading-tight md:text-5xl">Un sistema de evidencia verificable para decidir y cerrar mejor</h2>
-        <p className="max-w-3xl text-base text-slate-300 md:text-lg">
+      <div className="space-y-3">
+        <h2 className="text-3xl font-black leading-tight md:text-5xl">Un sistema verificable para decidir y cerrar mejor</h2>
+        <p className="max-w-5xl text-base text-slate-300 md:text-lg">
           Kilómetro Claro convierte datos sueltos en señales confiables: más claridad para comprar y mejor posición comercial para vender.
         </p>
       </div>

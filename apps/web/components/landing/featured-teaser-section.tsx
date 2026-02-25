@@ -20,7 +20,7 @@ export function FeaturedTeaserSection() {
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
       <div className="flex flex-wrap items-end justify-between gap-4">
-        <div className="max-w-4xl">
+        <div>
           <h2 className="text-3xl font-black leading-tight md:text-5xl">Unidades con señal comercial activa</h2>
         </div>
         <Button asChild variant="outline">

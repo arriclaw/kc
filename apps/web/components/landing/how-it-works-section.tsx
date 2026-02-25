@@ -8,17 +8,17 @@ const steps = [
   {
     icon: SearchCheck,
     title: "Ingresás la matrícula",
-    body: "Entrás rápido al vehículo y su contexto real."
+    body: "Entrás en segundos al auto y a su contexto operativo real."
   },
   {
     icon: DatabaseZap,
-    title: "Cruzamos fuentes y evidencia",
-    body: "Ordenamos eventos, origen y respaldo en una secuencia consistente."
+    title: "Cruzamos fuentes y respaldo",
+    body: "Ordenamos eventos, origen y soporte en una secuencia consistente."
   },
   {
     icon: Shield,
     title: "Recibís una señal clara para decidir",
-    body: "Comprás con menos riesgo o vendés con más confianza comercial."
+    body: "Comprás con menos riesgo y vendés con mejor posición comercial."
   }
 ];
 
@@ -33,8 +33,11 @@ export function HowItWorksSection() {
       variants={reduceMotion ? sectionRevealReduced : sectionReveal}
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
-      <div className="max-w-4xl space-y-3">
+      <div className="space-y-3">
         <h2 className="text-3xl font-black leading-tight md:text-5xl">Del dato inicial a una decisión con fundamento</h2>
+        <p className="max-w-5xl text-base text-slate-300 md:text-lg">
+          Un flujo corto y claro: menos dudas para comprar, más respaldo para vender.
+        </p>
       </div>
 
       <motion.ol
@@ -48,17 +51,19 @@ export function HowItWorksSection() {
           <motion.li
             key={step.title}
             variants={reduceMotion ? staggerItemReduced : staggerItem}
-            className="flex min-h-[248px] flex-col rounded-2xl border border-slate-700/70 bg-slate-900/45 p-4"
+            className="relative flex min-h-[280px] flex-col overflow-hidden rounded-2xl border border-slate-700/70 bg-slate-900/45 p-5"
           >
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
-              <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-slate-600 text-slate-200">{index + 1}</span>
-              Paso
-            </div>
-            <div className="mt-3 inline-flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-400/40 bg-cyan-400/10 text-cyan-300">
+            <span className="pointer-events-none absolute -right-3 top-0 text-[4.6rem] font-black leading-none tracking-[-0.06em] text-slate-700/35">
+              {index + 1}
+            </span>
+            <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-400/45 bg-cyan-400/10 text-cyan-300">
               <step.icon className="h-4 w-4" />
             </div>
-            <h3 className="mt-3 text-xl font-bold text-white">{step.title}</h3>
-            <p className="mt-2 text-sm text-slate-300">{step.body}</p>
+            <h3 className="mt-4 text-xl font-bold text-white">{step.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-300">{step.body}</p>
+            <div className="mt-auto pt-5">
+              <div className="h-px w-full bg-gradient-to-r from-cyan-300/40 via-cyan-200/12 to-transparent" />
+            </div>
           </motion.li>
         ))}
       </motion.ol>

@@ -116,7 +116,7 @@ export function HeroSection() {
               </Button>
             </div>
           </div>
-          <p className="text-sm text-slate-400">Registro verificable • Evidencia real • Respaldo compartible</p>
+          <p className="text-sm text-slate-400">Registro verificable • Respaldo real • Señal compartible</p>
           <p className="text-sm text-slate-500">
             No reemplaza una inspección mecánica presencial. Sí ordena la información y baja la incertidumbre.
           </p>
