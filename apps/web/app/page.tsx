@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { HeroCarousel } from "@/components/marketing/hero-carousel";
 import { HeroProofCard } from "@/components/marketing/hero-proof-card";
+import { RevealBlock, RevealSection, StaggerContainer, StaggerItem } from "@/components/motion/reveal";
 import { prisma } from "@/lib/prisma";
 import { vehicleImageUrl } from "@/lib/vehicle-images";
 
@@ -102,7 +103,7 @@ export default async function LandingPage() {
 
   return (
     <div className="space-y-8 pb-10">
-      <section className="home-surface relative overflow-hidden rounded-[2.5rem] border border-slate-700/65 p-5 sm:p-7">
+      <RevealSection className="home-surface relative overflow-hidden rounded-[2.5rem] border border-slate-700/65 p-5 sm:p-7">
         <div className="pointer-events-none absolute -left-24 -top-14 h-80 w-80 rounded-full bg-cyan-400/16 blur-3xl" />
         <div className="pointer-events-none absolute -right-24 -top-16 h-96 w-96 rounded-full bg-indigo-500/18 blur-3xl" />
 
@@ -123,16 +124,18 @@ export default async function LandingPage() {
               Un registro verificable de servicios, transferencias e incidentes, con evidencia cuando importa.
             </p>
 
-            <ul className="grid max-w-xl gap-x-6 gap-y-2.5 text-sm text-slate-200 sm:grid-cols-2 sm:text-base">
+            <StaggerContainer className="grid max-w-xl gap-x-6 gap-y-2.5 text-sm text-slate-200 sm:grid-cols-2 sm:text-base">
               {heroBullets.map((bullet) => (
-                <li key={bullet} className="inline-flex items-center gap-2.5 leading-none">
-                  <CircleCheck className="h-4 w-4 shrink-0 text-cyan-200" />
-                  <span>{bullet}</span>
-                </li>
+                <StaggerItem key={bullet}>
+                  <div className="inline-flex items-center gap-2.5 leading-none">
+                    <CircleCheck className="h-4 w-4 shrink-0 text-cyan-200" />
+                    <span>{bullet}</span>
+                  </div>
+                </StaggerItem>
               ))}
-            </ul>
+            </StaggerContainer>
 
-            <div className="space-y-2.5">
+            <RevealBlock className="space-y-2.5" delay={0.08}>
               <Button asChild size="lg" className="h-12 min-w-[230px] rounded-xl px-7">
                 <Link href="/vehiculos" className="inline-flex items-center gap-2.5 font-semibold">
                   Buscar un vehículo
@@ -153,7 +156,7 @@ export default async function LandingPage() {
                   </Link>
                 </Button>
               </div>
-            </div>
+            </RevealBlock>
 
             <p className="text-xs font-semibold tracking-[0.09em] text-slate-300 sm:text-sm">
               Registro verificable • Eventos con evidencia • Historial compartible
@@ -174,9 +177,9 @@ export default async function LandingPage() {
             <HeroProofCard className="max-w-none" />
           </div>
         </div>
-      </section>
+      </RevealSection>
 
-      <section className="home-surface relative overflow-hidden rounded-[2.1rem] border border-slate-700/65 p-5 sm:p-6">
+      <RevealSection className="home-surface relative overflow-hidden rounded-[2.1rem] border border-slate-700/65 p-5 sm:p-6">
         <div className="pointer-events-none absolute -right-12 top-0 h-52 w-52 rounded-full bg-cyan-400/10 blur-3xl" />
         <div className="pointer-events-none absolute -left-16 -bottom-10 h-56 w-56 rounded-full bg-indigo-500/12 blur-3xl" />
 
@@ -206,81 +209,85 @@ export default async function LandingPage() {
         ) : (
           <div className="mt-5 grid gap-3 lg:grid-cols-[minmax(0,1.32fr)_minmax(340px,0.68fr)]">
             {mainFeatured ? (
-              <Card className="home-soft-card group relative overflow-hidden rounded-3xl border border-slate-700/70 p-0">
-                <div className="relative aspect-[16/10] w-full">
-                  <Image
-                    src={mainFeatured.imageUrl}
-                    alt={`${mainFeatured.make} ${mainFeatured.model}`}
-                    fill
-                    className="object-cover transition duration-500 group-hover:scale-[1.02]"
-                    unoptimized
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/82 via-slate-950/40 to-transparent" />
-                </div>
-                <div className="home-feature-hero p-5">
-                  <div className="flex flex-wrap items-start justify-between gap-3">
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.14em] text-cyan-200/80">{mainFeatured.plate || "Sin matrícula"}</p>
-                      <h3 className="mt-1 text-4xl font-black leading-tight text-white">
-                        {mainFeatured.make} {mainFeatured.model}
-                      </h3>
-                      <p className="text-base text-slate-200">Año {mainFeatured.year}</p>
-                    </div>
-                    <div className="flex gap-2">
-                      <div className="home-feature-chip rounded-xl border border-slate-500/50 bg-slate-950/45 px-3 py-2 text-xs">
-                        <Activity className="mr-1.5 inline h-3.5 w-3.5 text-cyan-200" />
-                        Entradas: <span className="font-bold text-white">{mainFeatured.eventsCount}</span>
-                      </div>
-                      <div className="home-feature-chip rounded-xl border border-slate-500/50 bg-slate-950/45 px-3 py-2 text-xs">
-                        <BadgeCheck className="mr-1.5 inline h-3.5 w-3.5 text-emerald-300" />
-                        Verificados: <span className="font-bold text-white">{mainFeatured.verifiedCount}</span>
-                      </div>
-                    </div>
+              <RevealBlock>
+                <Card className="home-soft-card card-lift group relative overflow-hidden rounded-3xl border border-slate-700/70 p-0">
+                  <div className="relative aspect-[16/10] w-full">
+                    <Image
+                      src={mainFeatured.imageUrl}
+                      alt={`${mainFeatured.make} ${mainFeatured.model}`}
+                      fill
+                      className="object-cover transition duration-500 group-hover:scale-[1.02]"
+                      unoptimized
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/82 via-slate-950/40 to-transparent" />
                   </div>
-                  <div className="mt-4">
-                    <Button asChild size="sm" className="min-w-[170px]">
-                      <Link href={`/publicaciones/${mainFeatured.id}`}>Ver publicación</Link>
-                    </Button>
-                  </div>
-                </div>
-              </Card>
-            ) : null}
-
-            <div className="grid gap-3 lg:grid-rows-2">
-              {sideFeatured.map((vehicle) => (
-                <Card key={vehicle.id} className="home-soft-card overflow-hidden rounded-2xl border border-slate-700/70 p-0">
-                  <div className="relative h-40 w-full">
-                    <Image src={vehicle.imageUrl} alt={`${vehicle.make} ${vehicle.model}`} fill className="object-cover" unoptimized />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/72 via-slate-950/16 to-transparent" />
-                  </div>
-                  <div className="p-4">
-                    <p className="text-xs uppercase tracking-[0.14em] text-cyan-200/80">{vehicle.plate || "Sin matrícula"}</p>
-                    <h3 className="mt-1 text-2xl font-black leading-tight text-slate-100 sm:text-[2rem]">
-                      {vehicle.make} {vehicle.model}
-                    </h3>
-                    <p className="text-sm text-slate-300">Año {vehicle.year}</p>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      <div className="home-mini-chip inline-flex items-center rounded-full border border-slate-500/40 bg-slate-950/45 px-2.5 py-1 text-xs text-slate-200">
-                        <Activity className="mr-1 inline h-3.5 w-3.5 text-cyan-200" />
-                        Entradas: <span className="ml-1 font-bold text-white">{vehicle.eventsCount}</span>
+                  <div className="home-feature-hero p-5">
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.14em] text-cyan-200/80">{mainFeatured.plate || "Sin matrícula"}</p>
+                        <h3 className="mt-1 text-4xl font-black leading-tight text-white">
+                          {mainFeatured.make} {mainFeatured.model}
+                        </h3>
+                        <p className="text-base text-slate-200">Año {mainFeatured.year}</p>
                       </div>
-                      <div className="home-mini-chip inline-flex items-center rounded-full border border-slate-500/40 bg-slate-950/45 px-2.5 py-1 text-xs text-slate-200">
-                        <BadgeCheck className="mr-1 inline h-3.5 w-3.5 text-emerald-300" />
-                        Verificados: <span className="ml-1 font-bold text-white">{vehicle.verifiedCount}</span>
+                      <div className="flex gap-2">
+                        <div className="home-feature-chip rounded-xl border border-slate-500/50 bg-slate-950/45 px-3 py-2 text-xs">
+                          <Activity className="mr-1.5 inline h-3.5 w-3.5 text-cyan-200" />
+                          Entradas: <span className="font-bold text-white">{mainFeatured.eventsCount}</span>
+                        </div>
+                        <div className="home-feature-chip rounded-xl border border-slate-500/50 bg-slate-950/45 px-3 py-2 text-xs">
+                          <BadgeCheck className="mr-1.5 inline h-3.5 w-3.5 text-emerald-300" />
+                          Verificados: <span className="font-bold text-white">{mainFeatured.verifiedCount}</span>
+                        </div>
                       </div>
                     </div>
-                    <Button asChild size="sm" className="mt-3 w-full">
-                      <Link href={`/publicaciones/${vehicle.id}`}>Ver publicación</Link>
-                    </Button>
+                    <div className="mt-4">
+                      <Button asChild size="sm" className="min-w-[170px]">
+                        <Link href={`/publicaciones/${mainFeatured.id}`}>Ver publicación</Link>
+                      </Button>
+                    </div>
                   </div>
                 </Card>
+              </RevealBlock>
+            ) : null}
+
+            <StaggerContainer className="grid gap-3 lg:grid-rows-2" delay={0.08}>
+              {sideFeatured.map((vehicle) => (
+                <StaggerItem key={vehicle.id}>
+                  <Card className="home-soft-card card-lift overflow-hidden rounded-2xl border border-slate-700/70 p-0">
+                    <div className="relative h-40 w-full">
+                      <Image src={vehicle.imageUrl} alt={`${vehicle.make} ${vehicle.model}`} fill className="object-cover" unoptimized />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/72 via-slate-950/16 to-transparent" />
+                    </div>
+                    <div className="p-4">
+                      <p className="text-xs uppercase tracking-[0.14em] text-cyan-200/80">{vehicle.plate || "Sin matrícula"}</p>
+                      <h3 className="mt-1 text-2xl font-black leading-tight text-slate-100 sm:text-[2rem]">
+                        {vehicle.make} {vehicle.model}
+                      </h3>
+                      <p className="text-sm text-slate-300">Año {vehicle.year}</p>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        <div className="home-mini-chip inline-flex items-center rounded-full border border-slate-500/40 bg-slate-950/45 px-2.5 py-1 text-xs text-slate-200">
+                          <Activity className="mr-1 inline h-3.5 w-3.5 text-cyan-200" />
+                          Entradas: <span className="ml-1 font-bold text-white">{vehicle.eventsCount}</span>
+                        </div>
+                        <div className="home-mini-chip inline-flex items-center rounded-full border border-slate-500/40 bg-slate-950/45 px-2.5 py-1 text-xs text-slate-200">
+                          <BadgeCheck className="mr-1 inline h-3.5 w-3.5 text-emerald-300" />
+                          Verificados: <span className="ml-1 font-bold text-white">{vehicle.verifiedCount}</span>
+                        </div>
+                      </div>
+                      <Button asChild size="sm" className="mt-3 w-full">
+                        <Link href={`/publicaciones/${vehicle.id}`}>Ver publicación</Link>
+                      </Button>
+                    </div>
+                  </Card>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         )}
-      </section>
+      </RevealSection>
 
-      <section className="grid gap-4 lg:grid-cols-12">
+      <RevealSection className="grid gap-4 lg:grid-cols-12">
         <Card className="home-surface relative overflow-hidden rounded-3xl border border-slate-700/65 p-6 lg:col-span-8">
           <div className="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-cyan-300/12 blur-3xl" />
           <div className="relative">
@@ -291,36 +298,35 @@ export default async function LandingPage() {
             </p>
           </div>
 
-          <div className="mt-5 grid gap-4 sm:grid-cols-2">
+          <StaggerContainer className="mt-5 grid gap-4 sm:grid-cols-2" delay={0.08}>
             {segmentos.slice(0, 2).map((item) => (
-              <article
-                key={item.title}
-                className="home-soft-card group relative overflow-hidden rounded-2xl border border-slate-700/70 p-4"
-              >
-                <div className="pointer-events-none absolute -right-8 -top-8 h-20 w-20 rounded-full bg-cyan-300/10 blur-2xl transition group-hover:scale-125" />
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-300/35 bg-cyan-300/10 text-cyan-100">
-                  <item.icon className="h-5 w-5" />
-                </div>
-                <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-cyan-200/80">{item.eyebrow}</p>
-                <h3 className="mt-1 text-[1.9rem] font-black leading-tight text-slate-100">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-300">{item.description}</p>
-                <div className="mt-4 space-y-2 text-sm text-slate-200">
-                  {item.points.map((point) => (
-                    <p key={point} className="inline-flex items-center gap-2">
-                      <CircleCheck className="h-4 w-4 text-cyan-200" />
-                      {point}
-                    </p>
-                  ))}
-                </div>
-                <Button asChild className="mt-5 w-full" variant="outline">
-                  <Link href={item.href} className="inline-flex items-center justify-center gap-2">
-                    {item.cta}
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </Button>
-              </article>
+              <StaggerItem key={item.title}>
+                <article className="home-soft-card card-lift group relative overflow-hidden rounded-2xl border border-slate-700/70 p-4">
+                  <div className="pointer-events-none absolute -right-8 -top-8 h-20 w-20 rounded-full bg-cyan-300/10 blur-2xl transition group-hover:scale-125" />
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-300/35 bg-cyan-300/10 text-cyan-100">
+                    <item.icon className="h-5 w-5" />
+                  </div>
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-cyan-200/80">{item.eyebrow}</p>
+                  <h3 className="mt-1 text-[1.9rem] font-black leading-tight text-slate-100">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-300">{item.description}</p>
+                  <div className="mt-4 space-y-2 text-sm text-slate-200">
+                    {item.points.map((point) => (
+                      <p key={point} className="inline-flex items-center gap-2">
+                        <CircleCheck className="h-4 w-4 text-cyan-200" />
+                        {point}
+                      </p>
+                    ))}
+                  </div>
+                  <Button asChild className="mt-5 w-full" variant="outline">
+                    <Link href={item.href} className="inline-flex items-center justify-center gap-2">
+                      {item.cta}
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                </article>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </Card>
 
         <Card className="home-surface relative overflow-hidden rounded-3xl border border-slate-700/65 p-6 lg:col-span-4">
@@ -333,13 +339,15 @@ export default async function LandingPage() {
             <h3 className="mt-1 text-2xl font-black leading-tight text-slate-100 sm:text-[2rem]">Explorá con contexto real</h3>
             <p className="mt-2 text-sm leading-relaxed text-slate-300">{segmentos[2]?.description}</p>
 
-            <div className="mt-4 space-y-2">
+            <StaggerContainer className="mt-4 space-y-2" delay={0.1}>
               {segmentos[2]?.points.map((point) => (
-                <div key={point} className="rounded-xl border border-slate-700/70 bg-slate-900/35 px-3 py-2 text-sm text-slate-200">
-                  {point}
-                </div>
+                <StaggerItem key={point}>
+                  <div className="rounded-xl border border-slate-700/70 bg-slate-900/35 px-3 py-2 text-sm text-slate-200">
+                    {point}
+                  </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
 
             <Button asChild className="mt-5 w-full" size="lg">
               <Link href={segmentos[2]!.href} className="inline-flex items-center justify-center gap-2">
@@ -349,7 +357,7 @@ export default async function LandingPage() {
             </Button>
           </div>
         </Card>
-      </section>
+      </RevealSection>
     </div>
   );
 }
