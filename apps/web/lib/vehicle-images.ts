@@ -1,15 +1,13 @@
 const imageCache = new Map<string, string>();
 
 const fallbackByModel: Record<string, string> = {
-  "toyota::corolla": "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=1600&q=80",
-  "volkswagen::gol": "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1600&q=80",
-  "chevrolet::onix": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1600&q=80",
-  "nissan::sentra": "https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=1600&q=80",
-  "renault::megane": "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1600&q=80",
-  "peugeot::2008": "https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1600&q=80",
-  "hyundai::hb20": "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=1600&q=80",
-  "kia::rio": "https://images.unsplash.com/photo-1581540222194-0def2dda95b8?auto=format&fit=crop&w=1600&q=80",
-  "ford::focus": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=80"
+  "toyota::corolla": "/images/vehicles/toyota-corolla.jpg",
+  "volkswagen::gol": "/images/vehicles/volkswagen-gol.jpg",
+  "chevrolet::onix": "/images/vehicles/chevrolet-onix.jpg",
+  "nissan::sentra": "/images/vehicles/nissan-sentra.jpg",
+  "renault::megane": "/images/vehicles/renault-megane.jpg",
+  "peugeot::2008": "/images/vehicles/peugeot-2008.jpg",
+  "ford::focus": "/images/vehicles/ford-focus.jpg"
 };
 
 const unsplashFallbackByMake: Record<string, string> = {
@@ -24,7 +22,7 @@ const unsplashFallbackByMake: Record<string, string> = {
   kia: "https://images.unsplash.com/photo-1581540222194-0def2dda95b8?auto=format&fit=crop&w=1600&q=80"
 };
 
-const genericFallback = "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80";
+const genericFallback = "/images/vehicles/generic-car.jpg";
 
 function normalize(value: string) {
   return value

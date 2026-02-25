@@ -164,7 +164,7 @@ export const featuredVehiclesMock: FeaturedVehicle[] = [
     model: "Megane",
     year: 2014,
     plate: "SBT2885",
-    imageUrl: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1600&q=80",
+    imageUrl: "/images/vehicles/renault-megane.jpg",
     verified: true,
     hasContact: true,
     entries: 7
@@ -175,7 +175,7 @@ export const featuredVehiclesMock: FeaturedVehicle[] = [
     model: "Gol",
     year: 2015,
     plate: "SCD5678",
-    imageUrl: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1600&q=80",
+    imageUrl: "/images/vehicles/volkswagen-gol.jpg",
     verified: false,
     hasContact: true,
     entries: 4
@@ -186,7 +186,7 @@ export const featuredVehiclesMock: FeaturedVehicle[] = [
     model: "Corolla",
     year: 2018,
     plate: "SAB1234",
-    imageUrl: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=1600&q=80",
+    imageUrl: "/images/vehicles/toyota-corolla.jpg",
     verified: true,
     hasContact: false,
     entries: 8
@@ -197,7 +197,7 @@ export const featuredVehiclesMock: FeaturedVehicle[] = [
     model: "Sentra",
     year: 2019,
     plate: "SFX9081",
-    imageUrl: "https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=1600&q=80",
+    imageUrl: "/images/vehicles/nissan-sentra.jpg",
     verified: true,
     hasContact: true,
     entries: 6
@@ -208,7 +208,7 @@ export const featuredVehiclesMock: FeaturedVehicle[] = [
     model: "Onix",
     year: 2020,
     plate: "SBY4012",
-    imageUrl: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1600&q=80",
+    imageUrl: "/images/vehicles/chevrolet-onix.jpg",
     verified: false,
     hasContact: false,
     entries: 3
@@ -219,7 +219,7 @@ export const featuredVehiclesMock: FeaturedVehicle[] = [
     model: "2008",
     year: 2021,
     plate: "SJM1120",
-    imageUrl: "https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1600&q=80",
+    imageUrl: "/images/vehicles/peugeot-2008.jpg",
     verified: true,
     hasContact: true,
     entries: 5
