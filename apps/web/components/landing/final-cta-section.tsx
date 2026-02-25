@@ -18,8 +18,7 @@ export function FinalCtaSection() {
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
       <div className="mx-auto max-w-3xl text-center">
-        <p className="kc-overline mx-auto">Siguiente paso</p>
-        <h2 className="mt-3 text-3xl font-black leading-tight md:text-5xl">Tomá decisiones con datos verificables</h2>
+        <h2 className="text-3xl font-black leading-tight md:text-5xl">Tomá decisiones con datos verificables</h2>
         <p className="mt-3 text-base text-slate-300 md:text-lg">
           En minutos podés revisar historial real, origen de cada evento y evidencia adjunta.
         </p>

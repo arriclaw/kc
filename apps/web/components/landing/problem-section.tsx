@@ -36,7 +36,7 @@ export function ProblemSection() {
       <div className="max-w-3xl space-y-3">
         <h2 className="text-3xl font-black leading-tight md:text-5xl">Comprar usado es comprar incertidumbre</h2>
         <p className="text-base text-slate-300 md:text-lg">
-          Hoy dependés de relatos sueltos. Cuando faltan hechos, pagás el riesgo vos.
+          Y vender sin historial también te resta valor. Cuando faltan hechos, pagás el riesgo vos.
         </p>
       </div>
 

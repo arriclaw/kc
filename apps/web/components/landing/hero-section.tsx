@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
+import { ArrowRight, BadgeCheck, CheckCircle2, CircleDashed, FileCheck2, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -71,7 +71,7 @@ export function HeroSection() {
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-slate-300 md:text-xl">
-            Un registro verificable de servicios, transferencias e incidentes, con evidencia cuando importa.
+            Un registro verificable de servicios, transferencias e incidentes, para comprar con menos riesgo y vender con más valor.
           </p>
 
           <motion.ul
@@ -155,7 +155,7 @@ export function HeroSection() {
               {[
                 { title: "Service oficial", date: "12/2024", ok: true, evidence: true },
                 { title: "ITV / Inspección", date: "08/2024", ok: true, evidence: true },
-                { title: "Transferencia", date: "03/2024", ok: true, evidence: false }
+                { title: "Transferencia", date: "03/2024", ok: false, evidence: false }
               ].map((event) => (
                 <div key={event.title} className="flex items-center justify-between rounded-xl border border-slate-700/70 bg-slate-900/70 px-3 py-2">
                   <div>
@@ -163,8 +163,23 @@ export function HeroSection() {
                     <p className="text-xs text-slate-400">{event.date}</p>
                   </div>
                   <div className="flex gap-1.5">
-                    {event.ok ? <span className="kc-status-chip kc-status-chip--ok">Verificado</span> : null}
-                    {event.evidence ? <span className="kc-status-chip">Con evidencia</span> : null}
+                    {event.ok ? (
+                      <span className="kc-status-chip kc-status-chip--ok">
+                        <BadgeCheck className="h-3.5 w-3.5" />
+                        Verificado
+                      </span>
+                    ) : null}
+                    {event.evidence ? (
+                      <span className="kc-status-chip">
+                        <FileCheck2 className="h-3.5 w-3.5" />
+                        Con evidencia
+                      </span>
+                    ) : (
+                      <span className="kc-status-chip">
+                        <CircleDashed className="h-3.5 w-3.5" />
+                        Registrada
+                      </span>
+                    )}
                   </div>
                 </div>
               ))}
