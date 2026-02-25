@@ -9,10 +9,10 @@ import { Button } from "@/components/ui/button";
 import { buttonLift, buttonLiftReduced, staggerContainer, staggerContainerReduced, staggerItem, staggerItemReduced } from "@/lib/motion";
 
 const heroBullets = [
-  "Eventos con evidencia",
-  "Transferencias registradas",
-  "Menos riesgo al comprar",
-  "Más valor al vender"
+  "Señales reales para decidir mejor",
+  "Respaldo que mejora tu posición al vender",
+  "Menos fricción en negociación",
+  "Confianza comercial desde el primer contacto"
 ];
 
 const heroSlides = [
@@ -71,7 +71,7 @@ export function HeroSection() {
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-slate-300 md:text-xl">
-            Un registro verificable de servicios, transferencias e incidentes, para comprar con menos riesgo y vender con más valor.
+            Comprá con menos riesgo y vendé con más valor: cada service, transferencia o incidente queda respaldado con evidencia verificable.
           </p>
 
           <motion.ul
@@ -116,7 +116,10 @@ export function HeroSection() {
               </Button>
             </div>
           </div>
-          <p className="text-sm text-slate-400">Registro verificable • Eventos con evidencia • Historial compartible</p>
+          <p className="text-sm text-slate-400">Registro verificable • Eventos con evidencia • Respaldo compartible</p>
+          <p className="text-sm text-slate-500">
+            No reemplaza una inspección mecánica presencial. Sí ordena la información y baja la incertidumbre.
+          </p>
         </div>
 
         <div className="relative min-h-[520px] overflow-hidden rounded-[1.75rem] border border-slate-700/65">
@@ -147,7 +150,7 @@ export function HeroSection() {
             transition={{ duration: reduceMotion ? 0.2 : 0.48, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-x-4 bottom-4 rounded-2xl border border-slate-600/65 bg-slate-950/88 p-4 shadow-[0_14px_40px_rgba(2,6,23,0.45)] backdrop-blur-md"
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-300">Historial claro</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-300">Señal verificable</p>
             <p className="mt-1 text-lg font-bold text-white">Renault Megane 2014</p>
             <p className="text-sm text-slate-300">SBT2885</p>
 

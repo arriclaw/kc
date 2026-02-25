@@ -8,17 +8,17 @@ const steps = [
   {
     icon: SearchCheck,
     title: "Ingresás matrícula o VIN",
-    body: "Arrancás con el dato que ya tenés, sin formularios eternos."
+    body: "Entrás rápido al vehículo y su contexto real."
   },
   {
     icon: DatabaseZap,
     title: "Cruzamos fuentes y evidencia",
-    body: "Ordenamos eventos, origen y respaldos en una línea de tiempo clara."
+    body: "Ordenamos eventos, origen y respaldo en una secuencia consistente."
   },
   {
     icon: Shield,
-    title: "Te damos un historial claro y accionable",
-    body: "Tomás decisiones con señales concretas, no con relato." 
+    title: "Recibís una señal clara para decidir",
+    body: "Comprás con menos riesgo o vendés con más confianza comercial."
   }
 ];
 
@@ -34,7 +34,7 @@ export function HowItWorksSection() {
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
       <div className="space-y-3">
-        <h2 className="text-3xl font-black leading-tight md:text-5xl">Del dato inicial al historial que sí sirve</h2>
+        <h2 className="text-3xl font-black leading-tight md:text-5xl">Del dato inicial a una decisión con fundamento</h2>
       </div>
 
       <motion.ol

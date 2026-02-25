@@ -47,7 +47,7 @@ export function ExampleSection() {
       className="kc-panel scroll-mt-28 rounded-[1.75rem] p-6 md:p-8"
     >
       <div className="space-y-3">
-        <h2 className="text-3xl font-black leading-tight md:text-5xl">Un historial que podés auditar en segundos</h2>
+        <h2 className="text-3xl font-black leading-tight md:text-5xl">Consistencia que se puede comprobar</h2>
       </div>
 
       <div className="mt-6 grid gap-4 lg:grid-cols-[1.12fr_0.88fr]">
@@ -112,7 +112,7 @@ export function ExampleSection() {
           transition={{ duration: reduceMotion ? 0.2 : 0.42, ease: [0.22, 1, 0.36, 1] }}
           className="rounded-2xl border border-slate-700/75 bg-slate-900/50 p-5"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">Panel de lectura</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">Lectura comercial</p>
           <h3 className="mt-2 text-2xl font-black text-white">{activeEvent?.title}</h3>
           <p className="text-sm text-slate-300">{activeEvent?.source} • {activeEvent?.date}</p>
 
@@ -175,12 +175,12 @@ export function ExampleSection() {
           <div className="mt-4 rounded-xl border border-slate-700/70 bg-slate-950/60 p-3 text-sm text-slate-300">
             <div className="flex items-center gap-2 text-slate-200">
               <ShieldCheck className="h-4 w-4 text-emerald-300" />
-              Señal principal
+              Señal comercial
             </div>
             <p className="mt-2">
               {trustScore >= 80
-                ? "Historial consistente con respaldo verificable en eventos críticos."
-                : "El historial requiere validaciones adicionales antes de cerrar la operación."}
+                ? "Consistencia verificable en eventos críticos: reduce dudas y mejora el cierre."
+                : "Hay señales parciales: conviene validar más antes de decidir precio o cierre."}
             </p>
           </div>
 

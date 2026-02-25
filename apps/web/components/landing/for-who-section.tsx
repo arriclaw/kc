@@ -9,15 +9,15 @@ const audienceCards = [
     id: "particular",
     icon: CarFront,
     title: "Particular",
-    subtitle: "Tu historial para comprar y vender mejor",
-    points: ["Cargá services e incidentes en minutos", "Mostrá evidencia real al vender", "Transferí titularidad dentro de la plataforma"]
+    subtitle: "Tu auto vale más cuando podés demostrar su recorrido",
+    points: ["Mostrás respaldo real en cada consulta", "Reducís discusión y fricción de precio", "Cerrás venta más rápido y con mejor señal"]
   },
   {
     id: "automotora",
     icon: Building2,
     title: "Automotora",
-    subtitle: "Operación por unidad con señal comercial clara",
-    points: ["Gestioná stock sin límite de unidades", "Publicá vehículos con contexto verificable", "Mejorá cierre comercial con menos fricción"]
+    subtitle: "Más rotación con unidades que transmiten confianza",
+    points: ["Estandarizás trazabilidad por unidad", "Reducís objeciones comerciales repetidas", "Acelerás cierres con señal de confianza concreta"]
   }
 ] as const;
 
@@ -33,7 +33,7 @@ export function ForWhoSection() {
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
       <div className="space-y-2">
-        <h2 className="text-3xl font-black leading-tight md:text-5xl">Una experiencia distinta para cada rol</h2>
+        <h2 className="text-3xl font-black leading-tight md:text-5xl">Confianza comercial para cada perfil</h2>
       </div>
 
       <motion.div

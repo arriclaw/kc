@@ -12,9 +12,9 @@ export function GalleryBanner({ query, onQueryChange }: GalleryBannerProps) {
   return (
     <section className="kc-panel rounded-[1.75rem] p-6 md:p-8">
       <p className="kc-overline">Galería</p>
-      <h1 className="mt-2 text-4xl font-black leading-tight md:text-6xl">Vehículos con historial verificable</h1>
+      <h1 className="mt-2 text-4xl font-black leading-tight md:text-6xl">Unidades con evidencia verificable</h1>
       <p className="mt-3 max-w-3xl text-base text-slate-300 md:text-lg">
-        Explorá publicaciones con señales reales: eventos, verificación y contacto.
+        Explorá publicaciones con señales reales para comprar con claridad o vender con mejor confianza comercial.
       </p>
 
       <div className="relative mt-5 max-w-xl">

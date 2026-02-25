@@ -7,18 +7,18 @@ import { sectionReveal, sectionRevealReduced, staggerContainer, staggerContainer
 const points = [
   {
     icon: Gauge,
-    title: "Odómetro maquillado",
-    description: "Sin contexto real, los kilómetros pueden no cerrar con el uso declarado."
+    title: "Riesgo para quien compra",
+    description: "Sin trazabilidad, el kilometraje y el desgaste real quedan en duda."
   },
   {
     icon: Car,
-    title: "Choques minimizados",
-    description: "Muchos arreglos quedan fuera del relato cuando no hay evidencia trazable."
+    title: "Menos fuerza para quien vende",
+    description: "Sin respaldo verificable, el valor percibido cae y la negociación se vuelve cuesta arriba."
   },
   {
     icon: FileWarning,
-    title: "Dueños y papeles difusos",
-    description: "Transferencias y documentación incompleta generan fricción al momento de decidir."
+    title: "Fricción en cada operación",
+    description: "Cuando papeles, transferencias y eventos no son consistentes, el cierre se demora."
   }
 ];
 
@@ -34,9 +34,9 @@ export function ProblemSection() {
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
       <div className="max-w-3xl space-y-3">
-        <h2 className="text-3xl font-black leading-tight md:text-5xl">Comprar usado es comprar incertidumbre</h2>
+        <h2 className="text-3xl font-black leading-tight md:text-5xl">Sin evidencia, todos negocian a ciegas</h2>
         <p className="text-base text-slate-300 md:text-lg">
-          Y vender sin historial también te resta valor. Cuando faltan hechos, pagás el riesgo vos.
+          Sin datos verificables, quien compra asume riesgo y quien vende pierde palanca comercial.
         </p>
       </div>
 
@@ -64,7 +64,7 @@ export function ProblemSection() {
 
       <div className="mt-5 inline-flex items-center gap-2 rounded-xl border border-slate-700/70 bg-slate-900/35 px-3 py-2 text-sm text-slate-300">
         <AlertTriangle className="h-4 w-4 text-amber-300" />
-        La incertidumbre no se elimina con promesas: se reduce con evidencia.
+        La incertidumbre no se corrige con relato: se reduce con evidencia.
       </div>
     </motion.section>
   );

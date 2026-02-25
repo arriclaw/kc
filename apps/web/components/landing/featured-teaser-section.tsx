@@ -21,7 +21,7 @@ export function FeaturedTeaserSection() {
     >
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h2 className="text-3xl font-black leading-tight md:text-5xl">Unidades con historial activo</h2>
+          <h2 className="text-3xl font-black leading-tight md:text-5xl">Unidades con señal comercial activa</h2>
         </div>
         <Button asChild variant="outline">
           <Link href="/vehiculos">Ver todos</Link>

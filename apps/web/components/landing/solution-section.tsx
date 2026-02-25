@@ -7,18 +7,18 @@ import { sectionReveal, sectionRevealReduced, staggerContainer, staggerContainer
 const cards = [
   {
     icon: FileCheck2,
-    title: "Eventos estructurados",
-    description: "Cada service, reparación o incidente queda con fecha, origen y contexto."
+    title: "Evidencia estructurada",
+    description: "Cada service, reparación o incidente queda con fecha, origen y respaldo."
   },
   {
     icon: ShieldCheck,
-    title: "Fuente y nivel de confianza",
-    description: "Mostramos si fue autodeclarado o verificado por tercero con claridad."
+    title: "Verificación y procedencia",
+    description: "Se ve si el evento fue autodeclarado o validado por tercero, sin ambigüedad."
   },
   {
     icon: Signature,
-    title: "Evidencia adjunta",
-    description: "Facturas, comprobantes e inspecciones para auditar sin adivinar."
+    title: "Señal comercial accionable",
+    description: "La consistencia del registro acelera decisiones, mejora confianza y reduce fricción."
   }
 ];
 
@@ -34,9 +34,9 @@ export function SolutionSection() {
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
       <div className="space-y-3">
-        <h2 className="text-3xl font-black leading-tight md:text-5xl">Historial verificable con evidencia</h2>
+        <h2 className="text-3xl font-black leading-tight md:text-5xl">Un sistema de evidencia verificable para decidir y cerrar mejor</h2>
         <p className="max-w-3xl text-base text-slate-300 md:text-lg">
-          Verificable significa que podés revisar qué pasó, quién lo registró y con qué respaldo.
+          Kilómetro Claro transforma datos sueltos en señales confiables: claridad para comprar y ventaja comercial para vender.
         </p>
       </div>
 
