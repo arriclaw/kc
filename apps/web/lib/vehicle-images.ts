@@ -1,5 +1,16 @@
 const imageCache = new Map<string, string>();
 
+const fallbackByModel: Record<string, string> = {
+  "toyota::corolla": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Toyota_Corolla_Hybrid_%28E210%29_IMG_4337.jpg",
+  "volkswagen::gol": "https://upload.wikimedia.org/wikipedia/commons/1/17/VW_Gol_1.6_2019_%28cropped%29.jpg",
+  "chevrolet::onix": "https://upload.wikimedia.org/wikipedia/commons/8/80/Chevrolet_Onix_LT_2020.jpg",
+  "nissan::sentra": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Nissan_Sentra_SR_2020.jpg",
+  "renault::megane": "https://upload.wikimedia.org/wikipedia/commons/8/88/Renault_Megane_IV_IMG_2894.jpg",
+  "peugeot::2008": "https://upload.wikimedia.org/wikipedia/commons/f/f5/2020_Peugeot_2008_Allure_PureTech_1.2_Front.jpg",
+  "hyundai::hb20": "https://upload.wikimedia.org/wikipedia/commons/9/93/Hyundai_HB20_2022.jpg",
+  "kia::rio": "https://upload.wikimedia.org/wikipedia/commons/4/44/Kia_Rio_%28YB%29_front_20171117.jpg"
+};
+
 const unsplashFallbackByMake: Record<string, string> = {
   toyota: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=1600&q=80",
   volkswagen: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1600&q=80",
@@ -56,6 +67,12 @@ export async function vehicleImageUrl(params: { make: string; model: string; yea
   const cacheKey = `${make}::${model}`;
   const cached = imageCache.get(cacheKey);
   if (cached) return cached;
+
+  const modelFallback = fallbackByModel[cacheKey];
+  if (modelFallback) {
+    imageCache.set(cacheKey, modelFallback);
+    return modelFallback;
+  }
 
   const candidates = [`${params.make} ${params.model} car`, `${params.make} ${params.model}`, params.make];
 

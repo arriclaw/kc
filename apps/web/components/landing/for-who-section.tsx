@@ -10,14 +10,14 @@ const audienceCards = [
     icon: CarFront,
     title: "Particular",
     subtitle: "Tu auto vale más cuando podés demostrar su recorrido",
-    points: ["Mostrás respaldo real en cada consulta", "Reducís discusión y fricción de precio", "Cerrás venta más rápido y con mejor señal"]
+    points: ["Respaldo real en cada consulta", "Menos regateo por incertidumbre", "Cierre más ágil y con mejor señal"]
   },
   {
     id: "automotora",
     icon: Building2,
     title: "Automotora",
     subtitle: "Más rotación con unidades que transmiten confianza",
-    points: ["Estandarizás trazabilidad por unidad", "Reducís objeciones comerciales repetidas", "Acelerás cierres con señal de confianza concreta"]
+    points: ["Trazabilidad estándar por unidad", "Menos objeciones comerciales repetidas", "Más cierres con señal de confianza concreta"]
   }
 ] as const;
 
@@ -61,8 +61,8 @@ export function ForWhoSection() {
 
             <div className="kc-theme-subcard mt-4 space-y-2 rounded-xl border p-3">
               {card.points.map((point) => (
-                <p key={point} className="inline-flex items-center gap-2 text-sm text-slate-200">
-                  <CircleCheck className="h-4 w-4 text-emerald-500" />
+                <p key={point} className="flex items-start gap-2 text-sm text-slate-200">
+                  <CircleCheck className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
                   {point}
                 </p>
               ))}

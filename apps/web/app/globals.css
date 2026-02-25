@@ -260,7 +260,7 @@ html.light .kc-theme-subcard {
 
 html.light .kc-icon-strong {
   border-color: rgba(5, 150, 105, 0.34);
-  background: rgba(16, 185, 129, 0.12);
+  background: rgba(16, 185, 129, 0.16);
   color: rgb(5, 150, 105);
 }
 
@@ -273,6 +273,23 @@ html.light .kc-hero-proof {
 html.light .kc-hero-proof-row {
   border-color: rgba(148, 163, 184, 0.56);
   background: rgba(248, 250, 252, 0.98);
+}
+
+html.light .text-emerald-300,
+html.light .text-emerald-400 {
+  color: rgb(5, 150, 105) !important;
+}
+
+html.light .text-cyan-300,
+html.light .text-cyan-400,
+html.light .text-cyan-500 {
+  color: rgb(8, 145, 178) !important;
+}
+
+html.light .text-rose-300,
+html.light .text-rose-400,
+html.light .text-rose-500 {
+  color: rgb(225, 29, 72) !important;
 }
 
 .kc-filter-chip {

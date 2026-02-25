@@ -1,19 +1,37 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { BadgeCheck, CircleDashed, Phone, ShieldCheck } from "lucide-react";
+import { BadgeCheck, CircleDashed, Mail, MessageCircle, Phone, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { cardLift, cardLiftReduced } from "@/lib/motion";
-import type { FeaturedVehicle } from "@/lib/mock-data";
+import { contactLinks } from "@/lib/contact";
 
-type VehicleCardProps = {
-  vehicle: FeaturedVehicle;
+export type CatalogVehicleCard = {
+  id: string;
+  make: string;
+  model: string;
+  year: number;
+  plate: string;
+  imageUrl: string;
+  verified: boolean;
+  hasContact: boolean;
+  entries: number;
+  contact?: {
+    displayName?: string | null;
+    email?: string | null;
+    phone?: string | null;
+    whatsapp?: string | null;
+  } | null;
 };
+
+type VehicleCardProps = { vehicle: CatalogVehicleCard };
 
 export function VehicleCard({ vehicle }: VehicleCardProps) {
   const reduceMotion = useReducedMotion();
+  const links = contactLinks(vehicle.contact || {});
+  const hasActionableContact = Boolean(links.whatsappHref || links.phoneHref || links.emailHref);
 
   return (
     <motion.article
@@ -42,7 +60,7 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
           </span>
           <span className={`kc-status-chip ${vehicle.hasContact ? "" : "kc-status-chip--warn"}`}>
             <Phone className="h-3.5 w-3.5" />
-            {vehicle.hasContact ? "Contacto" : "Sin contacto"}
+            {vehicle.hasContact ? "Contacto disponible" : "Sin contacto"}
           </span>
           <span className="kc-status-chip">
             <ShieldCheck className="h-3.5 w-3.5" />
@@ -53,6 +71,50 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
         <Button asChild className="w-full">
           <Link href={`/vehiculos/${vehicle.id}`}>Ver publicación</Link>
         </Button>
+
+        {hasActionableContact ? (
+          <div className="grid grid-cols-3 gap-2">
+            {links.whatsappHref ? (
+              <Button asChild size="sm" variant="outline" className="h-9 px-0 text-xs">
+                <a href={links.whatsappHref} target="_blank" rel="noreferrer">
+                  <MessageCircle className="mr-1.5 h-3.5 w-3.5" />
+                  Wpp
+                </a>
+              </Button>
+            ) : (
+              <Button size="sm" variant="outline" className="h-9 px-0 text-xs" disabled>
+                <MessageCircle className="mr-1.5 h-3.5 w-3.5" />
+                Wpp
+              </Button>
+            )}
+            {links.phoneHref ? (
+              <Button asChild size="sm" variant="outline" className="h-9 px-0 text-xs">
+                <a href={links.phoneHref}>
+                  <Phone className="mr-1.5 h-3.5 w-3.5" />
+                  Llamar
+                </a>
+              </Button>
+            ) : (
+              <Button size="sm" variant="outline" className="h-9 px-0 text-xs" disabled>
+                <Phone className="mr-1.5 h-3.5 w-3.5" />
+                Llamar
+              </Button>
+            )}
+            {links.emailHref ? (
+              <Button asChild size="sm" variant="outline" className="h-9 px-0 text-xs">
+                <a href={links.emailHref}>
+                  <Mail className="mr-1.5 h-3.5 w-3.5" />
+                  Mail
+                </a>
+              </Button>
+            ) : (
+              <Button size="sm" variant="outline" className="h-9 px-0 text-xs" disabled>
+                <Mail className="mr-1.5 h-3.5 w-3.5" />
+                Mail
+              </Button>
+            )}
+          </div>
+        ) : null}
       </div>
     </motion.article>
   );
