@@ -87,7 +87,7 @@ function FeaturedCard({ id, make, model, year, plate, imageUrl, verified, hasCon
           alt={`${make} ${model}`}
           fill
           className="object-cover"
-          onError={() => setSrc("https://source.unsplash.com/1600x900/?car,automobile,road")}
+          onError={() => setSrc("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80")}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 to-transparent" />
       </div>

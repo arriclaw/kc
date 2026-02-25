@@ -1,15 +1,15 @@
 const imageCache = new Map<string, string>();
 
 const fallbackByModel: Record<string, string> = {
-  "toyota::corolla": "https://source.unsplash.com/1600x900/?toyota,corolla,car",
-  "volkswagen::gol": "https://source.unsplash.com/1600x900/?volkswagen,hatchback,car",
-  "chevrolet::onix": "https://source.unsplash.com/1600x900/?chevrolet,compact,car",
-  "nissan::sentra": "https://source.unsplash.com/1600x900/?nissan,sedan,car",
-  "renault::megane": "https://source.unsplash.com/1600x900/?renault,megane,car",
-  "peugeot::2008": "https://source.unsplash.com/1600x900/?peugeot,suv,car",
-  "hyundai::hb20": "https://source.unsplash.com/1600x900/?hyundai,hatchback,car",
-  "kia::rio": "https://source.unsplash.com/1600x900/?kia,rio,car",
-  "ford::focus": "https://source.unsplash.com/1600x900/?ford,focus,car"
+  "toyota::corolla": "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=1600&q=80",
+  "volkswagen::gol": "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1600&q=80",
+  "chevrolet::onix": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1600&q=80",
+  "nissan::sentra": "https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=1600&q=80",
+  "renault::megane": "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1600&q=80",
+  "peugeot::2008": "https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1600&q=80",
+  "hyundai::hb20": "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=1600&q=80",
+  "kia::rio": "https://images.unsplash.com/photo-1581540222194-0def2dda95b8?auto=format&fit=crop&w=1600&q=80",
+  "ford::focus": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=80"
 };
 
 const unsplashFallbackByMake: Record<string, string> = {
