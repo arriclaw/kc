@@ -48,6 +48,9 @@ export function ExampleSection() {
     >
       <div className="space-y-3">
         <h2 className="text-3xl font-black leading-tight md:text-5xl">Consistencia que se puede comprobar</h2>
+        <p className="max-w-5xl text-base text-slate-300 md:text-lg">
+          Lo que se registra bien se entiende mejor: mantenimiento, operación comercial y trabajo de taller en una sola secuencia.
+        </p>
       </div>
 
       <div className="mt-6 grid gap-5 xl:grid-cols-[1.12fr_0.88fr]">

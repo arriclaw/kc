@@ -19,7 +19,7 @@ export function FinalCtaSection() {
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="text-3xl font-black leading-tight md:text-5xl">Cada vehículo tiene una historia.</h2>
         <p className="mt-3 text-base text-slate-300 md:text-lg">
-          Cuando se registra, empieza a ser clara.
+          Cuando se registra bien, se vuelve clara para todos.
         </p>
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">

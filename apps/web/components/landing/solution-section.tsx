@@ -7,18 +7,18 @@ import { sectionReveal, sectionRevealReduced, staggerContainer, staggerContainer
 const cards = [
   {
     icon: FileCheck2,
-    title: "Evidencia estructurada",
-    description: "Cada service, reparación o incidente queda con fecha, origen y respaldo verificable."
+    title: "Particular",
+    description: "Registra mantenimiento, mejoras e incidentes con continuidad real."
   },
   {
     icon: ShieldCheck,
-    title: "Verificación y procedencia",
-    description: "Se ve si el evento lo cargó particular, automotora o taller, sin ambigüedad."
+    title: "Automotora",
+    description: "Suma señales consistentes por unidad y reduce fricción comercial."
   },
   {
     icon: Signature,
-    title: "Señal comercial accionable",
-    description: "La consistencia del registro acelera decisiones, mejora confianza y reduce fricción."
+    title: "Taller",
+    description: "Aporta servicios y reparaciones con evidencia que fortalecen confianza."
   }
 ];
 
@@ -34,9 +34,9 @@ export function SolutionSection() {
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
       <div className="space-y-3">
-        <h2 className="text-3xl font-black leading-tight md:text-5xl">Para quien mantiene, vende o compra un vehículo</h2>
+        <h2 className="text-3xl font-black leading-tight md:text-5xl">Tres actores, una misma historia confiable</h2>
         <p className="max-w-5xl text-base text-slate-300 md:text-lg">
-          Más claridad para decidir. Más respaldo en el tiempo. Más confianza en cada historia.
+          El auto no habla solo: lo hacen los registros de quien lo usa, lo vende y lo mantiene.
         </p>
       </div>
 

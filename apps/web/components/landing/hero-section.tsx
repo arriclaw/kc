@@ -9,9 +9,9 @@ import { Button } from "@/components/ui/button";
 import { buttonLift, buttonLiftReduced, staggerContainer, staggerContainerReduced, staggerItem, staggerItemReduced } from "@/lib/motion";
 
 const heroBullets = [
-  "Inmutable",
-  "Trazable",
-  "Con evidencia real"
+  "Más certeza para comprar",
+  "Más respaldo para vender",
+  "Más confianza para cerrar"
 ];
 
 const heroSlides = [
@@ -72,6 +72,10 @@ export function HeroSection() {
             Lo construís vos, tu automotora y tu taller.
           </p>
 
+          <p className="max-w-xl text-sm leading-relaxed text-slate-400 md:text-base">
+            Cuando cada actor deja trazas reales, baja la duda en la compra y sube el valor percibido en la venta.
+          </p>
+
           <motion.ul
             initial="hidden"
             whileInView="show"
@@ -109,7 +113,7 @@ export function HeroSection() {
           <p className="text-sm text-slate-400">Trazable. Con evidencia. En el tiempo.</p>
         </div>
 
-        <div className="relative min-h-[520px] overflow-hidden rounded-[1.75rem] border border-slate-700/65">
+        <div className="relative min-h-[468px] overflow-hidden rounded-[1.75rem] border border-slate-700/65 lg:min-h-[500px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={heroSlides[slideIndex]?.src}

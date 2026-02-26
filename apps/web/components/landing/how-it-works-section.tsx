@@ -8,17 +8,17 @@ const steps = [
   {
     icon: SearchCheck,
     title: "El vehículo entra al sistema",
-    body: "Todo empieza con un registro real."
+    body: "Empieza con una matrícula y un primer registro consistente."
   },
   {
     icon: DatabaseZap,
     title: "Su historia crece con cada registro real",
-    body: "Particular, automotora y taller suman continuidad."
+    body: "Particular, automotora y taller agregan trazas de lo que pasa."
   },
   {
     icon: Shield,
     title: "El historial acompaña al vehículo en el tiempo",
-    body: "Más claridad para decidir. Más respaldo para vender."
+    body: "Queda una señal clara para comprar mejor o vender con ventaja."
   }
 ];
 
@@ -36,7 +36,7 @@ export function HowItWorksSection() {
       <div className="space-y-3">
         <h2 className="text-3xl font-black leading-tight md:text-5xl">Del dato inicial a una decisión con fundamento</h2>
         <p className="max-w-5xl text-base text-slate-300 md:text-lg">
-          Un flujo corto y claro: menos dudas para comprar, más respaldo para vender.
+          Un flujo simple que transforma registros reales en confianza comercial.
         </p>
       </div>
 

@@ -9,22 +9,22 @@ const audienceCards = [
     id: "particular",
     icon: CarFront,
     title: "Particular",
-    subtitle: "Tu auto vale más cuando podés demostrar su recorrido",
-    points: ["Respaldo real en cada consulta", "Menos regateo por incertidumbre", "Cierre más ágil y con mejor señal"]
+    subtitle: "Tu auto vale más cuando podés mostrar su recorrido real",
+    points: ["Respaldo claro en cada consulta", "Menos regateo por incertidumbre", "Cierre más ágil y con señal comercial"]
   },
   {
     id: "automotora",
     icon: Building2,
     title: "Automotora",
-    subtitle: "Más rotación con unidades que transmiten confianza",
-    points: ["Trazabilidad estándar por unidad", "Menos objeciones comerciales repetidas", "Más cierres con señal de confianza concreta"]
+    subtitle: "Más rotación con unidades que transmiten confianza real",
+    points: ["Trazabilidad consistente por unidad", "Menos objeciones en cada operación", "Más cierres con señal comercial clara"]
   },
   {
     id: "taller",
     icon: Wrench,
     title: "Taller",
     subtitle: "Tu trabajo también construye valor comercial para el auto",
-    points: ["Cargá services y reparaciones con evidencia", "Quedá visible como origen del evento", "Fortalecé la confianza entre comprador y vendedor"]
+    points: ["Cargá services y reparaciones reales", "Quedá visible como origen del registro", "Sumá confianza en cada operación"]
   }
 ] as const;
 
@@ -54,19 +54,19 @@ export function ForWhoSection() {
           <motion.article
             key={card.id}
             variants={reduceMotion ? staggerItemReduced : staggerItem}
-            className="kc-theme-card rounded-2xl border p-4"
+            className="kc-theme-card flex h-full flex-col rounded-2xl border p-4"
           >
             <div className="flex items-center gap-3">
               <span className="kc-icon-strong inline-flex h-10 w-10 items-center justify-center rounded-xl border">
                 <card.icon className="h-4 w-4" />
               </span>
-              <div>
+              <div className="min-h-[62px]">
                 <p className="text-xl font-bold text-[hsl(var(--text))]">{card.title}</p>
                 <p className="text-sm text-[hsl(var(--muted))]">{card.subtitle}</p>
               </div>
             </div>
 
-            <div className="kc-theme-subcard mt-4 space-y-2 rounded-xl border p-3">
+            <div className="kc-theme-subcard mt-4 flex-1 space-y-2 rounded-xl border p-3">
               {card.points.map((point) => (
                 <p key={point} className="flex items-start gap-2 text-sm text-[hsl(var(--muted))]">
                   <CircleCheck className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
