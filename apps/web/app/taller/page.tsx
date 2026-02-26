@@ -66,7 +66,7 @@ export default async function TallerPage() {
         <p className="glass-chip inline-flex text-xs font-semibold uppercase tracking-[0.16em]">Portal Taller</p>
         <h1 className="mt-3 text-4xl font-black">{profile.workshopName}</h1>
         <p className="mt-2 text-sm text-slate-300">
-          Solicitá autorización por matrícula, cargá servicios reales y mantené la trazabilidad de cada unidad.
+          Solicitá autorización por matrícula y enviá la solicitud directo a la bandeja del titular para registrar servicios reales.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
           <Button asChild>
@@ -95,6 +95,9 @@ export default async function TallerPage() {
 
       <Card className="surface-card rounded-3xl p-6">
         <h2 className="text-xl font-bold">Generar solicitud de acceso</h2>
+        <p className="mt-2 text-sm text-slate-300">
+          El titular (particular o automotora) la verá en sus solicitudes y podrá autorizar o rechazar.
+        </p>
         <WorkshopAccessRequestForm />
       </Card>
 

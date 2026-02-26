@@ -3,11 +3,11 @@ import { z } from "zod";
 import { NextResponse } from "next/server";
 import { requireAuth, requireRole } from "@/lib/auth/guard";
 import { prisma } from "@/lib/prisma";
-import { buildWorkshopApprovalUrl, createRequestToken, ensureWorkshopUser, nextRequestExpiry } from "@/lib/workshop-access";
+import { createRequestToken, ensureWorkshopUser, nextRequestExpiry } from "@/lib/workshop-access";
 
 const createRequestSchema = z.object({
   plate: z.string().trim().min(5).max(12),
-  vin: z.string().trim().min(4).max(64).optional().or(z.literal(""))
+  reference: z.string().trim().min(2).max(64).optional().or(z.literal(""))
 });
 
 export async function GET() {
@@ -44,25 +44,66 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
   }
 
-  const { token, tokenHash } = createRequestToken();
+  const normalizedPlate = parsed.data.plate.toUpperCase();
+
+  const currentOwners = await prisma.vehicleOwnership.findMany({
+    where: {
+      ownershipStatus: "CURRENT",
+      vehicle: {
+        plate: {
+          equals: normalizedPlate,
+          mode: "insensitive"
+        }
+      },
+      user: {
+        role: {
+          in: [Role.OWNER, Role.DEALER, Role.ADMIN]
+        }
+      }
+    },
+    select: {
+      userId: true
+    },
+    distinct: ["userId"]
+  });
+
+  if (!currentOwners.length) {
+    return NextResponse.json({ error: "No encontramos titulares actuales para esa matrícula." }, { status: 404 });
+  }
+
+  const existingPending = await prisma.vehicleAccessRequest.findFirst({
+    where: {
+      workshopId: workshop.profile.id,
+      plate: normalizedPlate,
+      status: "PENDING"
+    },
+    select: { id: true }
+  });
+  if (existingPending) {
+    return NextResponse.json({ error: "Ya existe una solicitud pendiente para esta matrícula." }, { status: 409 });
+  }
+
+  const { tokenHash } = createRequestToken();
 
   const accessRequest = await prisma.vehicleAccessRequest.create({
     data: {
       workshopId: workshop.profile.id,
       requestedByUserId: session.user!.id,
-      plate: parsed.data.plate.toUpperCase(),
-      vin: parsed.data.vin || null,
+      plate: normalizedPlate,
+      vin: parsed.data.reference || null,
       tokenHash,
-      expiresAt: nextRequestExpiry()
+      expiresAt: nextRequestExpiry(),
+      views: {
+        createMany: {
+          data: currentOwners.map((owner) => ({ userId: owner.userId }))
+        }
+      }
     }
   });
-
-  const approveUrl = buildWorkshopApprovalUrl(token);
 
   return NextResponse.json({
     ok: true,
     request: accessRequest,
-    approveUrl,
-    qrData: approveUrl
+    recipients: currentOwners.length
   });
 }

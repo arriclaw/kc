@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import QRCode from "qrcode";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -10,18 +9,18 @@ export function WorkshopAccessRequestForm() {
   const [reference, setReference] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [approveUrl, setApproveUrl] = useState<string | null>(null);
-  const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    setSuccessMessage(null);
 
     const res = await fetch("/api/workshop/access-requests", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ plate, vin: reference })
+      body: JSON.stringify({ plate, reference })
     });
 
     const body = await res.json().catch(() => ({}));
@@ -32,9 +31,9 @@ export function WorkshopAccessRequestForm() {
       return;
     }
 
-    setApproveUrl(body.approveUrl);
-    const qr = await QRCode.toDataURL(body.qrData || body.approveUrl, { width: 180, margin: 1 });
-    setQrDataUrl(qr);
+    setSuccessMessage(`Solicitud enviada a bandeja (${body.recipients || 1} destinatario${body.recipients === 1 ? "" : "s"}).`);
+    setPlate("");
+    setReference("");
     setLoading(false);
   }
 
@@ -44,19 +43,12 @@ export function WorkshopAccessRequestForm() {
         <Input value={plate} onChange={(e) => setPlate(e.target.value)} placeholder="Matrícula" required />
         <Input value={reference} onChange={(e) => setReference(e.target.value)} placeholder="Referencia (opcional)" />
         <Button type="submit" disabled={loading || plate.trim().length < 5}>
-          {loading ? "Generando..." : "Generar link + QR"}
+          {loading ? "Enviando..." : "Enviar solicitud"}
         </Button>
       </form>
 
       {error ? <p className="text-sm text-rose-300">{error}</p> : null}
-
-      {approveUrl ? (
-        <div className="rounded-2xl border border-slate-700/70 bg-slate-900/35 p-3 text-sm text-slate-200">
-          <p className="font-semibold">Link de autorización</p>
-          <p className="mt-1 break-all text-xs text-cyan-200">{approveUrl}</p>
-          {qrDataUrl ? <img src={qrDataUrl} alt="QR de autorización" className="mt-3 h-36 w-36 rounded-lg border border-slate-600" /> : null}
-        </div>
-      ) : null}
+      {successMessage ? <p className="text-sm text-emerald-300">{successMessage}</p> : null}
     </div>
   );
 }
