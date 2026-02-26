@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
-import { Building2, UserRound, Wrench } from "lucide-react";
+import { Building2, ShieldCheck, UserRound, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -170,30 +170,51 @@ export default function RegistroPage() {
         </div>
       </Card>
 
-      <Card className="glass-panel rounded-[2rem] p-6">
-        <h2 className="text-xl font-bold text-white">Antes de seguir</h2>
-        <ul className="mt-4 space-y-3 text-sm text-slate-300">
-          <li className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">
-            Particular: registrás servicios y reparaciones para vender con más respaldo.
-          </li>
-          <li className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">
-            Automotora: gestionás múltiples unidades con señal comercial consistente.
-          </li>
-          <li className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">
-            Taller: cargás trabajos reales con autorización, sin acceder a identidad del dueño.
-          </li>
-          <li className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">
-            Sin cuenta no se permite cargar eventos ni operar en flujos privados.
-          </li>
-        </ul>
+      <Card className="glass-panel relative overflow-hidden rounded-[2rem] p-6">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(34,211,238,0.14),transparent_42%),radial-gradient(circle_at_88%_84%,rgba(16,185,129,0.14),transparent_40%)]" />
+        <div className="relative">
+          <h2 className="text-xl font-black text-white">Tu perfil define tu operación</h2>
+          <p className="mt-2 text-sm text-slate-300">Elegí el rol según cómo participás en la historia comercial del vehículo.</p>
 
-        <div className="mt-5 flex gap-2">
-          <Button asChild variant="outline">
-            <Link href="/login">Ir a ingreso</Link>
-          </Button>
-          <Button asChild variant="outline">
-            <Link href="/acceso">Vista resumida</Link>
-          </Button>
+          <div className="mt-4 grid gap-3">
+            <article className="rounded-2xl border border-cyan-300/30 bg-gradient-to-r from-cyan-400/12 to-transparent p-4">
+              <div className="inline-flex rounded-xl border border-cyan-300/45 bg-cyan-300/12 p-2 text-cyan-100">
+                <UserRound className="h-5 w-5" />
+              </div>
+              <h3 className="mt-3 text-base font-bold text-white">Particular</h3>
+              <p className="mt-1 text-sm text-slate-300">Registrás servicios y reparaciones para vender con más respaldo.</p>
+            </article>
+
+            <article className="rounded-2xl border border-indigo-300/30 bg-gradient-to-r from-indigo-400/12 to-transparent p-4">
+              <div className="inline-flex rounded-xl border border-indigo-300/45 bg-indigo-300/12 p-2 text-indigo-100">
+                <Building2 className="h-5 w-5" />
+              </div>
+              <h3 className="mt-3 text-base font-bold text-white">Automotora</h3>
+              <p className="mt-1 text-sm text-slate-300">Gestionás múltiples unidades con señal comercial consistente.</p>
+            </article>
+
+            <article className="rounded-2xl border border-emerald-300/30 bg-gradient-to-r from-emerald-400/12 to-transparent p-4">
+              <div className="inline-flex rounded-xl border border-emerald-300/45 bg-emerald-300/12 p-2 text-emerald-100">
+                <Wrench className="h-5 w-5" />
+              </div>
+              <h3 className="mt-3 text-base font-bold text-white">Taller</h3>
+              <p className="mt-1 text-sm text-slate-300">Cargás trabajos reales con autorización, sin acceder a identidad del dueño.</p>
+            </article>
+          </div>
+
+          <div className="mt-4 rounded-2xl border border-amber-300/35 bg-amber-300/12 px-3 py-2.5 text-sm text-amber-100">
+            <p className="inline-flex items-center gap-2 font-semibold text-amber-100">
+              <ShieldCheck className="h-4 w-4" />
+              Flujo privado y seguro
+            </p>
+            <p className="mt-1 text-amber-50/90">Sin cuenta no se permite cargar eventos ni operar en flujos privados.</p>
+          </div>
+
+          <div className="mt-5 flex gap-2">
+            <Button asChild variant="outline">
+              <Link href="/login">Ir a ingreso</Link>
+            </Button>
+          </div>
         </div>
       </Card>
     </div>

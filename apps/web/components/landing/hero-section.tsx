@@ -167,12 +167,12 @@ export function HeroSection() {
               </div>
             </div>
 
-            <div className="mt-4 rounded-xl border border-slate-700/70 bg-slate-900/45 p-3 text-sm text-slate-300">
-              <p className="inline-flex items-center gap-2 text-slate-200">
-                <AlertTriangle className="h-4 w-4 text-amber-300" />
+            <div className="kc-warning-callout mt-4 rounded-xl p-3">
+              <p className="kc-warning-title inline-flex items-center gap-2">
+                <AlertTriangle className="kc-warning-icon h-4 w-4" />
                 Lectura comercial
               </p>
-              <p className="mt-1.5">Con continuidad entre particular, automotora y taller, baja la incertidumbre y mejora la posición de cierre.</p>
+              <p className="kc-warning-copy mt-1.5">Con continuidad entre particular, automotora y taller, baja la incertidumbre y mejora la posición de cierre.</p>
             </div>
           </motion.div>
         </div>

@@ -181,6 +181,26 @@ select {
   color: rgb(252, 211, 77);
 }
 
+.kc-warning-callout {
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  background: linear-gradient(120deg, rgba(120, 53, 15, 0.92), rgba(146, 64, 14, 0.86));
+  box-shadow: inset 0 1px 0 rgba(254, 243, 199, 0.12), 0 10px 24px rgba(2, 6, 23, 0.36);
+}
+
+.kc-warning-title {
+  color: rgb(255, 251, 235);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.kc-warning-copy {
+  color: rgba(255, 251, 235, 0.92);
+}
+
+.kc-warning-icon {
+  color: rgb(253, 230, 138);
+}
+
 .kc-chip {
   border: 1px solid rgba(56, 189, 248, 0.42);
   background: linear-gradient(115deg, rgba(56, 189, 248, 0.14), rgba(16, 185, 129, 0.14));
@@ -360,6 +380,24 @@ html.light .kc-problem-icon {
 }
 
 html.light .kc-problem-alert {
+  color: rgb(180, 83, 9);
+}
+
+html.light .kc-warning-callout {
+  border-color: rgba(245, 158, 11, 0.52);
+  background: linear-gradient(120deg, rgba(255, 237, 213, 0.95), rgba(254, 215, 170, 0.86));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), 0 10px 20px rgba(15, 23, 42, 0.12);
+}
+
+html.light .kc-warning-title {
+  color: rgb(124, 45, 18);
+}
+
+html.light .kc-warning-copy {
+  color: rgba(124, 45, 18, 0.92);
+}
+
+html.light .kc-warning-icon {
   color: rgb(180, 83, 9);
 }
 

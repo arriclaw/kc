@@ -25,14 +25,14 @@ export function FinalCtaSection() {
           transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
         >
           <Image
-            src="/images/vehicles/renault-megane.jpg"
+            src="/images/dealer-handoff.svg"
             alt="Taller trabajando sobre vehículo"
             fill
             className="object-cover"
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/86 via-slate-950/70 to-slate-950/84" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(16,185,129,0.18),transparent_42%),radial-gradient(circle_at_82%_88%,rgba(56,189,248,0.16),transparent_40%)]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/93 via-slate-950/88 to-slate-950/92" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.16),transparent_44%),radial-gradient(circle_at_84%_86%,rgba(56,189,248,0.12),transparent_42%)]" />
       </div>
 
       <motion.div

@@ -68,9 +68,9 @@ export function ProblemSection() {
         ))}
       </motion.div>
 
-      <div className="mt-5 inline-flex items-center gap-2 rounded-xl border border-slate-700/70 bg-slate-900/35 px-3 py-2 text-sm text-slate-300">
-        <AlertTriangle className="kc-problem-alert h-4 w-4" />
-        Cada registro consistente mejora la lectura del auto y la calidad de la decisión.
+      <div className="kc-warning-callout mt-5 inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm">
+        <AlertTriangle className="kc-warning-icon h-4 w-4" />
+        <span className="kc-warning-copy">Cada registro consistente mejora la lectura del auto y la calidad de la decisión.</span>
       </div>
     </motion.section>
   );
