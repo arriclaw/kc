@@ -34,9 +34,9 @@ export function ProblemSection() {
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
       <div className="space-y-3">
-        <h2 className="text-3xl font-black leading-tight md:text-5xl">Sin trazabilidad, todos negocian a ciegas</h2>
+        <h2 className="text-3xl font-black leading-tight md:text-5xl">El historial no depende solo de lo que se dice</h2>
         <p className="text-base text-slate-300 md:text-lg">
-          Sin trazabilidad verificable, quien compra asume riesgo y quien vende pierde fuerza para sostener valor.
+          También de lo que realmente se hace.
         </p>
       </div>
 
@@ -64,7 +64,7 @@ export function ProblemSection() {
 
       <div className="mt-5 inline-flex items-center gap-2 rounded-xl border border-slate-700/70 bg-slate-900/35 px-3 py-2 text-sm text-slate-300">
         <AlertTriangle className="kc-problem-alert h-4 w-4" />
-        La incertidumbre no se corrige con relato: se reduce con respaldo verificable.
+        Cada registro suma claridad, continuidad y confianza.
       </div>
     </motion.section>
   );

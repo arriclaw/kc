@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { buttonLift, buttonLiftReduced, sectionReveal, sectionRevealReduced } from "@/lib/motion";
@@ -18,27 +17,27 @@ export function FinalCtaSection() {
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
       <div className="mx-auto max-w-3xl text-center">
-        <h2 className="text-3xl font-black leading-tight md:text-5xl">Comprá con claridad. Vendé con ventaja.</h2>
+        <h2 className="text-3xl font-black leading-tight md:text-5xl">Cada vehículo tiene una historia.</h2>
         <p className="mt-3 text-base text-slate-300 md:text-lg">
-          Con trazabilidad consistente, baja el riesgo de compra y sube la confianza comercial al vender.
-        </p>
-        <p className="mt-2 text-sm text-slate-400">
-          Abrí cuenta como particular, automotora o taller y mantené la continuidad de cada vehículo.
+          Cuando se registra, empieza a ser clara.
         </p>
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
           <motion.div variants={reduceMotion ? buttonLiftReduced : buttonLift} initial="rest" whileHover="hover" whileTap="tap">
-            <Button asChild size="lg" className="h-12 px-7 text-base">
-              <Link href="/vehiculos" className="inline-flex items-center gap-2">
-                Buscar un vehículo
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+            <Button asChild size="lg" variant="outline" className="h-12 px-7 text-base">
+              <Link href="/particular">Soy Particular</Link>
             </Button>
           </motion.div>
 
           <motion.div variants={reduceMotion ? buttonLiftReduced : buttonLift} initial="rest" whileHover="hover" whileTap="tap">
             <Button asChild size="lg" variant="outline" className="h-12 px-7 text-base">
-              <Link href="/acceso">Crear cuenta</Link>
+              <Link href="/dealer">Soy Automotora</Link>
+            </Button>
+          </motion.div>
+
+          <motion.div variants={reduceMotion ? buttonLiftReduced : buttonLift} initial="rest" whileHover="hover" whileTap="tap">
+            <Button asChild size="lg" variant="outline" className="h-12 px-7 text-base">
+              <Link href="/taller/onboarding">Soy Taller</Link>
             </Button>
           </motion.div>
         </div>

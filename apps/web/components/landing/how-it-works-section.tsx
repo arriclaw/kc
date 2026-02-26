@@ -7,18 +7,18 @@ import { sectionReveal, sectionRevealReduced, staggerContainer, staggerContainer
 const steps = [
   {
     icon: SearchCheck,
-    title: "Ingresás la matrícula",
-    body: "Entrás en segundos al auto y a su contexto operativo real."
+    title: "El vehículo entra al sistema",
+    body: "Todo empieza con un registro real."
   },
   {
     icon: DatabaseZap,
-    title: "Registrás eventos vos o tu taller",
-    body: "Cada registro suma trazabilidad continua para comprar con criterio o vender con mejor señal comercial."
+    title: "Su historia crece con cada registro real",
+    body: "Particular, automotora y taller suman continuidad."
   },
   {
     icon: Shield,
-    title: "Recibís una señal clara para decidir",
-    body: "Comprás con menos riesgo y vendés con mejor posición comercial."
+    title: "El historial acompaña al vehículo en el tiempo",
+    body: "Más claridad para decidir. Más respaldo para vender."
   }
 ];
 

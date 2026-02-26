@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, BadgeCheck, CheckCircle2, CircleDashed, FileCheck2, ShieldCheck } from "lucide-react";
+import { BadgeCheck, CheckCircle2, CircleDashed, FileCheck2, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -9,11 +9,9 @@ import { Button } from "@/components/ui/button";
 import { buttonLift, buttonLiftReduced, staggerContainer, staggerContainerReduced, staggerItem, staggerItemReduced } from "@/lib/motion";
 
 const heroBullets = [
-  "Señales reales para decidir mejor",
-  "Respaldo que mejora tu posición al vender",
-  "Vos, tu automotora o tu taller pueden registrar eventos",
-  "Menos fricción en negociación",
-  "Confianza comercial desde el primer contacto"
+  "Inmutable",
+  "Trazable",
+  "Con evidencia real"
 ];
 
 const heroSlides = [
@@ -52,10 +50,6 @@ export function HeroSection() {
     return () => clearInterval(interval);
   }, []);
 
-  function scrollToExample() {
-    document.getElementById("ejemplo")?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
-  }
-
   return (
     <section ref={containerRef} className="kc-panel rounded-[2rem] p-6 md:p-10">
       <div className="grid items-stretch gap-6 lg:grid-cols-[1.04fr_0.96fr]">
@@ -65,16 +59,17 @@ export function HeroSection() {
             Infraestructura de confianza vehicular
           </div>
 
-          <h1 className="max-w-2xl text-5xl font-black leading-[0.92] tracking-[-0.03em] md:text-7xl">
-            Historial claro del auto,
-            <br />
-            <span className="text-emerald-400">sin verso.</span>
+          <h1 className="max-w-3xl text-5xl font-black leading-[0.92] tracking-[-0.03em] md:text-7xl">
+            Historial claro del{" "}
+            <span className="whitespace-nowrap">
+              auto, <span className="text-emerald-400">sin verso.</span>
+            </span>
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-slate-300 md:text-xl">
-            Registrado por vos y por quienes lo mantienen.
-            <br />
-            Trazable. Con evidencia. Permanente.
+            Un registro real, claro y continuo.
+            <br className="hidden md:block" />
+            Lo construís vos, tu automotora y tu taller.
           </p>
 
           <motion.ul
@@ -82,7 +77,7 @@ export function HeroSection() {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             variants={reduceMotion ? staggerContainerReduced : staggerContainer}
-            className="grid gap-2 text-sm text-slate-200 sm:grid-cols-2 sm:text-base"
+            className="grid gap-2 text-sm text-slate-200 sm:grid-cols-3 sm:text-base"
           >
             {heroBullets.map((bullet) => (
               <motion.li key={bullet} variants={reduceMotion ? staggerItemReduced : staggerItem} className="inline-flex items-center gap-2.5">
@@ -93,38 +88,25 @@ export function HeroSection() {
           </motion.ul>
 
           <div className="space-y-3">
-            <div className="flex flex-wrap items-center gap-3">
-              <motion.div variants={reduceMotion ? buttonLiftReduced : buttonLift} initial="rest" whileHover="hover" whileTap="tap">
-                <Button asChild size="lg" className="h-12 px-7 text-base">
-                  <Link href="/vehiculos" className="inline-flex items-center gap-2">
-                    Buscar un vehículo
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </Button>
-              </motion.div>
-
-              <motion.div variants={reduceMotion ? buttonLiftReduced : buttonLift} initial="rest" whileHover="hover" whileTap="tap">
-                <Button type="button" size="lg" variant="outline" className="h-12 px-6" onClick={scrollToExample}>
-                  Ver ejemplo real
-                </Button>
-              </motion.div>
-            </div>
-
             <div className="flex flex-wrap gap-2">
-              <Button asChild variant="outline" className="rounded-full px-5">
-                <Link href="/particular">Soy particular</Link>
-              </Button>
-              <Button asChild variant="outline" className="rounded-full px-5">
-                <Link href="/dealer">Soy automotora</Link>
-              </Button>
+              <motion.div variants={reduceMotion ? buttonLiftReduced : buttonLift} initial="rest" whileHover="hover" whileTap="tap">
+                <Button asChild variant="outline" className="rounded-full px-5">
+                  <Link href="/particular">Soy Particular</Link>
+                </Button>
+              </motion.div>
+              <motion.div variants={reduceMotion ? buttonLiftReduced : buttonLift} initial="rest" whileHover="hover" whileTap="tap">
+                <Button asChild variant="outline" className="rounded-full px-5">
+                  <Link href="/dealer">Soy Automotora</Link>
+                </Button>
+              </motion.div>
+              <motion.div variants={reduceMotion ? buttonLiftReduced : buttonLift} initial="rest" whileHover="hover" whileTap="tap">
+                <Button asChild variant="outline" className="rounded-full px-5">
+                  <Link href="/taller/onboarding">Soy Taller</Link>
+                </Button>
+              </motion.div>
             </div>
           </div>
-          <p className="text-sm text-slate-400">Registro verificable • Con evidencia real (particulares, automotoras y talleres) • Historial compartible</p>
-          <p className="text-sm text-slate-400">Podés registrar eventos vos mismo o permitir que tu taller los registre por vos.</p>
-          <p className="text-sm text-slate-400">Un historial claro, continuo y verificable en el tiempo.</p>
-          <p className="text-sm text-slate-500">
-            No reemplaza una inspección mecánica presencial. Sí ordena la información y baja la incertidumbre.
-          </p>
+          <p className="text-sm text-slate-400">Trazable. Con evidencia. En el tiempo.</p>
         </div>
 
         <div className="relative min-h-[520px] overflow-hidden rounded-[1.75rem] border border-slate-700/65">
@@ -161,9 +143,9 @@ export function HeroSection() {
 
             <div className="mt-3 space-y-2">
               {[
-                { title: "Service — Autodeclarado", date: "12/2024", ok: true, evidence: true },
+                { title: "Service — Particular", date: "12/2024", ok: true, evidence: false },
                 { title: "Cambio de frenos — Taller García (Con evidencia)", date: "08/2024", ok: true, evidence: true },
-                { title: "Transferencia", date: "03/2024", ok: false, evidence: false }
+                { title: "Ingreso a stock — Automotora", date: "03/2024", ok: false, evidence: false }
               ].map((event) => (
                 <div key={event.title} className="kc-hero-proof-row flex items-center justify-between rounded-xl border px-3 py-2">
                   <div>

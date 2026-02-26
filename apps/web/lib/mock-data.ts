@@ -43,30 +43,30 @@ export const demoRecords: DemoRecord[] = [
     events: [
       {
         id: "ev-1",
-        title: "Service oficial",
+        title: "Service — Particular",
         date: "12/2024",
-        source: "Taller oficial",
+        source: "Particular",
         verified: true,
-        evidence: true,
-        details: "Cambio de aceite, filtros y diagnóstico electrónico."
+        evidence: false,
+        details: "Service registrado por titular con continuidad en fecha y kilometraje."
       },
       {
         id: "ev-2",
-        title: "ITV / Inspección",
+        title: "Cambio de frenos — Taller García (Con evidencia)",
         date: "08/2024",
-        source: "Centro habilitado",
+        source: "Taller García",
         verified: true,
         evidence: true,
-        details: "Inspección aprobada sin observaciones críticas."
+        details: "Trabajo registrado por taller con comprobante adjunto."
       },
       {
         id: "ev-3",
-        title: "Transferencia",
+        title: "Ingreso a stock — Automotora",
         date: "03/2024",
-        source: "Registro",
+        source: "Automotora",
         verified: true,
         evidence: false,
-        details: "Cambio de titularidad entre usuarios registrados."
+        details: "Ingreso comercial registrado con continuidad del vehículo."
       },
       {
         id: "ev-4",

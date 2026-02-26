@@ -34,9 +34,9 @@ export function SolutionSection() {
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
       <div className="space-y-3">
-        <h2 className="text-3xl font-black leading-tight md:text-5xl">Un sistema verificable para decidir y cerrar mejor</h2>
+        <h2 className="text-3xl font-black leading-tight md:text-5xl">Para quien mantiene, vende o compra un vehículo</h2>
         <p className="max-w-5xl text-base text-slate-300 md:text-lg">
-          Kilómetro Claro convierte datos sueltos en señales confiables: más claridad para comprar y mejor posición comercial para vender.
+          Más claridad para decidir. Más respaldo en el tiempo. Más confianza en cada historia.
         </p>
       </div>
 
