@@ -20,9 +20,15 @@ export function FeaturedTeaserSection() {
       variants={reduceMotion ? sectionRevealReduced : sectionReveal}
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-emerald-400/10 blur-3xl"
+        animate={reduceMotion ? undefined : { x: [0, -18, 0], y: [0, -10, 0], opacity: [0.38, 0.68, 0.38] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      />
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h2 className="text-3xl font-black leading-tight md:text-5xl">Unidades con señal comercial activa</h2>
+          <h2 className="text-3xl font-black leading-tight md:text-5xl">Autos destacados con registros reales</h2>
         </div>
         <Button asChild variant="outline">
           <Link href="/vehiculos">Ver todos</Link>
@@ -81,14 +87,21 @@ function FeaturedCard({ id, make, model, year, plate, imageUrl, verified, hasCon
       variants={reduceMotion ? cardLiftReduced : cardLift}
       className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-700/75 bg-slate-900/45"
     >
-      <div className="relative h-44">
-        <Image
-          src={src}
-          alt={`${make} ${model}`}
-          fill
-          className="object-cover"
-          onError={() => setSrc("/images/vehicles/generic-car.jpg")}
-        />
+      <div className="relative h-44 overflow-hidden">
+        <motion.div
+          className="absolute inset-0"
+          initial={false}
+          whileHover={reduceMotion ? undefined : { scale: 1.07 }}
+          transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <Image
+            src={src}
+            alt={`${make} ${model}`}
+            fill
+            className="object-cover"
+            onError={() => setSrc("/images/vehicles/generic-car.jpg")}
+          />
+        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 to-transparent" />
       </div>
       <div className="flex flex-1 flex-col space-y-3 p-4">

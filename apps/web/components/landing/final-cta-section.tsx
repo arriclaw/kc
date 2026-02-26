@@ -16,6 +16,12 @@ export function FinalCtaSection() {
       variants={reduceMotion ? sectionRevealReduced : sectionReveal}
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -left-20 top-1/2 h-56 w-56 -translate-y-1/2 rounded-full bg-cyan-400/10 blur-3xl"
+        animate={reduceMotion ? undefined : { x: [0, 12, 0], opacity: [0.35, 0.62, 0.35] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+      />
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="text-3xl font-black leading-tight md:text-5xl">Cada vehículo tiene una historia.</h2>
         <p className="mt-3 text-base text-slate-300 md:text-lg">

@@ -1,12 +1,13 @@
 import type { Transition, Variants } from "framer-motion";
 
 export const sectionReveal: Variants = {
-  hidden: { opacity: 0, y: 22 },
+  hidden: { opacity: 0, y: 34, filter: "blur(6px)" },
   show: {
     opacity: 1,
     y: 0,
+    filter: "blur(0px)",
     transition: {
-      duration: 0.56,
+      duration: 0.68,
       ease: [0.22, 1, 0.36, 1]
     } as Transition
   }
@@ -27,8 +28,8 @@ export const staggerContainer: Variants = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.08
+      staggerChildren: 0.12,
+      delayChildren: 0.14
     }
   }
 };
@@ -44,12 +45,13 @@ export const staggerContainerReduced: Variants = {
 };
 
 export const staggerItem: Variants = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 24, scale: 0.985 },
   show: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
-      duration: 0.44,
+      duration: 0.56,
       ease: [0.22, 1, 0.36, 1]
     } as Transition
   }
@@ -69,10 +71,10 @@ export const staggerItemReduced: Variants = {
 export const cardLift = {
   rest: { y: 0, scale: 1 },
   hover: {
-    y: -6,
-    scale: 1.008,
+    y: -10,
+    scale: 1.012,
     transition: {
-      duration: 0.24,
+      duration: 0.28,
       ease: [0.22, 1, 0.36, 1]
     } as Transition
   }
@@ -92,10 +94,10 @@ export const cardLiftReduced = {
 export const buttonLift = {
   rest: { y: 0, scale: 1 },
   hover: {
-    y: -2,
-    scale: 1.01,
+    y: -4,
+    scale: 1.016,
     transition: {
-      duration: 0.18,
+      duration: 0.22,
       ease: [0.22, 1, 0.36, 1]
     } as Transition
   },

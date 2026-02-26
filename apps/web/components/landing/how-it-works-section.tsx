@@ -33,6 +33,12 @@ export function HowItWorksSection() {
       variants={reduceMotion ? sectionRevealReduced : sectionReveal}
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-cyan-400/10 blur-3xl"
+        animate={reduceMotion ? undefined : { x: [0, 18, 0], y: [0, -8, 0], opacity: [0.42, 0.7, 0.42] }}
+        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+      />
       <div className="space-y-3">
         <h2 className="text-3xl font-black leading-tight md:text-5xl">Del dato inicial a una decisión con fundamento</h2>
         <p className="max-w-5xl text-base text-slate-300 md:text-lg">

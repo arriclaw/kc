@@ -36,6 +36,12 @@ export function SolutionSection() {
       variants={reduceMotion ? sectionRevealReduced : sectionReveal}
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-emerald-400/10 blur-3xl"
+        animate={reduceMotion ? undefined : { x: [0, -14, 0], y: [0, 10, 0], opacity: [0.45, 0.78, 0.45] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      />
       <div className="space-y-3">
         <h2 className="text-3xl font-black leading-tight md:text-5xl">Tres actores, una misma historia confiable</h2>
         <p className="max-w-5xl text-base text-slate-300 md:text-lg">

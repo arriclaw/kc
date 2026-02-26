@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { AlertTriangle, BadgeCheck, CheckCircle2, CircleDashed, FileCheck2, ShieldCheck } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
@@ -44,7 +45,7 @@ export function HeroSection() {
           <p className="max-w-xl text-base leading-relaxed text-slate-300 md:text-xl">
             Un registro real, claro y continuo.
             <br className="hidden md:block" />
-            Lo construís vos, las automotoras y los talleres.
+            Lo construyen los particulares, las automotoras y los talleres.
           </p>
 
           <p className="max-w-xl text-sm leading-relaxed text-slate-400 md:text-base">
@@ -90,6 +91,12 @@ export function HeroSection() {
 
         <div className="relative min-h-[468px] overflow-hidden rounded-[1.75rem] border border-slate-700/65 lg:min-h-[500px]">
           <motion.div style={{ y: yA }} className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(16,185,129,0.22),transparent_40%),radial-gradient(circle_at_80%_10%,rgba(56,189,248,0.2),transparent_42%),linear-gradient(160deg,rgba(2,6,23,0.96),rgba(8,16,32,0.94))]" />
+          <motion.div style={{ y: yB }} className="absolute inset-0 opacity-30">
+            <Image src="/images/vehicles/renault-megane.jpg" alt="Renault Megane" fill className="object-cover" />
+          </motion.div>
+          <motion.div style={{ y: yA }} className="absolute inset-0 opacity-[0.18] mix-blend-screen">
+            <Image src="/images/vehicles/toyota-corolla.jpg" alt="Toyota Corolla" fill className="object-cover scale-110 blur-[2px]" />
+          </motion.div>
           <motion.div style={{ y: yB }} className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),transparent_30%,rgba(15,23,42,0.34))]" />
           <div className="absolute -left-12 top-12 h-44 w-44 rounded-full bg-cyan-400/15 blur-3xl" />
           <div className="absolute -right-16 bottom-4 h-56 w-56 rounded-full bg-emerald-400/12 blur-3xl" />

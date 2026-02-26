@@ -33,6 +33,12 @@ export function ProblemSection() {
       variants={reduceMotion ? sectionRevealReduced : sectionReveal}
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-amber-400/10 blur-3xl"
+        animate={reduceMotion ? undefined : { x: [-8, 10, -8], y: [0, 10, 0], opacity: [0.4, 0.7, 0.4] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+      />
       <div className="space-y-3">
         <h2 className="text-3xl font-black leading-tight md:text-5xl">El valor del auto también se construye con hechos</h2>
         <p className="text-base text-slate-300 md:text-lg">
