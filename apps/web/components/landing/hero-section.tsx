@@ -69,7 +69,7 @@ export function HeroSection() {
           <p className="max-w-xl text-base leading-relaxed text-slate-300 md:text-xl">
             Un registro real, claro y continuo.
             <br className="hidden md:block" />
-            Lo construís vos, tu automotora y tu taller.
+            Lo construís vos, las automotoras y los talleres.
           </p>
 
           <p className="max-w-xl text-sm leading-relaxed text-slate-400 md:text-base">
