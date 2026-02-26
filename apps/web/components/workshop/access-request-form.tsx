@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 
 export function WorkshopAccessRequestForm() {
   const [plate, setPlate] = useState("");
-  const [vin, setVin] = useState("");
+  const [reference, setReference] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [approveUrl, setApproveUrl] = useState<string | null>(null);
@@ -21,7 +21,7 @@ export function WorkshopAccessRequestForm() {
     const res = await fetch("/api/workshop/access-requests", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ plate, vin })
+      body: JSON.stringify({ plate, vin: reference })
     });
 
     const body = await res.json().catch(() => ({}));
@@ -42,7 +42,7 @@ export function WorkshopAccessRequestForm() {
     <div className="mt-4 space-y-3">
       <form onSubmit={handleSubmit} className="grid gap-3 md:grid-cols-[1fr_1fr_auto]">
         <Input value={plate} onChange={(e) => setPlate(e.target.value)} placeholder="Matrícula" required />
-        <Input value={vin} onChange={(e) => setVin(e.target.value)} placeholder="VIN (opcional)" />
+        <Input value={reference} onChange={(e) => setReference(e.target.value)} placeholder="Referencia (opcional)" />
         <Button type="submit" disabled={loading || plate.trim().length < 5}>
           {loading ? "Generando..." : "Generar link + QR"}
         </Button>

@@ -19,12 +19,12 @@ export function HeaderActions() {
 
   if (!loggedIn) {
     return (
-      <div className="flex items-center gap-2">
+      <div className="order-2 flex shrink-0 items-center gap-1.5 sm:order-none sm:gap-2">
         <ThemeToggle />
-        <Button asChild size="sm" variant="outline" className="hidden sm:inline-flex">
+        <Button asChild size="sm" variant="outline" className="h-9 px-3 text-xs sm:h-10 sm:px-4 sm:text-sm">
           <Link href="/login">Ingresar</Link>
         </Button>
-        <Button asChild size="sm" className="h-10 px-4">
+        <Button asChild size="sm" className="h-9 px-3 text-xs sm:h-10 sm:px-4 sm:text-sm">
           <Link href="/registro">Crear cuenta</Link>
         </Button>
       </div>
@@ -33,15 +33,15 @@ export function HeaderActions() {
 
   const role = session?.user?.role ?? "OWNER";
 
-  function handleSignOut() {
+  async function handleSignOut() {
     const confirmed = window.confirm("¿Querés cerrar sesión ahora?");
     if (!confirmed) return;
-    const callbackUrl = `${window.location.origin}/`;
-    void signOut({ callbackUrl });
+    await signOut({ redirect: false });
+    window.location.assign(`${window.location.origin}/`);
   }
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="order-2 flex shrink-0 items-center gap-1.5 sm:order-none sm:gap-2">
       <ThemeToggle />
       <div className="user-meta hidden min-h-[44px] max-w-[260px] rounded-xl px-3 py-1 md:flex md:flex-col md:justify-center">
         <p className="inline-flex items-center gap-1.5 truncate text-sm font-black leading-[1.1]">

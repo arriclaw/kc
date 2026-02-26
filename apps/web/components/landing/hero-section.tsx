@@ -37,7 +37,7 @@ export function HeroSection() {
 
           <h1 className="max-w-3xl text-5xl font-black leading-[0.92] tracking-[-0.03em] md:text-7xl">
             Historial claro del{" "}
-            <span className="whitespace-nowrap">
+            <span className="md:whitespace-nowrap">
               auto, <span className="text-emerald-400">sin verso.</span>
             </span>
           </h1>
@@ -124,12 +124,12 @@ export function HeroSection() {
                 { title: "Cambio de frenos — Taller García (Con evidencia)", date: "08/2024", ok: true, evidence: true },
                 { title: "Ingreso a stock — Automotora", date: "03/2024", ok: false, evidence: false }
               ].map((event) => (
-                <div key={event.title} className="kc-hero-proof-row flex items-center justify-between rounded-xl border px-3 py-2">
+                <div key={event.title} className="kc-hero-proof-row flex flex-col gap-2 rounded-xl border px-3 py-2 sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <p className="text-sm font-semibold text-slate-100">{event.title}</p>
                     <p className="text-xs text-slate-400">{event.date}</p>
                   </div>
-                  <div className="flex gap-1.5">
+                  <div className="flex flex-wrap gap-1.5">
                     {event.ok ? (
                       <span className="kc-status-chip kc-status-chip--ok">
                         <BadgeCheck className="h-3.5 w-3.5" />

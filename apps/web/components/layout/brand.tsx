@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export function BrandMark() {
   return (
-    <Link href="/" className="group inline-flex items-center gap-3.5">
-      <span className="relative inline-flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-emerald-300/45 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 shadow-[0_10px_24px_rgba(15,23,42,0.5)]">
+    <Link href="/" className="group inline-flex min-w-0 items-center gap-2 sm:gap-3.5">
+      <span className="relative inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-emerald-300/45 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 shadow-[0_10px_24px_rgba(15,23,42,0.5)] sm:h-12 sm:w-12">
         <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.24),transparent_45%)]" />
         <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_75%_78%,rgba(56,189,248,0.24),transparent_40%)]" />
         <span className="pointer-events-none absolute left-[7px] top-[12px] h-[2px] w-5 rounded-full bg-emerald-200/70" />
@@ -19,11 +19,11 @@ export function BrandMark() {
         <span className="pointer-events-none absolute bottom-[7px] h-[2px] w-7 rounded-full bg-gradient-to-r from-emerald-200 to-sky-300 opacity-90" />
         <span className="pointer-events-none absolute right-[7px] top-[8px] h-1.5 w-1.5 rounded-full bg-sky-300/90" />
       </span>
-      <span className="min-w-0">
-        <span className="brand-title block truncate text-[20px] font-black leading-none tracking-[-0.02em] text-slate-100">
+      <span className="min-w-0 max-w-[180px] sm:max-w-none">
+        <span className="brand-title block truncate text-[17px] font-black leading-none tracking-[-0.02em] text-slate-100 sm:text-[20px]">
           Kilómetro <span className="brand-claro text-emerald-300">Claro</span>
         </span>
-        <span className="brand-subtitle mt-0.5 block truncate text-[12px] font-semibold uppercase tracking-[0.14em] text-cyan-200/80 leading-none">
+        <span className="brand-subtitle mt-0.5 hidden truncate text-[12px] font-semibold uppercase tracking-[0.14em] text-cyan-200/80 leading-none sm:block">
           Historial Vehicular Inteligente
         </span>
       </span>

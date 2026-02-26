@@ -98,14 +98,14 @@ export function TransferVehicleAction({ vehicleId, vehicleLabel, className }: Pr
   }
 
   return (
-    <div className={cn("relative inline-flex", className)}>
+    <div className={cn("w-full space-y-2", className)}>
       <Button size="sm" variant="outline" onClick={() => setOpen((prev) => !prev)} className="w-full">
         <ArrowRightLeft className="mr-1.5 h-4 w-4" />
         Transferir
       </Button>
 
       {open ? (
-        <div className="absolute right-0 top-[calc(100%+0.5rem)] z-40 w-[min(24rem,calc(100vw-2rem))] space-y-2 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 shadow-2xl">
+        <div className="w-full space-y-2 rounded-xl border border-slate-700/80 bg-slate-950/95 p-3 shadow-2xl">
           <div className="relative">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
             <Input

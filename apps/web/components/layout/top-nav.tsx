@@ -48,12 +48,12 @@ export function TopNav() {
   }
 
   return (
-    <nav className="flex flex-1 flex-wrap items-center justify-center gap-2">
+    <nav className="order-3 flex w-full flex-wrap items-center justify-center gap-1.5 sm:order-none sm:w-auto sm:flex-1 sm:gap-2">
       {items.map((item) => (
         <Link
           key={`${item.href}-${item.label}`}
           href={item.href}
-          className="top-nav-link rounded-full border border-transparent px-4 py-2 text-[13px] font-bold uppercase tracking-[0.11em] text-slate-100 transition hover:border-cyan-300/40 hover:bg-slate-800/70"
+          className="top-nav-link rounded-full border border-transparent px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.09em] text-slate-100 transition hover:border-cyan-300/40 hover:bg-slate-800/70 sm:px-4 sm:py-2 sm:text-[13px] sm:tracking-[0.11em]"
         >
           {item.label}
         </Link>
