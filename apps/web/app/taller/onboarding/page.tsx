@@ -39,7 +39,7 @@ export default function TallerOnboardingPage() {
   return (
     <div className="mx-auto max-w-2xl space-y-4">
       <Card className="surface-card space-y-4 p-6">
-        <h1 className="text-3xl font-black">Onboarding de Taller</h1>
+        <h1 className="text-3xl font-black">Perfil de Taller</h1>
         <p className="text-sm text-slate-300">Completá tus datos para empezar a solicitar acceso y registrar mantenimientos.</p>
 
         <div className="space-y-1.5">

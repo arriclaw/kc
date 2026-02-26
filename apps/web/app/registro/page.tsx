@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { Building2, UserRound, Wrench } from "lucide-react";
@@ -23,6 +23,7 @@ function parseApiError(text: string) {
 
 export default function RegistroPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { status } = useSession();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -39,6 +40,13 @@ export default function RegistroPage() {
       router.replace("/mi-garage");
     }
   }, [status, router]);
+
+  useEffect(() => {
+    const incomingRole = searchParams.get("role");
+    if (incomingRole === "OWNER" || incomingRole === "DEALER" || incomingRole === "WORKSHOP") {
+      setRole(incomingRole);
+    }
+  }, [searchParams]);
 
   async function handleRegister() {
     setLoading(true);

@@ -1,10 +1,9 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { BadgeCheck, CheckCircle2, CircleDashed, FileCheck2, ShieldCheck } from "lucide-react";
-import Image from "next/image";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { AlertTriangle, BadgeCheck, CheckCircle2, CircleDashed, FileCheck2, ShieldCheck } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { buttonLift, buttonLiftReduced, staggerContainer, staggerContainerReduced, staggerItem, staggerItemReduced } from "@/lib/motion";
 
@@ -14,23 +13,7 @@ const heroBullets = [
   "Más confianza para cerrar"
 ];
 
-const heroSlides = [
-  {
-    src: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1400&q=80",
-    alt: "Auto rojo en entorno urbano"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1400&q=80",
-    alt: "SUV blanco en ruta"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1400&q=80",
-    alt: "Hatchback de gama media"
-  }
-];
-
 export function HeroSection() {
-  const [slideIndex, setSlideIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const reduceMotion = useReducedMotion();
 
@@ -39,16 +22,8 @@ export function HeroSection() {
     offset: ["start end", "end start"]
   });
 
-  const yA = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [-10, 12]);
-  const yB = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [8, -10]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSlideIndex((prev) => (prev + 1) % heroSlides.length);
-    }, 3800);
-
-    return () => clearInterval(interval);
-  }, []);
+  const yA = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [-6, 8]);
+  const yB = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [10, -6]);
 
   return (
     <section ref={containerRef} className="kc-panel rounded-[2rem] p-6 md:p-10">
@@ -95,17 +70,17 @@ export function HeroSection() {
             <div className="flex flex-wrap gap-2">
               <motion.div variants={reduceMotion ? buttonLiftReduced : buttonLift} initial="rest" whileHover="hover" whileTap="tap">
                 <Button asChild variant="outline" className="rounded-full px-5">
-                  <Link href="/particular">Soy Particular</Link>
+                  <Link href="/registro?role=OWNER">Soy Particular</Link>
                 </Button>
               </motion.div>
               <motion.div variants={reduceMotion ? buttonLiftReduced : buttonLift} initial="rest" whileHover="hover" whileTap="tap">
                 <Button asChild variant="outline" className="rounded-full px-5">
-                  <Link href="/dealer">Soy Automotora</Link>
+                  <Link href="/registro?role=DEALER">Soy Automotora</Link>
                 </Button>
               </motion.div>
               <motion.div variants={reduceMotion ? buttonLiftReduced : buttonLift} initial="rest" whileHover="hover" whileTap="tap">
                 <Button asChild variant="outline" className="rounded-full px-5">
-                  <Link href="/taller/onboarding">Soy Taller</Link>
+                  <Link href="/registro?role=WORKSHOP">Soy Taller</Link>
                 </Button>
               </motion.div>
             </div>
@@ -114,38 +89,29 @@ export function HeroSection() {
         </div>
 
         <div className="relative min-h-[468px] overflow-hidden rounded-[1.75rem] border border-slate-700/65 lg:min-h-[500px]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={heroSlides[slideIndex]?.src}
-              style={{ y: yA }}
-              className="absolute inset-0"
-              initial={{ opacity: 0.22 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0.22 }}
-              transition={{ duration: reduceMotion ? 0.16 : 0.58, ease: "easeInOut" }}
-            >
-              <Image
-                src={heroSlides[slideIndex]!.src}
-                alt={heroSlides[slideIndex]!.alt}
-                fill
-                priority
-                className="object-cover"
-              />
-            </motion.div>
-          </AnimatePresence>
-          <motion.div style={{ y: yB }} className="absolute inset-0 bg-gradient-to-t from-slate-950/84 via-slate-900/42 to-slate-900/25" />
+          <motion.div style={{ y: yA }} className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(16,185,129,0.22),transparent_40%),radial-gradient(circle_at_80%_10%,rgba(56,189,248,0.2),transparent_42%),linear-gradient(160deg,rgba(2,6,23,0.96),rgba(8,16,32,0.94))]" />
+          <motion.div style={{ y: yB }} className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),transparent_30%,rgba(15,23,42,0.34))]" />
+          <div className="absolute -left-12 top-12 h-44 w-44 rounded-full bg-cyan-400/15 blur-3xl" />
+          <div className="absolute -right-16 bottom-4 h-56 w-56 rounded-full bg-emerald-400/12 blur-3xl" />
 
           <motion.div
             initial={{ opacity: 0, y: reduceMotion ? 0 : 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: reduceMotion ? 0.2 : 0.48, ease: [0.22, 1, 0.36, 1] }}
-            className="kc-hero-proof absolute inset-x-4 bottom-4 rounded-2xl border p-4"
+            className="kc-hero-proof absolute inset-x-4 top-4 bottom-4 rounded-2xl border p-4 md:p-5"
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-300">Señal verificable</p>
-            <p className="mt-1 text-lg font-bold text-white">Renault Megane 2014</p>
-            <p className="text-sm text-slate-300">SBT2885</p>
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-300">Consistencia verificable</p>
+                <p className="mt-1 text-lg font-bold text-white">Renault Megane 2014 • SBT2885</p>
+              </div>
+              <span className="kc-status-chip kc-status-chip--ok">
+                <BadgeCheck className="h-3.5 w-3.5" />
+                Señal alta
+              </span>
+            </div>
 
-            <div className="mt-3 space-y-2">
+            <div className="mt-4 space-y-2">
               {[
                 { title: "Service — Particular", date: "12/2024", ok: true, evidence: false },
                 { title: "Cambio de frenos — Taller García (Con evidencia)", date: "08/2024", ok: true, evidence: true },
@@ -179,7 +145,7 @@ export function HeroSection() {
               ))}
             </div>
 
-            <div className="mt-3 grid grid-cols-3 gap-2">
+            <div className="mt-4 grid grid-cols-3 gap-2">
               <div className="kc-mini-metric">
                 <p className="text-[11px] text-slate-400">Transparencia</p>
                 <p className="text-sm font-semibold text-emerald-300">Alta</p>
@@ -192,6 +158,14 @@ export function HeroSection() {
                 <p className="text-[11px] text-slate-400">Confianza</p>
                 <p className="text-sm font-semibold text-white">92%</p>
               </div>
+            </div>
+
+            <div className="mt-4 rounded-xl border border-slate-700/70 bg-slate-900/45 p-3 text-sm text-slate-300">
+              <p className="inline-flex items-center gap-2 text-slate-200">
+                <AlertTriangle className="h-4 w-4 text-amber-300" />
+                Lectura comercial
+              </p>
+              <p className="mt-1.5">Con continuidad entre particular, automotora y taller, baja la incertidumbre y mejora la posición de cierre.</p>
             </div>
           </motion.div>
         </div>
