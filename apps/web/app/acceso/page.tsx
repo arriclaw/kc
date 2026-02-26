@@ -10,10 +10,10 @@ export default function AccesoPage() {
         <span className="glass-chip inline-flex text-xs font-semibold uppercase tracking-[0.16em]">Acceso privado</span>
         <h1 className="mt-4 text-3xl font-black text-white sm:text-4xl">Primero tu cuenta, después tu operación</h1>
         <p className="mt-2 max-w-2xl text-sm text-slate-300">
-          Para registrar autos y cargar servicios, incidentes, cambios de piezas o mejoras, necesitás iniciar sesión.
+          Para cargar eventos, administrar unidades o trabajar como taller autorizado, primero necesitás iniciar sesión.
         </p>
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        <div className="mt-6 grid gap-4 sm:grid-cols-3">
           <div className="rounded-2xl border border-slate-700/70 bg-slate-900/40 p-5">
             <div className="inline-flex rounded-xl border border-cyan-300/45 bg-cyan-300/10 p-2 text-cyan-100">
               <UserRound className="h-5 w-5" />
@@ -28,6 +28,14 @@ export default function AccesoPage() {
             </div>
             <h2 className="mt-3 text-lg font-bold text-white">Cuenta Automotora</h2>
             <p className="mt-1 text-sm text-slate-300">Gestioná múltiples autos y trazabilidad por unidad de stock.</p>
+          </div>
+
+          <div className="rounded-2xl border border-slate-700/70 bg-slate-900/40 p-5">
+            <div className="inline-flex rounded-xl border border-emerald-300/45 bg-emerald-300/10 p-2 text-emerald-100">
+              <Wrench className="h-5 w-5" />
+            </div>
+            <h2 className="mt-3 text-lg font-bold text-white">Cuenta Taller</h2>
+            <p className="mt-1 text-sm text-slate-300">Registrá services y reparaciones en autos con autorización del titular.</p>
           </div>
         </div>
 
@@ -46,8 +54,8 @@ export default function AccesoPage() {
         <ol className="mt-4 space-y-3 text-sm text-slate-300">
           <li className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">1. Elegís tipo de cuenta y te registrás.</li>
           <li className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">2. Ingresás al panel privado.</li>
-          <li className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">3. Dás de alta tu auto.</li>
-          <li className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">4. Cargás eventos con pruebas y trazabilidad.</li>
+          <li className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">3. Particular/automotora registran autos; taller solicita autorización.</li>
+          <li className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">4. Cada evento queda inmutable, con procedencia y respaldo.</li>
         </ol>
 
         <div className="mt-5 space-y-2 text-xs text-slate-300">

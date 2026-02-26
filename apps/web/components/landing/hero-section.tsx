@@ -11,6 +11,7 @@ import { buttonLift, buttonLiftReduced, staggerContainer, staggerContainerReduce
 const heroBullets = [
   "Señales reales para decidir mejor",
   "Respaldo que mejora tu posición al vender",
+  "Vos, tu automotora o tu taller pueden registrar eventos",
   "Menos fricción en negociación",
   "Confianza comercial desde el primer contacto"
 ];
@@ -118,7 +119,7 @@ export function HeroSection() {
               </Button>
             </div>
           </div>
-          <p className="text-sm text-slate-400">Registro verificable • Con evidencia real (propietarios y talleres) • Historial compartible</p>
+          <p className="text-sm text-slate-400">Registro verificable • Con evidencia real (particulares, automotoras y talleres) • Historial compartible</p>
           <p className="text-sm text-slate-400">Podés registrar eventos vos mismo o permitir que tu taller los registre por vos.</p>
           <p className="text-sm text-slate-400">Un historial claro, continuo y verificable en el tiempo.</p>
           <p className="text-sm text-slate-500">

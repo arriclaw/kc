@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
-import { Building2, UserRound } from "lucide-react";
+import { Building2, UserRound, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -87,7 +87,7 @@ export default function RegistroPage() {
       <Card className="glass-panel rounded-[2rem] p-6">
         <span className="glass-chip inline-flex text-xs font-semibold uppercase tracking-[0.16em]">Registro</span>
         <h1 className="mt-4 text-3xl font-black text-white">Creá tu cuenta</h1>
-        <p className="mt-2 text-sm text-slate-300">Con cuenta activa podés registrar autos y subir mantenimientos en privado.</p>
+        <p className="mt-2 text-sm text-slate-300">Con cuenta activa podés operar como particular, automotora o taller dentro del circuito verificable.</p>
 
         <div className="mt-6 space-y-4">
           <div className="space-y-1.5">
@@ -143,7 +143,7 @@ export default function RegistroPage() {
                 Automotora: stock + eventos por unidad.
               </p>
               <p className="inline-flex items-center gap-2 rounded-xl border border-emerald-300/30 bg-emerald-300/10 px-2.5 py-2">
-                <Building2 className="h-3.5 w-3.5 text-emerald-100" />
+                <Wrench className="h-3.5 w-3.5 text-emerald-100" />
                 Taller: eventos con autorización.
               </p>
             </div>
@@ -166,13 +166,16 @@ export default function RegistroPage() {
         <h2 className="text-xl font-bold text-white">Antes de seguir</h2>
         <ul className="mt-4 space-y-3 text-sm text-slate-300">
           <li className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">
-            Particular: ideal para guardar cada mantenimiento de tu auto.
+            Particular: registrás servicios y reparaciones para vender con más respaldo.
           </li>
           <li className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">
-            Automotora: ideal para manejar múltiples autos y su historial por unidad.
+            Automotora: gestionás múltiples unidades con señal comercial consistente.
           </li>
           <li className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">
-            Sin cuenta no se permite cargar ni editar información.
+            Taller: cargás trabajos reales con autorización, sin acceder a identidad del dueño.
+          </li>
+          <li className="rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">
+            Sin cuenta no se permite cargar eventos ni operar en flujos privados.
           </li>
         </ul>
 

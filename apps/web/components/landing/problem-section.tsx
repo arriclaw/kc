@@ -18,7 +18,7 @@ const points = [
   {
     icon: FileWarning,
     title: "Fricción en cada operación",
-    description: "Cuando papeles, transferencias y eventos no son consistentes, el cierre se demora."
+    description: "Cuando no hay respaldo de propietarios, automotoras o talleres, el cierre se demora."
   }
 ];
 

@@ -22,6 +22,9 @@ export function FinalCtaSection() {
         <p className="mt-3 text-base text-slate-300 md:text-lg">
           Con trazabilidad consistente, baja el riesgo de compra y sube la confianza comercial al vender.
         </p>
+        <p className="mt-2 text-sm text-slate-400">
+          Abrí cuenta como particular, automotora o taller y mantené la continuidad de cada vehículo.
+        </p>
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
           <motion.div variants={reduceMotion ? buttonLiftReduced : buttonLift} initial="rest" whileHover="hover" whileTap="tap">

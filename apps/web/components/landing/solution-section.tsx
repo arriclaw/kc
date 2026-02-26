@@ -8,12 +8,12 @@ const cards = [
   {
     icon: FileCheck2,
     title: "Evidencia estructurada",
-    description: "Cada service, reparación o incidente queda con fecha, origen y respaldo."
+    description: "Cada service, reparación o incidente queda con fecha, origen y respaldo verificable."
   },
   {
     icon: ShieldCheck,
     title: "Verificación y procedencia",
-    description: "Se ve si el evento fue autodeclarado o validado por tercero, sin ambigüedad."
+    description: "Se ve si el evento lo cargó particular, automotora o taller, sin ambigüedad."
   },
   {
     icon: Signature,
