@@ -105,6 +105,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
       cost: parsed.data.cost ?? null,
       location: parsed.data.location,
       createdByUserId: session.user!.id,
+      createdByRole: "OWNER",
       sourceKind: parsed.data.sourceKind,
       verificationStatus: parsed.data.verificationStatus,
       correctionOfEventId: parsed.data.correctionOfEventId ?? null,

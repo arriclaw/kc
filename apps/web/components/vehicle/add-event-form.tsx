@@ -18,7 +18,19 @@ const steps = [
   { id: "confirm", label: "Confirmar", hint: "Inmutable" }
 ];
 
-export function AddEventForm({ vehicleId }: { vehicleId: string }) {
+export function AddEventForm({
+  vehicleId,
+  endpoint,
+  redirectTo,
+  lockSourceKind,
+  lockVerification
+}: {
+  vehicleId: string;
+  endpoint?: string;
+  redirectTo?: string;
+  lockSourceKind?: "SELF_DECLARED" | "DEALER_ENTERED" | "WORKSHOP_ENTERED" | "THIRD_PARTY";
+  lockVerification?: "UNVERIFIED" | "VERIFIED";
+}) {
   const router = useRouter();
   const [step, setStep] = useState(0);
   const [error, setError] = useState<string | null>(null);
@@ -26,8 +38,8 @@ export function AddEventForm({ vehicleId }: { vehicleId: string }) {
     resolver: zodResolver(createEventSchema),
     defaultValues: {
       type: "SERVICE",
-      sourceKind: "SELF_DECLARED",
-      verificationStatus: "UNVERIFIED",
+      sourceKind: lockSourceKind || "SELF_DECLARED",
+      verificationStatus: lockVerification || "UNVERIFIED",
       occurredAt: new Date().toISOString().slice(0, 10)
     }
   });
@@ -61,7 +73,9 @@ export function AddEventForm({ vehicleId }: { vehicleId: string }) {
     const files = filesInput?.files ? Array.from(filesInput.files) : [];
     files.forEach((file) => fd.append("files", file));
 
-    const response = await fetch(`/api/vehicles/${vehicleId}/events`, {
+    const targetEndpoint = endpoint || `/api/vehicles/${vehicleId}/events`;
+
+    const response = await fetch(targetEndpoint, {
       method: "POST",
       body: fd
     });
@@ -72,7 +86,7 @@ export function AddEventForm({ vehicleId }: { vehicleId: string }) {
       return;
     }
 
-    router.push(`/vehiculos/${vehicleId}`);
+    router.push(redirectTo || `/vehiculos/${vehicleId}`);
     router.refresh();
   });
 
@@ -102,19 +116,39 @@ export function AddEventForm({ vehicleId }: { vehicleId: string }) {
             </div>
             <div>
               <label className="text-sm font-medium">Origen</label>
-              <Select {...register("sourceKind")}>
-                <option value="SELF_DECLARED">Autodeclarado</option>
-                <option value="DEALER_ENTERED">Automotora</option>
-                <option value="THIRD_PARTY">Tercero</option>
-              </Select>
+              {lockSourceKind ? (
+                <Input
+                  readOnly
+                  value={
+                    lockSourceKind === "WORKSHOP_ENTERED"
+                      ? "Taller"
+                      : lockSourceKind === "DEALER_ENTERED"
+                        ? "Automotora"
+                        : lockSourceKind === "THIRD_PARTY"
+                          ? "Tercero"
+                          : "Autodeclarado"
+                  }
+                />
+              ) : (
+                <Select {...register("sourceKind")}>
+                  <option value="SELF_DECLARED">Autodeclarado</option>
+                  <option value="DEALER_ENTERED">Automotora</option>
+                  <option value="WORKSHOP_ENTERED">Taller</option>
+                  <option value="THIRD_PARTY">Tercero</option>
+                </Select>
+              )}
             </div>
           </div>
           <div>
             <label className="text-sm font-medium">Nivel de verificación</label>
-            <Select {...register("verificationStatus")}>
-              <option value="UNVERIFIED">Sin verificar</option>
-              <option value="VERIFIED">Verificado</option>
-            </Select>
+            {lockVerification ? (
+              <Input readOnly value={lockVerification === "VERIFIED" ? "Verificado" : "Sin verificar"} />
+            ) : (
+              <Select {...register("verificationStatus")}>
+                <option value="UNVERIFIED">Sin verificar</option>
+                <option value="VERIFIED">Verificado</option>
+              </Select>
+            )}
           </div>
         </div>
       ) : null}

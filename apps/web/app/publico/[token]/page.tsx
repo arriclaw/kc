@@ -14,6 +14,7 @@ export default async function PublicVehiclePage({ params }: { params: Promise<{ 
         include: {
           badges: true,
           events: {
+            include: { workshop: { select: { workshopName: true } } },
             orderBy: { occurredAt: "desc" }
           }
         }
@@ -51,7 +52,8 @@ export default async function PublicVehiclePage({ params }: { params: Promise<{ 
             odometerKm: event.odometerKm,
             sourceKind: event.sourceKind,
             verificationStatus: event.verificationStatus,
-            needsClarification: event.needsClarification
+            needsClarification: event.needsClarification,
+            workshopName: event.workshop?.workshopName ?? null
           }))}
         />
       </Card>

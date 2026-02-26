@@ -1,8 +1,8 @@
 import { z } from "zod";
 export * from "./auth";
 
-export const roleSchema = z.enum(["OWNER", "DEALER", "ADMIN"]);
-export const sourceKindSchema = z.enum(["SELF_DECLARED", "DEALER_ENTERED", "THIRD_PARTY"]);
+export const roleSchema = z.enum(["OWNER", "DEALER", "WORKSHOP", "ADMIN"]);
+export const sourceKindSchema = z.enum(["SELF_DECLARED", "DEALER_ENTERED", "WORKSHOP_ENTERED", "THIRD_PARTY"]);
 export const verificationStatusSchema = z.enum(["UNVERIFIED", "VERIFIED"]);
 export const eventTypeSchema = z.enum([
   "ODOMETER",

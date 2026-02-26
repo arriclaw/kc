@@ -71,7 +71,9 @@ export function HeroSection() {
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-slate-300 md:text-xl">
-            Comprá con menos riesgo y vendé con más valor: services, transferencias e incidentes quedan trazados con respaldo verificable.
+            Registrado por vos y por quienes lo mantienen.
+            <br />
+            Trazable. Con evidencia. Permanente.
           </p>
 
           <motion.ul
@@ -116,7 +118,9 @@ export function HeroSection() {
               </Button>
             </div>
           </div>
-          <p className="text-sm text-slate-400">Registro verificable • Respaldo real • Señal compartible</p>
+          <p className="text-sm text-slate-400">Registro verificable • Con evidencia real (propietarios y talleres) • Historial compartible</p>
+          <p className="text-sm text-slate-400">Podés registrar eventos vos mismo o permitir que tu taller los registre por vos.</p>
+          <p className="text-sm text-slate-400">Un historial claro, continuo y verificable en el tiempo.</p>
           <p className="text-sm text-slate-500">
             No reemplaza una inspección mecánica presencial. Sí ordena la información y baja la incertidumbre.
           </p>
@@ -156,8 +160,8 @@ export function HeroSection() {
 
             <div className="mt-3 space-y-2">
               {[
-                { title: "Service oficial", date: "12/2024", ok: true, evidence: true },
-                { title: "ITV / Inspección", date: "08/2024", ok: true, evidence: true },
+                { title: "Service — Autodeclarado", date: "12/2024", ok: true, evidence: true },
+                { title: "Cambio de frenos — Taller García (Con evidencia)", date: "08/2024", ok: true, evidence: true },
                 { title: "Transferencia", date: "03/2024", ok: false, evidence: false }
               ].map((event) => (
                 <div key={event.title} className="kc-hero-proof-row flex items-center justify-between rounded-xl border px-3 py-2">

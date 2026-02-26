@@ -12,8 +12,8 @@ const steps = [
   },
   {
     icon: DatabaseZap,
-    title: "Cruzamos fuentes y respaldo",
-    body: "Ordenamos eventos, origen y soporte en una secuencia consistente."
+    title: "Registrás eventos vos o tu taller",
+    body: "Cada registro suma trazabilidad continua para comprar con criterio o vender con mejor señal comercial."
   },
   {
     icon: Shield,

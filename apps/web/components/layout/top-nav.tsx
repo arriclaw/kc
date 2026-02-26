@@ -19,6 +19,13 @@ export function TopNav() {
     if (role === "DEALER") {
       items = [
         { href: "/dealer", label: "Mi garage" },
+        { href: "/solicitudes-taller", label: "Solicitudes taller" },
+        { href: "/vehiculos", label: "Galería" },
+        { href: "/contacto", label: "Contacto" }
+      ];
+    } else if (role === "WORKSHOP") {
+      items = [
+        { href: "/taller", label: "Mi taller" },
         { href: "/vehiculos", label: "Galería" },
         { href: "/contacto", label: "Contacto" }
       ];
@@ -33,6 +40,7 @@ export function TopNav() {
     } else {
       items = [
         { href: "/mi-garage", label: "Mi garage" },
+        { href: "/solicitudes-taller", label: "Solicitudes taller" },
         { href: "/vehiculos", label: "Galería" },
         { href: "/contacto", label: "Contacto" }
       ];

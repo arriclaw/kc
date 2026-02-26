@@ -2,9 +2,10 @@ import { readFile } from "fs/promises";
 import path from "path";
 import { NextResponse } from "next/server";
 
-export async function GET(_: Request, { params }: { params: Promise<{ name: string }> }) {
-  const { name } = await params;
-  const filePath = path.join(process.cwd(), "uploads", name);
+export async function GET(_: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const filePath = path.join(process.cwd(), "uploads", id);
+
   try {
     const content = await readFile(filePath);
     return new NextResponse(content, {

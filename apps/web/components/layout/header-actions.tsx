@@ -9,6 +9,7 @@ import { ThemeToggle } from "@/components/layout/theme-toggle";
 const roleLabel: Record<string, string> = {
   OWNER: "Particular",
   DEALER: "Automotora",
+  WORKSHOP: "Taller",
   ADMIN: "Administrador"
 };
 

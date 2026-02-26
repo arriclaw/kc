@@ -48,6 +48,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
       location: parsed.data.location,
       cost: parsed.data.cost,
       sourceKind: "DEALER_ENTERED",
+      createdByRole: "DEALER",
       verificationStatus: parsed.data.verificationStatus,
       createdByUserId: session.user!.id,
       correctionOfEventId: parsed.data.correctionOfEventId ?? null

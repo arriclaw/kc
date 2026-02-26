@@ -131,8 +131,9 @@ export default function RegistroPage() {
             <Select value={role} onChange={(e) => setRole(e.target.value)}>
               <option value="OWNER">Particular</option>
               <option value="DEALER">Automotora</option>
+              <option value="WORKSHOP">Taller</option>
             </Select>
-            <div className="grid gap-2 pt-1 text-xs text-slate-300 sm:grid-cols-2">
+            <div className="grid gap-2 pt-1 text-xs text-slate-300 sm:grid-cols-3">
               <p className="inline-flex items-center gap-2 rounded-xl border border-cyan-300/30 bg-cyan-300/10 px-2.5 py-2">
                 <UserRound className="h-3.5 w-3.5 text-cyan-100" />
                 Particular: historial de tus autos.
@@ -140,6 +141,10 @@ export default function RegistroPage() {
               <p className="inline-flex items-center gap-2 rounded-xl border border-indigo-300/30 bg-indigo-300/10 px-2.5 py-2">
                 <Building2 className="h-3.5 w-3.5 text-indigo-100" />
                 Automotora: stock + eventos por unidad.
+              </p>
+              <p className="inline-flex items-center gap-2 rounded-xl border border-emerald-300/30 bg-emerald-300/10 px-2.5 py-2">
+                <Building2 className="h-3.5 w-3.5 text-emerald-100" />
+                Taller: eventos con autorización.
               </p>
             </div>
           </div>

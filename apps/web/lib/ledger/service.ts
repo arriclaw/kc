@@ -9,6 +9,7 @@ const GENESIS_HASH = "GENESIS";
 const BATCH_SIZE = Number(process.env.LEDGER_BATCH_SIZE || 5);
 
 export function eventPayloadForHash(event: Event, attachmentHashes: string[]) {
+  const sortedAttachmentHashes = [...attachmentHashes].sort((a, b) => a.localeCompare(b));
   return {
     id: event.id,
     vehicleId: event.vehicleId,
@@ -22,8 +23,11 @@ export function eventPayloadForHash(event: Event, attachmentHashes: string[]) {
     sourceKind: event.sourceKind,
     verificationStatus: event.verificationStatus,
     createdByUserId: event.createdByUserId,
+    createdByRole: event.createdByRole,
+    workshopId: event.workshopId,
+    consentGrantId: event.consentGrantId,
     correctionOfEventId: event.correctionOfEventId,
-    attachmentHashes
+    attachmentHashes: sortedAttachmentHashes
   };
 }
 

@@ -11,9 +11,10 @@ type TimelineEvent = {
   title: string;
   description?: string;
   odometerKm?: number | null;
-  sourceKind: "SELF_DECLARED" | "DEALER_ENTERED" | "THIRD_PARTY";
+  sourceKind: "SELF_DECLARED" | "DEALER_ENTERED" | "WORKSHOP_ENTERED" | "THIRD_PARTY";
   verificationStatus: "UNVERIFIED" | "VERIFIED";
   needsClarification?: boolean;
+  workshopName?: string | null;
 };
 
 export function EventTimeline({ events }: { events: TimelineEvent[] }) {
@@ -31,6 +32,9 @@ export function EventTimeline({ events }: { events: TimelineEvent[] }) {
               <div>
                 <p className="text-xs text-muted-foreground">{new Date(event.occurredAt).toLocaleDateString("es-UY")}</p>
                 <h3 className="text-base font-semibold">{event.title}</h3>
+                {event.sourceKind === "WORKSHOP_ENTERED" && event.workshopName ? (
+                  <p className="text-xs text-muted-foreground">Registrado por Taller: {event.workshopName}</p>
+                ) : null}
               </div>
               <div className="flex gap-2">
                 <SourceChip value={event.sourceKind} />

@@ -30,6 +30,10 @@ export async function GET() {
 export async function POST(req: Request) {
   const session = await requireAuth();
 
+  if (session.user?.role === "WORKSHOP") {
+    return NextResponse.json({ error: "Los talleres no pueden crear vehículos." }, { status: 403 });
+  }
+
   if (session.user?.role === "OWNER") {
     const currentOwned = await prisma.vehicleOwnership.count({
       where: {

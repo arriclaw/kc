@@ -11,7 +11,7 @@ export async function GET(_: Request, { params }: { params: Promise<{ token: str
         include: {
           badges: true,
           events: {
-            include: { attachments: true },
+            include: { attachments: true, workshop: { select: { workshopName: true } } },
             orderBy: { occurredAt: "desc" }
           }
         }
@@ -35,7 +35,8 @@ export async function GET(_: Request, { params }: { params: Promise<{ token: str
           title: event.title,
           sourceKind: event.sourceKind,
           verificationStatus: event.verificationStatus,
-          needsClarification: event.needsClarification
+          needsClarification: event.needsClarification,
+          workshopName: event.workshop?.workshopName ?? null
         }));
 
   return NextResponse.json({

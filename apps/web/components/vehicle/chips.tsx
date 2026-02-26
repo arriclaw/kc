@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 
 type Verification = "UNVERIFIED" | "VERIFIED";
-type Source = "SELF_DECLARED" | "DEALER_ENTERED" | "THIRD_PARTY";
+type Source = "SELF_DECLARED" | "DEALER_ENTERED" | "WORKSHOP_ENTERED" | "THIRD_PARTY";
 
 export function VerificationChip({ value }: { value: Verification }) {
   return (
@@ -19,6 +19,12 @@ export function VerificationChip({ value }: { value: Verification }) {
 
 export function SourceChip({ value }: { value: Source }) {
   const label =
-    value === "SELF_DECLARED" ? "Autodeclarado" : value === "DEALER_ENTERED" ? "Automotora" : "Tercero";
+    value === "SELF_DECLARED"
+      ? "Autodeclarado"
+      : value === "DEALER_ENTERED"
+        ? "Automotora"
+        : value === "WORKSHOP_ENTERED"
+          ? "Taller"
+          : "Tercero";
   return <Badge className="border-cyan-300/45 bg-cyan-300/12 text-cyan-100">{label}</Badge>;
 }

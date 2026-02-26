@@ -8,6 +8,7 @@ import { EventTimeline } from "@/components/vehicle/timeline";
 import { BadgePills } from "@/components/vehicle/badge-pills";
 import { QrShareCard } from "@/components/vehicle/qr-modal";
 import { EventManagementList } from "@/components/vehicle/event-management-list";
+import { RevokeWorkshopGrantAction } from "@/components/vehicle/revoke-workshop-grant-action";
 import { demoRecords, featuredVehiclesMock } from "@/lib/mock-data";
 
 function buildTrustScore(params: { events: number; flags: number; verified: number; badges: number }) {
@@ -40,7 +41,7 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
         orderBy: { startedAt: "desc" }
       },
       events: {
-        include: { attachments: true },
+        include: { attachments: true, workshop: { select: { workshopName: true } } },
         orderBy: { occurredAt: "desc" }
       },
       flags: {
@@ -49,6 +50,23 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
       }
     }
   });
+
+  const workshopGrants = vehicle
+    ? await prisma.vehicleAccessGrant.findMany({
+        where: {
+          vehicleId: vehicle.id,
+          status: "ACTIVE"
+        },
+        include: {
+          workshop: {
+            select: {
+              workshopName: true
+            }
+          }
+        },
+        orderBy: { createdAt: "desc" }
+      })
+    : [];
 
   if (!vehicle) {
     const mockVehicle = featuredVehiclesMock.find((item) => item.id === id);
@@ -211,6 +229,32 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
         </div>
       </Card>
 
+      {isOwner ? (
+        <Card className="surface-card">
+          <h2 className="text-lg font-semibold">Accesos activos de talleres</h2>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Podés revocar acceso en cualquier momento. El taller deja de poder registrar nuevos eventos.
+          </p>
+          <div className="mt-4 space-y-3">
+            {workshopGrants.length === 0 ? (
+              <p className="text-sm text-muted-foreground">No hay talleres con acceso activo.</p>
+            ) : (
+              workshopGrants.map((grant) => (
+                <div key={grant.id} className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-700/70 bg-slate-900/35 p-3">
+                  <div>
+                    <p className="font-semibold">{grant.workshop.workshopName}</p>
+                    <p className="text-xs text-muted-foreground">
+                      Activo desde {new Date(grant.createdAt).toLocaleDateString("es-UY")}
+                    </p>
+                  </div>
+                  <RevokeWorkshopGrantAction vehicleId={vehicle.id} grantId={grant.id} />
+                </div>
+              ))
+            )}
+          </div>
+        </Card>
+      ) : null}
+
       <Card className="surface-card">
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-lg font-semibold">Timeline de historial</h2>
@@ -226,7 +270,8 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
             odometerKm: event.odometerKm,
             sourceKind: event.sourceKind,
             verificationStatus: event.verificationStatus,
-            needsClarification: event.needsClarification
+            needsClarification: event.needsClarification,
+            workshopName: event.workshop?.workshopName ?? null
           }))}
         />
       </Card>

@@ -11,7 +11,7 @@ type Item = {
   title: string;
   type: string;
   occurredAt: string;
-  sourceKind: "SELF_DECLARED" | "DEALER_ENTERED" | "THIRD_PARTY";
+  sourceKind: "SELF_DECLARED" | "DEALER_ENTERED" | "WORKSHOP_ENTERED" | "THIRD_PARTY";
 };
 
 type Props = {
@@ -22,6 +22,7 @@ type Props = {
 const sourceLabel: Record<Item["sourceKind"], string> = {
   SELF_DECLARED: "Autodeclarado",
   DEALER_ENTERED: "Automotora",
+  WORKSHOP_ENTERED: "Taller",
   THIRD_PARTY: "Tercero"
 };
 

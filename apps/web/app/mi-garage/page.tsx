@@ -7,6 +7,7 @@ export default async function MiGaragePage() {
   if (!session?.user?.id) redirect("/acceso");
 
   if (session.user.role === Role.DEALER) redirect("/dealer");
+  if (session.user.role === Role.WORKSHOP) redirect("/taller");
   if (session.user.role === Role.ADMIN) redirect("/admin");
   redirect("/particular");
 }
