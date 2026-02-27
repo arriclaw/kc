@@ -105,7 +105,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: reduceMotion ? 0 : 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: reduceMotion ? 0.2 : 0.48, ease: [0.22, 1, 0.36, 1] }}
-            className="kc-hero-proof absolute inset-x-4 top-4 bottom-4 rounded-2xl border p-4 md:p-5"
+            className="kc-hero-proof absolute inset-x-4 top-4 bottom-4 flex flex-col overflow-hidden rounded-2xl border p-4 md:p-5"
           >
             <div className="flex items-center justify-between gap-3">
               <div>
@@ -118,13 +118,13 @@ export function HeroSection() {
               </span>
             </div>
 
-            <div className="mt-4 space-y-2">
+            <div className="mt-3 space-y-1.5">
               {[
                 { title: "Service — Particular", date: "12/2024", ok: true, evidence: false },
                 { title: "Cambio de frenos — Taller García (Con evidencia)", date: "08/2024", ok: true, evidence: true },
                 { title: "Ingreso a stock — Automotora", date: "03/2024", ok: false, evidence: false }
               ].map((event) => (
-                <div key={event.title} className="kc-hero-proof-row flex flex-col gap-2 rounded-xl border px-3 py-2 sm:flex-row sm:items-center sm:justify-between">
+                <div key={event.title} className="kc-hero-proof-row flex flex-col gap-1.5 rounded-xl border px-3 py-2 sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <p className="text-sm font-semibold text-slate-100">{event.title}</p>
                     <p className="text-xs text-slate-400">{event.date}</p>
@@ -152,7 +152,7 @@ export function HeroSection() {
               ))}
             </div>
 
-            <div className="mt-4 grid grid-cols-3 gap-2">
+            <div className="mt-3 grid grid-cols-3 gap-2">
               <div className="kc-mini-metric">
                 <p className="text-[11px] text-slate-400">Transparencia</p>
                 <p className="text-sm font-semibold text-emerald-300">Alta</p>
@@ -167,12 +167,12 @@ export function HeroSection() {
               </div>
             </div>
 
-            <div className="kc-warning-callout mt-4 rounded-xl p-3">
+            <div className="kc-warning-callout mt-3 max-w-full rounded-xl p-2.5">
               <p className="kc-warning-title inline-flex items-center gap-2">
                 <AlertTriangle className="kc-warning-icon h-4 w-4" />
                 Lectura comercial
               </p>
-              <p className="kc-warning-copy mt-1.5">Con continuidad entre particular, automotora y taller, baja la incertidumbre y mejora la posición de cierre.</p>
+              <p className="kc-warning-copy mt-1">Con continuidad entre particular, automotora y taller, baja la incertidumbre y mejora la posición de cierre.</p>
             </div>
           </motion.div>
         </div>
