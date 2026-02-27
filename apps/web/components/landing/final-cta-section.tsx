@@ -18,6 +18,7 @@ export function FinalCtaSection() {
       className="kc-panel rounded-[1.75rem] p-6 md:p-8"
     >
       <div className="absolute inset-0 overflow-hidden rounded-[1.75rem]">
+        <div className="absolute inset-0 bg-slate-950" />
         <motion.div
           aria-hidden
           className="absolute inset-0"
@@ -28,11 +29,11 @@ export function FinalCtaSection() {
             src="/images/dealer-handoff.svg"
             alt="Taller trabajando sobre vehículo"
             fill
-            className="object-cover"
+            className="object-cover opacity-55 saturate-75 contrast-90 brightness-75"
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/93 via-slate-950/88 to-slate-950/92" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.16),transparent_44%),radial-gradient(circle_at_84%_86%,rgba(56,189,248,0.12),transparent_42%)]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/96 via-slate-950/92 to-slate-950/95" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(16,185,129,0.12),transparent_44%),radial-gradient(circle_at_84%_86%,rgba(56,189,248,0.1),transparent_42%)]" />
       </div>
 
       <motion.div
