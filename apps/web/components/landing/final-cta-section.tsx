@@ -25,8 +25,8 @@ export function FinalCtaSection() {
           transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
         >
           <img
-            src="https://images.pexels.com/photos/4489730/pexels-photo-4489730.jpeg?auto=compress&cs=tinysrgb&w=2200"
-            alt="Taller mecánico profesional con autos"
+            src="https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=2200"
+            alt="Lote con múltiples autos en venta"
             className="h-full w-full object-cover opacity-58 saturate-90 contrast-95 brightness-75"
             loading="lazy"
             decoding="async"

@@ -167,7 +167,7 @@ export function HeroSection() {
               </div>
             </div>
 
-            <div className="kc-warning-callout mt-3 max-w-full rounded-xl p-2.5">
+            <div className="kc-warning-callout mt-3 max-w-full rounded-xl px-3 py-3">
               <p className="kc-warning-title inline-flex items-center gap-2">
                 <AlertTriangle className="kc-warning-icon h-4 w-4" />
                 Lectura comercial
