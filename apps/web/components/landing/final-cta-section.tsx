@@ -1,12 +1,20 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { Role } from "@prisma/client";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { buttonLift, buttonLiftReduced, sectionReveal, sectionRevealReduced } from "@/lib/motion";
 
 export function FinalCtaSection() {
   const reduceMotion = useReducedMotion();
+  const { data: session } = useSession();
+  const role = session?.user?.role as Role | undefined;
+  const authenticatedTarget =
+    role === Role.DEALER ? "/dealer" : role === Role.WORKSHOP ? "/taller" : role === Role.ADMIN ? "/admin" : "/mi-garage";
+  const roleCtaHref = (registrationRole: "OWNER" | "DEALER" | "WORKSHOP") =>
+    role ? authenticatedTarget : `/registro?role=${registrationRole}`;
 
   return (
     <motion.section
@@ -14,7 +22,7 @@ export function FinalCtaSection() {
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
       variants={reduceMotion ? sectionRevealReduced : sectionReveal}
-      className="kc-panel rounded-[1.75rem] p-6 md:p-8"
+      className="kc-panel final-cta-cinematic rounded-[1.75rem] p-6 md:p-8"
     >
       <div className="absolute inset-0 overflow-hidden rounded-[1.75rem]">
         <div className="absolute inset-0 bg-slate-950" />
@@ -43,27 +51,27 @@ export function FinalCtaSection() {
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
       />
       <div className="relative mx-auto max-w-3xl text-center">
-        <h2 className="text-3xl font-black leading-tight md:text-5xl">Cada vehículo tiene una historia.</h2>
-        <p className="mt-3 text-base text-slate-300 md:text-lg">
+        <h2 className="text-3xl font-black leading-tight text-white md:text-5xl">Cada vehículo tiene una historia.</h2>
+        <p className="mt-3 text-base text-slate-100 md:text-lg">
           Cuando se registra bien, se vuelve clara para todos.
         </p>
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
           <motion.div variants={reduceMotion ? buttonLiftReduced : buttonLift} initial="rest" whileHover="hover" whileTap="tap">
             <Button asChild size="lg" variant="outline" className="h-12 px-7 text-base">
-              <Link href="/particular">Soy Particular</Link>
+              <Link href={roleCtaHref("OWNER")}>Soy Particular</Link>
             </Button>
           </motion.div>
 
           <motion.div variants={reduceMotion ? buttonLiftReduced : buttonLift} initial="rest" whileHover="hover" whileTap="tap">
             <Button asChild size="lg" variant="outline" className="h-12 px-7 text-base">
-              <Link href="/dealer">Soy Automotora</Link>
+              <Link href={roleCtaHref("DEALER")}>Soy Automotora</Link>
             </Button>
           </motion.div>
 
           <motion.div variants={reduceMotion ? buttonLiftReduced : buttonLift} initial="rest" whileHover="hover" whileTap="tap">
             <Button asChild size="lg" variant="outline" className="h-12 px-7 text-base">
-              <Link href="/taller/onboarding">Soy Taller</Link>
+              <Link href={roleCtaHref("WORKSHOP")}>Soy Taller</Link>
             </Button>
           </motion.div>
         </div>

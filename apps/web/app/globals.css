@@ -198,6 +198,7 @@ select {
 .kc-warning-copy {
   color: rgba(236, 253, 245, 0.95);
   line-height: 1.45;
+  margin-bottom: 0;
 }
 
 .kc-warning-icon {
@@ -404,6 +405,16 @@ html.light .kc-warning-icon {
   color: rgb(5, 150, 105);
 }
 
+.final-cta-cinematic h2,
+.final-cta-cinematic p {
+  text-shadow: 0 1px 2px rgba(2, 6, 23, 0.5);
+}
+
+html.light .final-cta-cinematic h2,
+html.light .final-cta-cinematic p {
+  text-shadow: 0 1px 2px rgba(2, 6, 23, 0.7);
+}
+
 html.light .text-emerald-300,
 html.light .text-emerald-400 {
   color: rgb(5, 150, 105) !important;
@@ -425,6 +436,91 @@ html.light .text-amber-300,
 html.light .text-amber-400,
 html.light .text-amber-500 {
   color: rgb(180, 83, 9) !important;
+}
+
+.kc-stepper-item {
+  color: hsl(var(--text));
+}
+
+.kc-stepper-item--idle {
+  border-color: rgba(100, 116, 139, 0.46);
+  background: rgba(15, 23, 42, 0.5);
+}
+
+.kc-stepper-item--active {
+  border-color: rgba(56, 189, 248, 0.58);
+  background: rgba(56, 189, 248, 0.16);
+}
+
+.kc-stepper-item--done {
+  border-color: rgba(16, 185, 129, 0.5);
+  background: rgba(16, 185, 129, 0.14);
+}
+
+.kc-stepper-kicker,
+.kc-stepper-hint {
+  color: hsl(var(--muted));
+}
+
+.kc-veh-chip {
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.kc-veh-chip--verified {
+  border-color: rgba(16, 185, 129, 0.6);
+  background: rgba(16, 185, 129, 0.2);
+  color: rgb(167, 243, 208);
+}
+
+.kc-veh-chip--unverified {
+  border-color: rgba(245, 158, 11, 0.55);
+  background: rgba(245, 158, 11, 0.16);
+  color: rgb(253, 230, 138);
+}
+
+.kc-veh-chip--source {
+  border-color: rgba(56, 189, 248, 0.55);
+  background: rgba(56, 189, 248, 0.16);
+  color: rgb(125, 211, 252);
+}
+
+html.light .kc-stepper-item--idle {
+  border-color: rgba(148, 163, 184, 0.52);
+  background: rgba(248, 250, 252, 0.96);
+}
+
+html.light .kc-stepper-item--active {
+  border-color: rgba(14, 116, 144, 0.42);
+  background: rgba(56, 189, 248, 0.14);
+}
+
+html.light .kc-stepper-item--done {
+  border-color: rgba(5, 150, 105, 0.4);
+  background: rgba(16, 185, 129, 0.14);
+}
+
+html.light .kc-stepper-kicker,
+html.light .kc-stepper-hint {
+  color: rgba(51, 65, 85, 0.92);
+}
+
+html.light .kc-veh-chip--verified {
+  border-color: rgba(5, 150, 105, 0.46);
+  background: rgba(16, 185, 129, 0.16);
+  color: rgb(5, 120, 87);
+}
+
+html.light .kc-veh-chip--unverified {
+  border-color: rgba(217, 119, 6, 0.48);
+  background: rgba(245, 158, 11, 0.16);
+  color: rgb(146, 64, 14);
+}
+
+html.light .kc-veh-chip--source {
+  border-color: rgba(8, 145, 178, 0.42);
+  background: rgba(34, 211, 238, 0.14);
+  color: rgb(8, 145, 178);
 }
 
 .kc-filter-chip {

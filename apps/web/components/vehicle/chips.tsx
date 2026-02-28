@@ -5,13 +5,7 @@ type Source = "SELF_DECLARED" | "DEALER_ENTERED" | "WORKSHOP_ENTERED" | "THIRD_P
 
 export function VerificationChip({ value }: { value: Verification }) {
   return (
-    <Badge
-      className={
-        value === "VERIFIED"
-          ? "border-emerald-300/50 bg-emerald-300/15 text-emerald-100"
-          : "border-amber-300/50 bg-amber-300/15 text-amber-100"
-      }
-    >
+    <Badge className={value === "VERIFIED" ? "kc-veh-chip kc-veh-chip--verified" : "kc-veh-chip kc-veh-chip--unverified"}>
       {value === "VERIFIED" ? "Verificado" : "Sin verificar"}
     </Badge>
   );
@@ -26,5 +20,5 @@ export function SourceChip({ value }: { value: Source }) {
         : value === "WORKSHOP_ENTERED"
           ? "Taller"
           : "Tercero";
-  return <Badge className="border-cyan-300/45 bg-cyan-300/12 text-cyan-100">{label}</Badge>;
+  return <Badge className="kc-veh-chip kc-veh-chip--source">{label}</Badge>;
 }

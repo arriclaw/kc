@@ -2,9 +2,11 @@
 
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { AlertTriangle, BadgeCheck, CheckCircle2, CircleDashed, FileCheck2, ShieldCheck } from "lucide-react";
+import { Role } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
+import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { buttonLift, buttonLiftReduced, staggerContainer, staggerContainerReduced, staggerItem, staggerItemReduced } from "@/lib/motion";
 
@@ -17,6 +19,8 @@ const heroBullets = [
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const reduceMotion = useReducedMotion();
+  const { data: session } = useSession();
+  const role = session?.user?.role as Role | undefined;
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -25,6 +29,11 @@ export function HeroSection() {
 
   const yA = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [-6, 8]);
   const yB = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [10, -6]);
+  const authenticatedTarget =
+    role === Role.DEALER ? "/dealer" : role === Role.WORKSHOP ? "/taller" : role === Role.ADMIN ? "/admin" : "/mi-garage";
+
+  const roleCtaHref = (registrationRole: "OWNER" | "DEALER" | "WORKSHOP") =>
+    role ? authenticatedTarget : `/registro?role=${registrationRole}`;
 
   return (
     <section ref={containerRef} className="kc-panel rounded-[2rem] p-6 md:p-10">
@@ -71,17 +80,17 @@ export function HeroSection() {
             <div className="flex flex-wrap gap-2">
               <motion.div variants={reduceMotion ? buttonLiftReduced : buttonLift} initial="rest" whileHover="hover" whileTap="tap">
                 <Button asChild variant="outline" className="rounded-full px-5">
-                  <Link href="/registro?role=OWNER">Soy Particular</Link>
+                  <Link href={roleCtaHref("OWNER")}>Soy Particular</Link>
                 </Button>
               </motion.div>
               <motion.div variants={reduceMotion ? buttonLiftReduced : buttonLift} initial="rest" whileHover="hover" whileTap="tap">
                 <Button asChild variant="outline" className="rounded-full px-5">
-                  <Link href="/registro?role=DEALER">Soy Automotora</Link>
+                  <Link href={roleCtaHref("DEALER")}>Soy Automotora</Link>
                 </Button>
               </motion.div>
               <motion.div variants={reduceMotion ? buttonLiftReduced : buttonLift} initial="rest" whileHover="hover" whileTap="tap">
                 <Button asChild variant="outline" className="rounded-full px-5">
-                  <Link href="/registro?role=WORKSHOP">Soy Taller</Link>
+                  <Link href={roleCtaHref("WORKSHOP")}>Soy Taller</Link>
                 </Button>
               </motion.div>
             </div>
@@ -89,7 +98,7 @@ export function HeroSection() {
           <p className="text-sm text-slate-400">Trazable. Con evidencia. En el tiempo.</p>
         </div>
 
-        <div className="relative min-h-[468px] overflow-hidden rounded-[1.75rem] border border-slate-700/65 lg:min-h-[500px]">
+        <div className="relative min-h-[500px] overflow-hidden rounded-[1.75rem] border border-slate-700/65 lg:min-h-[540px]">
           <motion.div style={{ y: yA }} className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(16,185,129,0.22),transparent_40%),radial-gradient(circle_at_80%_10%,rgba(56,189,248,0.2),transparent_42%),linear-gradient(160deg,rgba(2,6,23,0.96),rgba(8,16,32,0.94))]" />
           <motion.div style={{ y: yB }} className="absolute inset-0 opacity-30">
             <Image src="/images/vehicles/renault-megane.jpg" alt="Renault Megane" fill className="object-cover" />
@@ -105,12 +114,12 @@ export function HeroSection() {
             initial={{ opacity: 0, y: reduceMotion ? 0 : 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: reduceMotion ? 0.2 : 0.48, ease: [0.22, 1, 0.36, 1] }}
-            className="kc-hero-proof absolute inset-x-4 top-4 bottom-4 flex flex-col overflow-hidden rounded-2xl border p-4 md:p-5"
+            className="kc-hero-proof absolute inset-x-4 top-4 bottom-4 flex flex-col overflow-y-auto rounded-2xl border p-4"
           >
             <div className="flex items-center justify-between gap-3">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-300">Consistencia verificable</p>
-                <p className="mt-1 text-lg font-bold text-white">Renault Megane 2014 • SBT2885</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-slate-300">Consistencia verificable</p>
+                <p className="mt-1 text-base font-bold text-white">Renault Megane 2014 • SBT2885</p>
               </div>
               <span className="kc-status-chip kc-status-chip--ok">
                 <BadgeCheck className="h-3.5 w-3.5" />
@@ -118,15 +127,15 @@ export function HeroSection() {
               </span>
             </div>
 
-            <div className="mt-3 space-y-1.5">
+            <div className="mt-2.5 space-y-1.5">
               {[
                 { title: "Service — Particular", date: "12/2024", ok: true, evidence: false },
                 { title: "Cambio de frenos — Taller García (Con evidencia)", date: "08/2024", ok: true, evidence: true },
                 { title: "Ingreso a stock — Automotora", date: "03/2024", ok: false, evidence: false }
               ].map((event) => (
-                <div key={event.title} className="kc-hero-proof-row flex flex-col gap-1.5 rounded-xl border px-3 py-2 sm:flex-row sm:items-center sm:justify-between">
+                <div key={event.title} className="kc-hero-proof-row flex flex-col gap-1 rounded-xl border px-3 py-2 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <p className="text-sm font-semibold text-slate-100">{event.title}</p>
+                    <p className="text-[15px] font-semibold leading-tight text-slate-100">{event.title}</p>
                     <p className="text-xs text-slate-400">{event.date}</p>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
@@ -152,22 +161,22 @@ export function HeroSection() {
               ))}
             </div>
 
-            <div className="mt-3 grid grid-cols-3 gap-2">
+            <div className="mt-2.5 grid grid-cols-3 gap-2">
               <div className="kc-mini-metric">
-                <p className="text-[11px] text-slate-400">Transparencia</p>
+                <p className="text-[10px] text-slate-400">Transparencia</p>
                 <p className="text-sm font-semibold text-emerald-300">Alta</p>
               </div>
               <div className="kc-mini-metric">
-                <p className="text-[11px] text-slate-400">Riesgo</p>
+                <p className="text-[10px] text-slate-400">Riesgo</p>
                 <p className="text-sm font-semibold text-cyan-300">Bajo</p>
               </div>
               <div className="kc-mini-metric">
-                <p className="text-[11px] text-slate-400">Confianza</p>
+                <p className="text-[10px] text-slate-400">Confianza</p>
                 <p className="text-sm font-semibold text-white">92%</p>
               </div>
             </div>
 
-            <div className="kc-warning-callout mt-3 max-w-full rounded-xl px-3 py-3">
+            <div className="kc-warning-callout mt-2 max-w-full shrink-0 rounded-xl px-3 py-3">
               <p className="kc-warning-title inline-flex items-center gap-2">
                 <AlertTriangle className="kc-warning-icon h-4 w-4" />
                 Lectura comercial

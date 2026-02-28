@@ -95,10 +95,10 @@ export function AddEventForm({
       <Stepper steps={steps} current={step} />
 
       {step === 0 ? (
-        <div className="space-y-4 rounded-2xl border bg-slate-950/55 p-4 border-slate-700/70">
-          <h3 className="text-lg font-semibold text-white">Contexto del evento</h3>
+        <div className="kc-theme-card space-y-4 rounded-2xl border p-4">
+          <h3 className="text-lg font-semibold text-[hsl(var(--text))]">Contexto del evento</h3>
           <div>
-            <label className="text-sm font-medium">Tipo</label>
+            <label className="text-sm font-medium text-[hsl(var(--text))]">Tipo</label>
             <Select {...register("type")}>
               <option value="ODOMETER">Odómetro</option>
               <option value="SERVICE">Servicio</option>
@@ -111,11 +111,11 @@ export function AddEventForm({
           </div>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <div>
-              <label className="text-sm font-medium">Fecha</label>
+              <label className="text-sm font-medium text-[hsl(var(--text))]">Fecha</label>
               <Input type="date" {...register("occurredAt")} />
             </div>
             <div>
-              <label className="text-sm font-medium">Origen</label>
+              <label className="text-sm font-medium text-[hsl(var(--text))]">Origen</label>
               {lockSourceKind ? (
                 <Input
                   readOnly
@@ -140,7 +140,7 @@ export function AddEventForm({
             </div>
           </div>
           <div>
-            <label className="text-sm font-medium">Nivel de verificación</label>
+            <label className="text-sm font-medium text-[hsl(var(--text))]">Nivel de verificación</label>
             {lockVerification ? (
               <Input readOnly value={lockVerification === "VERIFIED" ? "Verificado" : "Sin verificar"} />
             ) : (
@@ -154,27 +154,27 @@ export function AddEventForm({
       ) : null}
 
       {step === 1 ? (
-        <div className="space-y-4 rounded-2xl border bg-slate-950/55 p-4 border-slate-700/70">
-          <h3 className="text-lg font-semibold text-white">Detalle útil para compradores</h3>
+        <div className="kc-theme-card space-y-4 rounded-2xl border p-4">
+          <h3 className="text-lg font-semibold text-[hsl(var(--text))]">Detalle útil para compradores</h3>
           <div>
-            <label className="text-sm font-medium">Título</label>
+            <label className="text-sm font-medium text-[hsl(var(--text))]">Título</label>
             <Input {...register("title")} placeholder="Servicio 60.000 km" />
           </div>
           <div>
-            <label className="text-sm font-medium">Descripción</label>
+            <label className="text-sm font-medium text-[hsl(var(--text))]">Descripción</label>
             <Textarea {...register("description")} placeholder="Cambio de aceite, filtros y revisión de frenos" />
           </div>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
             <div>
-              <label className="text-sm font-medium">Odómetro (km)</label>
+              <label className="text-sm font-medium text-[hsl(var(--text))]">Odómetro (km)</label>
               <Input type="number" {...register("odometerKm", { valueAsNumber: true })} />
             </div>
             <div>
-              <label className="text-sm font-medium">Costo (opcional)</label>
+              <label className="text-sm font-medium text-[hsl(var(--text))]">Costo (opcional)</label>
               <Input type="number" step="0.01" {...register("cost", { valueAsNumber: true })} />
             </div>
             <div>
-              <label className="text-sm font-medium">Ubicación</label>
+              <label className="text-sm font-medium text-[hsl(var(--text))]">Ubicación</label>
               <Input {...register("location")} placeholder="Montevideo" />
             </div>
           </div>
@@ -182,17 +182,17 @@ export function AddEventForm({
       ) : null}
 
       {step === 2 ? (
-        <div className="space-y-4 rounded-2xl border bg-slate-950/55 p-4 border-slate-700/70">
-          <h3 className="text-lg font-semibold text-white">Pruebas y correcciones</h3>
-          <p className="text-sm text-slate-300">
+        <div className="kc-theme-card space-y-4 rounded-2xl border p-4">
+          <h3 className="text-lg font-semibold text-[hsl(var(--text))]">Pruebas y correcciones</h3>
+          <p className="text-sm text-[hsl(var(--muted))]">
             Adjuntá documentación para respaldar el evento. Si necesitás corregir uno anterior, usá su ID.
           </p>
           <div>
-            <label className="text-sm font-medium">Comprobantes</label>
+            <label className="text-sm font-medium text-[hsl(var(--text))]">Comprobantes</label>
             <Input id="files" type="file" multiple />
           </div>
           <div>
-            <label className="text-sm font-medium">ID de evento a corregir (opcional)</label>
+            <label className="text-sm font-medium text-[hsl(var(--text))]">ID de evento a corregir (opcional)</label>
             <Input
               placeholder="UUID del evento original"
               value={values.correctionOfEventId ?? ""}
@@ -203,12 +203,12 @@ export function AddEventForm({
       ) : null}
 
       {step === 3 ? (
-        <div className="space-y-3 rounded-2xl border bg-slate-950/55 p-4 border-slate-700/70">
-          <h3 className="text-lg font-semibold text-white">Confirmación final</h3>
-          <p className="rounded-xl border border-amber-300 bg-amber-300/10 p-3 text-sm text-amber-100">
+        <div className="kc-theme-card space-y-3 rounded-2xl border p-4">
+          <h3 className="text-lg font-semibold text-[hsl(var(--text))]">Confirmación final</h3>
+          <p className="rounded-xl border border-amber-500/45 bg-amber-500/12 p-3 text-sm text-amber-600">
             Este evento quedará registrado de forma inmutable. No se edita; las correcciones son aditivas.
           </p>
-          <div className="grid gap-2 text-sm">
+          <div className="grid gap-2 text-sm text-[hsl(var(--text))]">
             <p>
               <span className="font-medium">Tipo:</span> {values.type}
             </p>

@@ -65,8 +65,8 @@ export default async function SolicitudesTallerPage() {
   return (
     <div className="space-y-4">
       <Card className="surface-card">
-        <h1 className="text-3xl font-black">Solicitudes de Taller</h1>
-        <p className="mt-2 text-sm text-slate-300">
+        <h1 className="text-3xl font-black text-[hsl(var(--text))]">Solicitudes de Taller</h1>
+        <p className="mt-2 text-sm text-[hsl(var(--muted))]">
           Acá recibís solicitudes nuevas por matrícula. Podés autorizar o rechazar en el momento.
         </p>
       </Card>

@@ -29,6 +29,12 @@ export function OwnerWorkshopRequests({ initialRequests }: Props) {
   const [requests, setRequests] = useState<RequestItem[]>(initialRequests);
   const [loadingId, setLoadingId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const statusLabel: Record<AccessRequestStatus, string> = {
+    PENDING: "Pendiente",
+    APPROVED: "Aprobada",
+    DENIED: "Rechazada",
+    EXPIRED: "Expirada"
+  };
 
   async function resolveRequest(requestId: string, action: "approve" | "deny") {
     setError(null);
@@ -60,7 +66,7 @@ export function OwnerWorkshopRequests({ initialRequests }: Props) {
   return (
     <div className="space-y-3">
       {error ? (
-        <Card className="surface-card border-rose-500/40 p-3 text-sm text-rose-200">{error}</Card>
+        <Card className="surface-card border-rose-500/40 p-3 text-sm text-rose-500">{error}</Card>
       ) : null}
       {requests.map((request) => {
         const isPending = request.status === "PENDING";
@@ -70,18 +76,18 @@ export function OwnerWorkshopRequests({ initialRequests }: Props) {
           <Card key={request.id} className="surface-card">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
-                <p className="text-xs uppercase tracking-[0.12em] text-cyan-200">{request.workshop.workshopName}</p>
-                <h2 className="text-lg font-bold text-white">Matrícula solicitada: {request.plate}</h2>
-                <p className="text-sm text-slate-300">Estado: {request.status}</p>
-                <p className="text-xs text-slate-400">Creada: {new Date(request.createdAt).toLocaleString("es-UY")}</p>
+                <p className="text-xs uppercase tracking-[0.12em] text-[hsl(var(--accent))]">{request.workshop.workshopName}</p>
+                <h2 className="text-lg font-bold text-[hsl(var(--text))]">Matrícula solicitada: {request.plate}</h2>
+                <p className="text-sm text-[hsl(var(--muted))]">Estado: {statusLabel[request.status]}</p>
+                <p className="text-xs text-[hsl(var(--muted))]">Creada: {new Date(request.createdAt).toLocaleString("es-UY")}</p>
                 {!request.matchedVehicleId ? (
-                  <p className="mt-2 text-xs text-amber-300">
+                  <p className="mt-2 text-xs text-amber-500">
                     No encontramos este vehículo en tu titularidad actual para autorizar.
                   </p>
                 ) : null}
               </div>
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-xs text-slate-400">
+                <span className="text-xs text-[hsl(var(--muted))]">
                   {request.workshop.isVerified ? "Taller verificado" : "Taller no verificado"}
                 </span>
                 {isPending ? (
